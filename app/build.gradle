@@ -16,13 +16,23 @@ android {
         versionCode 1
         versionName "1.0"
 
+        multiDexEnabled true
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
 
     buildTypes {
+
+        debug {
+            minifyEnabled false
+            shrinkResources false
+            buildConfigField 'String', 'BASE_URL', '"https://demo.com/api/"'
+        }
+
         release {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+            buildConfigField 'String', 'BASE_URL', '"https://demo.com/api/"'
+
         }
     }
     compileOptions {
