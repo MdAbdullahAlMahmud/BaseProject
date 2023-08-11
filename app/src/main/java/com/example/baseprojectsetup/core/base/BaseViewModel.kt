@@ -6,15 +6,14 @@ import android.app.NotificationManager
 import android.content.Context
 import android.os.Build
 import androidx.core.app.NotificationCompat
-import androidx.core.app.NotificationManagerCompat
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.example.baseprojectsetup.core.base.data.ResponseCode
 import com.example.baseprojectsetup.core.base.data.model.BaseResponse
 import com.example.baseprojectsetup.core.base.data.model.WebSocketNotificationModel
 import com.example.baseprojectsetup.core.base.interfaces.CommunicatorImpl
+import com.example.baseprojectsetup.core.base.utils.ResponseCode
 import com.example.baseprojectsetup.core.base.utils.SingleLiveEvent
 import com.google.gson.Gson
 import com.google.gson.reflect.TypeToken
@@ -42,12 +41,7 @@ abstract class BaseViewModel : ViewModel(){
     private val _showGifLoader = MutableLiveData<Boolean>()
     val showGifLoader: LiveData<Boolean> = _showGifLoader
 
-    var languageData = mapOf<String, String>()
 
-    var timeCount = 0
-
-    /*@Inject
-    lateinit var languageRepository: LanguageRepository*/
 
     @Inject
     @ApplicationContext
@@ -91,12 +85,12 @@ abstract class BaseViewModel : ViewModel(){
             val apiResponse = response.body() as BaseResponse<T>
 
             when (response.code()) {
-                ResponseCode.OPERATION_SUCCESSFUL -> {
+                ResponseCode.SUCCESSFULL.value -> {
                     if (isShowMessage)
                         showMessage(apiResponse.responseMessage)
                     return apiResponse
                 }
-                ResponseCode.RECORD_NOT_FOUND -> {
+                ResponseCode.RECORD_NOT_FOUND.value -> {
                     if (isShowErrorMessage)
                         showMessage(apiResponse.responseMessage)
                     return apiResponse
@@ -143,16 +137,9 @@ abstract class BaseViewModel : ViewModel(){
             _showMessage.value = SingleLiveEvent(message)
     }
 
-   fun updateLanguageData() {
-        _isLanguageUpdateNeeded.value = true
-    }
 
-    fun setLanguageData() {
-        viewModelScope.launch {
-            //languageData = languageRepository.getLanguageMap()
-            updateLanguageData()
-        }
-    }
+
+
 
     private fun showNotification(notification: WebSocketNotificationModel) {
         var channelId = notification.messageTitle.replace(" ", "_").uppercase(Locale.ROOT)

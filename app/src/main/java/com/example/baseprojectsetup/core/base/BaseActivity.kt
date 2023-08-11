@@ -3,30 +3,33 @@ package com.example.baseprojectsetup.core.base
 import android.app.Activity
 import android.app.Dialog
 import android.content.Context
+import android.content.Intent
 import android.content.pm.PackageManager
+import android.graphics.Bitmap
+import android.graphics.Canvas
+import android.graphics.Color
 import android.net.ConnectivityManager
 import android.net.NetworkCapabilities
+import android.net.wifi.WifiManager
 import android.os.Build
 import android.os.Bundle
-import android.os.PersistableBundle
+import android.text.format.Formatter
 import android.view.View
 import android.view.WindowManager
 import android.view.inputmethod.InputMethodManager
 import android.widget.Toast
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.appcompat.app.AppCompatActivity
-import androidx.appcompat.widget.AppCompatButton
-import androidx.appcompat.widget.AppCompatEditText
-import androidx.appcompat.widget.AppCompatTextView
 import androidx.core.app.ActivityCompat
 import androidx.fragment.app.DialogFragment
 import androidx.viewbinding.ViewBinding
-import com.example.baseprojectsetup.Manifest
 import com.example.baseprojectsetup.R
-import com.example.baseprojectsetup.core.base.utils.LanguageConstants
+import com.example.baseprojectsetup.core.base.utils.AppConstant
 import com.example.baseprojectsetup.core.base.utils.SingleLiveEvent
 import com.example.baseprojectsetup.databinding.LayoutAlertDialogBinding
 import com.google.android.material.snackbar.Snackbar
+import java.text.SimpleDateFormat
+import java.util.Date
 
 abstract class BaseActivity<VM : BaseViewModel, VB : ViewBinding> : AppCompatActivity(){
     abstract val mViewModel: VM
@@ -48,7 +51,6 @@ abstract class BaseActivity<VM : BaseViewModel, VB : ViewBinding> : AppCompatAct
         setUpObservers()
         onBackPressListener()
         setNotificationPermission()
-        mViewModel.setLanguageData()
     }
 
     private fun setUpObservers(){
@@ -111,6 +113,77 @@ abstract class BaseActivity<VM : BaseViewModel, VB : ViewBinding> : AppCompatAct
         imm.hideSoftInputFromWindow(mViewBinding.root.windowToken, 0)
     }
 
+    protected fun gotoNewActivity(activityClass : Class<*>){
+        if (this.javaClass != activityClass){
+            val intent = Intent(this,activityClass)
+            startActivity(intent)
+        }
+    }
+
+    protected fun gotoNewActivityWithClearActivity(activityClass : Class<*>){
+        if (this.javaClass != activityClass){
+            val intent = Intent(this,activityClass)
+            startActivity(intent)
+            finish()
+        }
+    }
+
+    protected fun gotoNewActivityWithCleanAllActivity(activityClass : Class<*>){
+        if (this.javaClass != activityClass){
+            val intent = Intent(this,activityClass)
+            intent.addFlags(
+                Intent.FLAG_ACTIVITY_CLEAR_TASK
+                or Intent.FLAG_ACTIVITY_CLEAR_TOP
+                or Intent.FLAG_ACTIVITY_NEW_TASK
+            )
+            startActivity(intent)
+        }
+    }
+
+    fun getCurrentDate(format: String? = "yyyy-MM-dd") : String{
+        val format = SimpleDateFormat(format)
+        return format.format(Date())
+    }
+
+    fun getCurrentTime() : String{
+        val sdf = SimpleDateFormat("HH:mm:ss")
+        return sdf.format(Date())
+    }
+
+
+    fun getCurrentLayoutAsBitmap(view: View) : Bitmap{
+        val  returnedBitmap = Bitmap.createBitmap(view.width, view.height, Bitmap.Config.ARGB_8888)
+        val  canvas = Canvas(returnedBitmap)
+        val bgDrawable = view.background
+        if (bgDrawable != null) bgDrawable.draw(canvas)
+        else canvas.drawColor(Color.WHITE)
+        view.draw(canvas)
+        return returnedBitmap
+    }
+
+
+     fun setStringPreferenceData(key : String, value : String){
+        val  shred_pref = applicationContext?.getSharedPreferences(
+            AppConstant.PREFERENCE_NAME,
+            Context.MODE_PRIVATE
+        )
+        val editor = shred_pref?.edit()
+        editor?.putString(key,value)
+        editor?.apply()
+    }
+
+     fun getStringPreferenceData(key : String) : String{
+        val  shred_pref = applicationContext?.getSharedPreferences(
+            AppConstant.PREFERENCE_NAME,
+            Context.MODE_PRIVATE
+        )
+        return shred_pref?.getString(key,"") ?: ""
+    }
+
+
+
+
+
     fun isInternetAvailable(context: Context): Boolean {
         val connectivityManager =
             context.getSystemService(Context.CONNECTIVITY_SERVICE) as ConnectivityManager
@@ -142,8 +215,8 @@ abstract class BaseActivity<VM : BaseViewModel, VB : ViewBinding> : AppCompatAct
     fun showCustomDialog(
         title: String = "",
         message: String,
-        positiveText: String = getLanguageText(LanguageConstants.commonLabelOk),
-        negativeText: String = getLanguageText(LanguageConstants.commonLblNo),
+        positiveText: String = "Yes",
+        negativeText: String = "No",
         negativeButtonEnabled: Boolean = false,
         positiveButtonEnabled: Boolean = true,
         positiveFunction: () -> Unit = {},
@@ -188,8 +261,9 @@ abstract class BaseActivity<VM : BaseViewModel, VB : ViewBinding> : AppCompatAct
     }
 
 
-    fun getLanguageText(key: String): String {
-        return mViewModel.languageData[key] ?: ""
+    fun getIpAddress(): String {
+        val wifiManager = applicationContext.getSystemService(AppCompatActivity.WIFI_SERVICE) as WifiManager
+        return Formatter.formatIpAddress(wifiManager.connectionInfo.ipAddress)
     }
 
     private fun setNotificationPermission(){
@@ -229,26 +303,6 @@ abstract class BaseActivity<VM : BaseViewModel, VB : ViewBinding> : AppCompatAct
 
 //                showNotification(it)
 
-            }
-        }
-    }
-    fun setText(view: View, key: String) {
-        val text = mViewModel.languageData[key]
-        text?.let {
-            if (it.isEmpty())
-                return
-            when (view) {
-                is AppCompatEditText -> {
-                    view.setText(it)
-                }
-
-                is AppCompatTextView -> {
-                    view.text = it
-                }
-
-                is AppCompatButton -> {
-                    view.text = it
-                }
             }
         }
     }
