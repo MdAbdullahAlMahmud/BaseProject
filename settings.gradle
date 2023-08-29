@@ -16,3 +16,6 @@ dependencyResolutionManagement {
 }
 rootProject.name = "BaseProjectSetup"
 include ':app'
+include ':features:quiz'
+include ':features:dashboard'
+include ':core:common'

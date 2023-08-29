@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="black">#FF000000</color>
+    <color name="white">#FFFFFFFF</color>
+    <color name="color_white">#ffffff</color>
+    <color name="colorPrimary">#2BAEDB</color>
+    <color name="colorPrimaryDark">#B4DCE1</color>
+    <color name="colorAccent">#092731</color>
+    <color name="color1">#B4DCE1</color>
+    <color name="color2">#F5F9EF</color>
+    <color name="color3">#232631</color>
+    <color name="color4">#F5F9EF</color>
+    <color name="color5">#B4DCE1</color>
+    <color name="transparent">#00000000</color>
+    <color name="textColor">#000000</color>
+    <color name="hintColor">#353535</color>
+    <color name="hint_text_color">#353535</color>
+    <color name="color_black">#FF000000</color>
+    <color name="text_default">#181919</color>
+    <color name="loader_color">#27D881</color>
+    <color name="btn_primary_disabled_dark">#F0E2D0AD</color>
+    <color name="btn_primary_disabled_light">#F8E4DCC0</color>
+    <color name="btn_primary_enabled_dark">#AF9252</color>
+    <color name="btn_primary_enabled_light">#E9D298</color>
+    <color name="language_yellow_stroke">#E9D298</color>
+    <color name="color_ash">#2B2B2B</color>
+    <color name="black50">#50000000</color>
+    <color name="black_title_received_request">#000000</color>
+    <color name="black_70">#70000000</color>
+    <color name="black_30">#30000000</color>
+</resources>

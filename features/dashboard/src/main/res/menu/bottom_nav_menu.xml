@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/navLiveExam"
+        android:title="Live Exam"
+        android:icon="@drawable/nav_live_icon"
+        />
+
+    <item
+        android:id="@+id/placeHolder"
+        android:title=""
+        />
+    <item
+        android:id="@+id/navSubscription"
+        android:title="Subscription"
+        android:icon="@drawable/nav_subcription_icon"/>
+
+
+</menu>

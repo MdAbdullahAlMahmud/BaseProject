@@ -1,0 +1,196 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/containerNavDrawer"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/color_white"
+    android:clickable="true"
+    android:focusable="true"
+    android:paddingHorizontal="@dimen/_12sdp"
+    android:paddingTop="@dimen/_20sdp"
+    android:paddingBottom="@dimen/_10sdp">
+
+
+    <include
+        android:id="@+id/navMenuHeader"
+        layout="@layout/nav_drawer_header"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+
+    <ScrollView
+        android:id="@+id/svSidebarOptions"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toTopOf="@id/tvVersionNumber"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/navMenuHeader"
+        android:scrollbars="none">
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/_8sdp"
+            android:orientation="vertical">
+
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/tvSettings"
+                style="@style/open_sans_semi_bold_14"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/_8sdp"
+                android:text="Settings"
+                android:textColor="@color/black_70"
+                />
+
+
+            <include
+                android:id="@+id/containerChangePin"
+                layout="@layout/nav_drawer_menu_item"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/_8sdp" />
+
+
+            <include
+                android:id="@+id/containerChangeLanguage"
+                layout="@layout/nav_drawer_menu_item"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/_8sdp" />
+
+
+            <include
+                android:id="@+id/containerBiometricSettings"
+                layout="@layout/nav_drawer_menu_item"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/_8sdp" />
+
+
+            <include
+                layout="@layout/horizontal_divider"
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_marginVertical="@dimen/_8sdp" />
+
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/tvAccountService"
+                style="@style/open_sans_semi_bold_14"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Account Service"
+                android:textColor="@color/black_70"
+                />
+
+
+
+
+
+            <include
+                android:id="@+id/containerRefer"
+                layout="@layout/nav_drawer_menu_item"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/_8sdp" />
+
+
+
+
+
+
+            <include
+                android:id="@+id/containerLimitsAndUsage"
+                layout="@layout/nav_drawer_menu_item"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/_8sdp" />
+
+
+            <include
+                android:id="@+id/containerOffer"
+                layout="@layout/nav_drawer_menu_item"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/_8sdp" />
+
+
+            <include
+                android:id="@+id/containerActivityLog"
+                layout="@layout/nav_drawer_menu_item"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/_8sdp"
+                android:visibility="visible" />
+
+
+            <include
+                layout="@layout/horizontal_divider"
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_marginVertical="@dimen/_8sdp" />
+
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/tvSupport"
+                style="@style/open_sans_semi_bold_14"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Support"
+                android:textColor="@color/black_70"
+                />
+
+
+            <include
+                android:id="@+id/containerFeedback"
+                layout="@layout/nav_drawer_menu_item"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/_8sdp" />
+
+
+            <include
+                android:id="@+id/containerSupport"
+                layout="@layout/nav_drawer_menu_item"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/_8sdp" />
+
+
+            <include
+                android:id="@+id/containerLogout"
+                layout="@layout/nav_drawer_menu_item"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/_8sdp" />
+
+
+        </LinearLayout>
+
+
+    </ScrollView>
+
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/tvVersionNumber"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        tools:text="UAT v 3.0.0"
+        android:textColor="@color/black"
+        android:textSize="@dimen/_12sdp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/svSidebarOptions" />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>
+
+
+

@@ -1,0 +1,604 @@
+<resources>
+
+
+    <!-- Base application theme. -->
+    <style name="Theme.CoreApp" parent="Theme.MaterialComponents.DayNight.NoActionBar">
+        <!-- Status bar color. -->
+        <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="android:windowActionBar">false</item>
+        <item name="android:windowLightStatusBar">true</item>
+        <item name="android:fontFamily">@font/raleway</item>
+        <item name="android:textSize">@dimen/_14sdp</item>
+        <item name="android:textColor">@color/color_black</item>
+        <item name="colorPrimaryVariant">@color/colorPrimaryDark</item>
+        <item name="android:windowBackground">@color/white</item>
+        <item name="colorOnPrimary">@color/black</item>
+        <!-- Secondary brand color. -->
+        <item name="colorSecondary">@color/colorPrimary</item>
+        <item name="colorSecondaryVariant">@color/colorPrimaryDark</item>
+        <item name="colorOnSecondary">@color/black</item>
+        <item name="android:statusBarColor">@android:color/transparent</item>
+        <item name="android:windowAnimationStyle">@style/CustomActivityAnimation</item>
+        <item name="android:splitMotionEvents">false</item>
+        <item name="android:windowEnableSplitTouch">false</item>
+        <!-- Customize your theme here. -->
+    </style>
+    <style name="CustomActivityAnimation">
+        <item name="android:windowEnterAnimation">@anim/slide_in_left</item>
+        <item name="android:windowExitAnimation">@anim/slide_in_right</item>
+    </style>
+
+
+
+
+
+    <style name="AppTextViewTitle" parent="@android:style/Widget.TextView">
+        <item name="android:textSize">@dimen/_20sdp</item>
+        <item name="android:textAlignment">textStart</item>
+        <item name="android:textColor">@color/text_default</item>
+    </style>
+
+
+    <style name="AppTextViewSubTitle" parent="@android:style/Widget.TextView">
+        <item name="android:textSize">@dimen/_20sdp</item>
+        <item name="android:textAlignment">textStart</item>
+        <item name="android:textColor">@color/text_default</item>
+    </style>
+
+
+    <style name="AppTextViewDefault" parent="@android:style/Widget.TextView">
+        <item name="android:textSize">@dimen/_16sdp</item>
+        <item name="android:textAlignment">textStart</item>
+        <item name="android:textColor">@color/text_default</item>
+    </style>
+
+
+    <style name="AppTextViewSemiDefault" parent="@android:style/Widget.TextView">
+        <item name="android:textSize">@dimen/_14sdp</item>
+        <item name="android:textAlignment">textStart</item>
+        <item name="android:textColor">@color/text_default</item>
+    </style>
+
+
+    <style name="LoadingDialogTheme" parent="Theme.AppCompat.Light.Dialog">
+        <item name="windowActionBar">false</item>
+        <item name="windowNoTitle">true</item>
+        <item name="android:windowMinWidthMinor">100%</item>
+        <item name="android:windowMinWidthMajor">100%</item>
+        <item name="android:indeterminateTint">@color/loader_color</item>
+    </style>
+
+
+
+
+    <style name="RoundShapeTheme" parent="ThemeOverlay.MaterialComponents.Dialog.Alert">
+        <item name="android:gravity">center</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:padding">@dimen/_2sdp</item>
+        <item name="shapeAppearanceMediumComponent">@style/RoundShapeAppearance</item>
+        <item name="buttonBarPositiveButtonStyle">@style/Alert.Button.Positive</item>
+        <item name="buttonBarNeutralButtonStyle">@style/Alert.Button.Neutral</item>
+    </style>
+
+
+    <style name="RoundShapeAppearance" parent="ShapeAppearance.MaterialComponents.MediumComponent">
+        <item name="cornerFamily">rounded</item>
+        <item name="cornerSize">@dimen/_16sdp</item>
+    </style>
+
+
+    <style name="PrimaryActionBarText" parent="@android:style/Widget.TextView">
+        <item name="android:textSize">@dimen/_14sdp</item>
+        <item name="android:fontFamily">@font/open_sans_semi_bold</item>
+        <item name="android:textColor">@color/color_black</item>
+        <item name="android:textAlignment">textStart</item>
+    </style>
+
+
+    <style name="Alert.Button.Positive" parent="Widget.MaterialComponents.Button.TextButton">
+        <item name="backgroundTint">@color/colorPrimaryDark</item>
+        <item name="android:textColor">@android:color/white</item>
+        <item name="android:textSize">14sp</item>
+        <item name="android:textAllCaps">false</item>
+    </style>
+
+
+    <style name="Alert.Button.Neutral" parent="Widget.MaterialComponents.Button.TextButton">
+        <item name="backgroundTint">@color/language_yellow_stroke</item>
+        <item name="android:textColor">@android:color/white</item>
+        <item name="android:textSize">14sp</item>
+    </style>
+
+
+
+
+    <style name="DashboardTopMenuImage">
+        <item name="android:layout_height">@dimen/_40sdp</item>
+        <item name="android:layout_width">@dimen/_40sdp</item>
+    </style>
+
+
+    <style name="DashboardTopMenuText">
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:textSize">@dimen/_11sdp</item>
+        <item name="android:fontFamily">@font/open_sans_regular</item>
+        <item name="android:textColor">@color/black</item>
+        <item name="android:layout_marginTop">@dimen/_4sdp</item>
+    </style>
+
+
+
+
+
+    <style name="write_text_">
+        <item name="android:textSize">@dimen/_10sdp</item>
+        <item name="android:fontFamily">@font/open_sans_regular</item>
+        <item name="android:textColor">#4D000000</item>
+    </style>
+
+
+    <style name="amount">
+        <item name="android:textSize">14sp</item>
+        <item name="android:textColor">#333333</item>
+    </style>
+
+
+    <style name="entered_amount">
+        <item name="android:textSize">@dimen/_14sdp</item>
+        <item name="android:textColor">#000000</item>
+    </style>
+
+
+
+
+    <style name="heading">
+        <item name="android:textSize">@dimen/_11sdp</item>
+        <item name="android:textColor">#5B5B5B</item>
+    </style>
+
+
+    <style name="account_holder_name">
+        <item name="android:textSize">@dimen/_12sdp</item>
+        <item name="android:fontFamily">@font/open_sans_semi_bold</item>
+        <item name="android:textColor">#80000000</item>
+    </style>
+
+
+    <style name="account_amount_name">
+        <item name="android:textSize">14sp</item>
+        <item name="android:fontFamily">@font/open_sans_semi_bold</item>
+        <item name="android:textColor">#000000</item>
+    </style>
+
+
+    <style name="amount_value">
+        <item name="android:textSize">@dimen/_11sdp</item>
+        <item name="android:fontFamily">@font/open_sans_regular</item>
+        <item name="android:textColor">@color/text_default</item>
+    </style>
+
+
+    <style name="account_number_field">
+        <item name="android:textSize">@dimen/_11sdp</item>
+        <item name="android:fontFamily">@font/open_sans_regular</item>
+        <item name="android:textColor">@color/hint_text_color</item>
+    </style>
+
+
+    <style name="success_message">
+        <item name="android:textSize">@dimen/_14sdp</item>
+        <item name="android:textColor">#5B5B5B</item>
+    </style>
+
+
+    <style name="time">
+        <item name="android:textSize">14sp</item>
+        <item name="android:textColor">#878787</item>
+    </style>
+
+
+    <style name="pm_24_10_22">
+        <item name="android:textStyle">bold</item>
+        <item name="android:textColor">#333333</item>
+    </style>
+
+
+    <style name="WToBankSucessText">
+        <item name="android:textSize">@dimen/_12sdp</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:textColor">#333333</item>
+    </style>
+
+
+    <style name="feedBackInput">
+        <item name="android:textSize">@dimen/_14sdp</item>
+        <item name="android:letterSpacing">-0.01</item>
+        <item name="android:textColor">@color/text_default</item>
+    </style>
+
+
+    <style name="add_a_text">
+        <item name="android:textSize">16sp</item>
+        <item name="android:letterSpacing">-0.01</item>
+        <item name="android:textColor">#B3000000</item>
+    </style>
+
+
+    <style name="log_in_text">
+        <item name="android:textSize">@dimen/_12sdp</item>
+        <item name="android:letterSpacing">0.01</item>
+        <item name="android:textColor">#CC000000</item>
+    </style>
+
+
+    <!--    ActionButton     -->
+    <style name="ActionButton" parent="@android:style/Widget.Button">
+        <item name="android:textColor">#FFFFFF</item>
+        <item name="android:textSize">@dimen/_10sdp</item>
+        <item name="android:background">@drawable/btn_primary</item>
+        <item name="android:textAllCaps">false</item>
+    </style>
+
+
+    <!--    SkipButton-->
+
+
+    <!--   PhoneOperatorSelectionBackground-->
+
+
+    <!--   OTP_SMS-->
+
+
+    <style name="OtpSms">
+        <item name="android:textSize">@dimen/_18sdp</item>
+        <item name="android:letterSpacing">-0.01</item>
+        <item name="android:textColor">#000000</item>
+        <item name="fontFamily">@font/open_sans_regular</item>
+    </style>
+
+
+
+
+
+
+
+    <style name="PrimaryButton" parent="@android:style/Widget.Button">
+        <item name="android:textSize">@dimen/_14sdp</item>
+        <item name="android:fontFamily">@font/open_sans_semi_bold</item>
+        <item name="android:layout_margin">@dimen/_16sdp</item>
+        <item name="android:background">@drawable/btn_primary</item>
+        <item name="android:textAllCaps">false</item>
+        <item name="android:padding">@dimen/_8sdp</item>
+        <item name="android:gravity">center</item>
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+    </style>
+
+
+    <style name="OutLineButton" parent="@style/Widget.MaterialComponents.Button.OutlinedButton.Icon">
+        <item name="android:textSize">@dimen/_12sdp</item>
+        <item name="android:textColor">@color/black</item>
+        <item name="android:textAllCaps">false</item>
+        <item name="android:padding">@dimen/_8sdp</item>
+        <item name="fontFamily">@font/open_sans_semi_bold</item>
+        <item name="android:gravity">center</item>
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+    </style>
+
+
+
+
+
+
+
+    <style name="ActivityLogItem">
+        <item name="android:textSize">@dimen/_12sdp</item>
+        <item name="android:letterSpacing">0.01</item>
+        <item name="android:textColor">@color/black</item>
+    </style>
+
+
+    <style name="ShapeAppearanceOverlay.App.CornerSize50Percent" parent="">
+        <item name="cornerSize">50%</item>
+        <item name="cornerFamily">rounded</item>
+    </style>
+
+
+    <style name="ShapeAppearanceOverlay.App.SquareSize8Percent" parent="">
+        <item name="cornerSize">7%</item>
+        <item name="cornerFamily">rounded</item>
+    </style>
+
+
+    <style name="PrimarySpinner" parent="Widget.AppCompat.Light.DropDownItem.Spinner">
+        <item name="android:paddingStart">0dp</item>
+        <item name="android:paddingEnd">0dp</item>
+        <item name="android:paddingTop">@dimen/_4sdp</item>
+        <item name="android:paddingBottom">@dimen/_2sdp</item>
+        <item name="android:textColor">@color/text_default</item>
+        <item name="backgroundTint">@color/text_default</item>
+        <item name="android:textSize">@dimen/_10sdp</item>
+    </style>
+
+
+    <style name="BillPaySpinner" parent="Widget.AppCompat.Light.DropDownItem.Spinner">
+        <item name="android:paddingStart">0dp</item>
+        <item name="android:paddingEnd">0dp</item>
+        <item name="android:paddingTop">@dimen/_4sdp</item>
+        <item name="android:paddingBottom">@dimen/_2sdp</item>
+        <item name="android:textColor">@color/text_default</item>
+        <item name="backgroundTint">@color/text_default</item>
+        <item name="android:textSize">@dimen/_14sdp</item>
+    </style>
+    <style name="ThemeOverlay.App.BottomSheetDialog" parent="ThemeOverlay.MaterialComponents.BottomSheetDialog">
+        <item name="bottomSheetStyle">@style/BottomSheetDialog</item>
+    </style>
+
+
+
+
+    <style name="BottomSheetDialog" parent="Widget.MaterialComponents.BottomSheet.Modal">
+        <item name="backgroundTint">@color/white</item>
+        <item name="shapeAppearance">@style/ShapeAppearance.App.LargeComponent</item>
+    </style>
+
+
+    <style name="ShapeAppearance.App.LargeComponent" parent="ShapeAppearance.MaterialComponents.LargeComponent">
+        <item name="cornerFamily">rounded</item>
+        <item name="cornerSize">@dimen/_12sdp</item>
+    </style>
+
+
+    <style name="SCBSwitch" parent="Theme.AppCompat.Light">
+        <!-- active thumb & track color (30% transparency) -->
+        <item name="colorControlActivated">@color/colorPrimary</item>
+        <!-- inactive thumb color -->
+        <item name="colorSwitchThumbNormal">@color/color_ash</item>
+        <!-- inactive track color (30% transparency) -->
+        <item name="android:colorForeground">#42221f1f</item>
+    </style>
+
+
+
+
+
+    <style name="amount_hint">
+        <item name="android:fontFamily">@font/open_sans_semi_bold</item>
+        <item name="android:textColor">#B2000000</item>
+        <item name="android:textSize">@dimen/_15sdp</item>
+    </style>
+
+
+    <style name="WalletToBankText" parent="@android:style/Widget.TextView">
+        <item name="android:textColor">@color/black50</item>
+        <item name="fontFamily">@font/open_sans_semi_bold</item>
+        <item name="android:textSize">@dimen/_13sdp</item>
+        <item name="android:textAlignment">textStart</item>
+        <item name="lineSpacing">@dimen/_1sdp</item>
+    </style>
+
+
+    <style name="WalletToBankSubText" parent="@android:style/Widget.TextView">
+        <item name="android:textColor">@color/black50</item>
+        <item name="fontFamily">@font/open_sans_semi_bold</item>
+        <item name="android:textSize">@dimen/_12sdp</item>
+        <item name="android:textAlignment">textStart</item>
+        <item name="lineSpacing">@dimen/_1sdp</item>
+    </style>
+
+
+
+
+
+    <style name="ekyc_nid_info_text_view_style">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:textSize">@dimen/_12sdp</item>
+        <item name="android:layout_marginTop">@dimen/_8sdp</item>
+        <item name="android:layout_marginStart">@dimen/_2sdp</item>
+    </style>
+
+
+    <style name="resend_otp_enable">
+        <item name="android:textStyle">bold</item>
+        <item name="android:textSize">@dimen/_14sdp</item>
+        <item name="android:letterSpacing">-0.01</item>
+        <item name="android:textColor">@color/colorPrimaryDark</item>
+    </style>
+
+
+    <style name="ForgotPinInstructionText">
+        <item name="android:layout_marginTop">@dimen/_4sdp</item>
+        <item name="fontFamily">@font/open_sans_semi_bold</item>
+    </style>
+
+
+    <style name="txt_bank_name">
+        <item name="android:textSize">@dimen/_11sdp</item>
+        <item name="android:textColor">@color/black</item>
+        <item name="android:fontFamily">@font/open_sans_semi_bold</item>
+    </style>
+
+
+
+
+    <style name="ReferPocketLbl">
+        <item name="android:textSize">@dimen/_12sdp</item>
+        <item name="android:letterSpacing">-0.01</item>
+        <item name="android:textColor">@color/black</item>
+        <item name="android:textStyle">bold</item>
+    </style>
+
+
+
+
+
+
+
+
+    <style name="DatePicker" parent="Theme.AppCompat.Light.Dialog">
+        <item name="android:textColor">@color/black</item>
+    </style>
+
+
+    <style name="feedbackHintColor">
+        <item name="android:textSize">@dimen/_12sdp</item>
+        <item name="android:textColor">#808080</item>
+    </style>
+
+
+    <style name="DatePickerTheme" parent="Theme.MaterialComponents.Light.Dialog.Alert">
+        <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+        <item name="colorAccent">@color/colorPrimary</item>
+        <item name="android:buttonBarNegativeButtonStyle">
+            @style/DatePickerTheme.ButtonBarNegativeButtonStyle
+        </item>
+        <item name="android:buttonBarPositiveButtonStyle">
+            @style/DatePickerTheme.ButtonBarNegativeButtonStyle
+        </item>
+    </style>
+
+
+    <style name="DatePickerTheme.ButtonBarNegativeButtonStyle" parent="Widget.MaterialComponents.Button.TextButton.Dialog">
+        <item name="android:textColor">@android:color/holo_red_light</item>
+    </style>
+
+
+    <style name="DatePickerTheme.ButtonBarPositiveButtonStyle" parent="Widget.MaterialComponents.Button.TextButton.Dialog">
+        <item name="android:textColor">@android:color/holo_red_light</item>
+    </style>
+
+
+    <style name="AppTextViewSwipe" parent="@android:style/Widget.TextView">
+        <item name="android:textColor">@color/white</item>
+        <item name="android:textSize">@dimen/_14sdp</item>
+        <item name="android:textAlignment">textStart</item>
+        <item name="android:fontFamily">@font/open_sans_regular</item>
+    </style>
+
+
+    <style name="open_sans_semi_bold_16">
+        <item name="android:fontFamily">@font/open_sans_semi_bold</item>
+        <item name="android:textColor">@color/black_title_received_request</item>
+        <item name="android:textSize">@dimen/_12sdp</item>
+    </style>
+
+
+    <style name="open_sans_regular_18">
+        <item name="android:fontFamily">@font/open_sans_regular</item>
+        <item name="android:textColor">@color/black_title_received_request</item>
+        <item name="android:textSize">@dimen/_14sdp</item>
+    </style>
+
+
+    <style name="open_sans_regular_14">
+        <item name="android:fontFamily">@font/open_sans_regular</item>
+        <item name="android:textColor">@color/black</item>
+        <item name="android:textSize">@dimen/_11sdp</item>
+    </style>
+
+
+    <style name="open_sans_semi_bold_14">
+        <item name="android:fontFamily">@font/open_sans_semi_bold</item>
+        <item name="android:textColor">@color/black_title_received_request</item>
+        <item name="android:textSize">@dimen/_11sdp</item>
+    </style>
+
+
+    <style name="open_sans_semi_bold_22">
+        <item name="android:fontFamily">@font/open_sans_semi_bold</item>
+        <item name="android:textColor">@color/black_title_received_request</item>
+        <item name="android:textSize">@dimen/_17sdp</item>
+    </style>
+
+
+
+
+
+    <style name="open_sans_regular_22">
+        <item name="android:fontFamily">@font/open_sans_regular</item>
+        <item name="android:textColor">@color/white</item>
+        <item name="android:textSize">@dimen/_17sdp</item>
+    </style>
+
+
+    <style name="open_sans_semi_bold_18_white">
+        <item name="android:fontFamily">@font/open_sans_semi_bold</item>
+        <item name="android:textColor">@color/white</item>
+        <item name="android:textSize">@dimen/_14sdp</item>
+    </style>
+
+
+    <style name="ekyc_banner_button">
+        <item name="android:fontFamily">@font/open_sans_semi_bold</item>
+        <item name="android:textColor">@color/white</item>
+        <item name="android:textSize">@dimen/_11sdp</item>
+    </style>
+
+
+    <style name="open_sans_semi_bold_18">
+        <item name="android:fontFamily">@font/open_sans_semi_bold</item>
+        <item name="android:textColor">@color/black</item>
+        <item name="android:textSize">@dimen/_14sdp</item>
+    </style>
+
+
+    <style name="open_sans_regular_semi_bold_18">
+        <item name="android:fontFamily">@font/open_sans_semi_bold</item>
+        <item name="android:textColor">@color/black</item>
+        <item name="android:textSize">@dimen/_14sdp</item>
+    </style>
+
+
+
+
+    <style name="PrimaryButtonBold18" parent="@android:style/Widget.Button">
+        <item name="android:textSize">@dimen/_14sdp</item>
+        <item name="android:fontFamily">@font/open_sans_bold</item>
+        <item name="android:layout_margin">@dimen/_16sdp</item>
+        <item name="android:background">@drawable/btn_primary</item>
+        <item name="android:textAllCaps">false</item>
+        <item name="android:padding">@dimen/_8sdp</item>
+        <item name="android:textColor">@color/black_70</item>
+        <item name="android:gravity">center</item>
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+    </style>
+
+
+    <style name="open_sans_bold_18b70">
+        <item name="android:fontFamily">@font/open_sans_bold</item>
+        <item name="android:textColor">@color/black_70</item>
+        <item name="android:textSize">@dimen/_14sdp</item>
+    </style>
+
+
+
+
+    <style name="open_sans_regular_12">
+        <item name="android:fontFamily">@font/open_sans_regular</item>
+        <item name="android:textSize">@dimen/_9sdp</item>
+        <item name="android:textColor">#80000000</item>
+    </style>
+
+
+    <style name="ShapeAppearanceOverlay.App.CornerSize5Percent" parent="">
+        <item name="cornerSize">7%</item>
+        <item name="cornerFamily">rounded</item>
+    </style>
+    <style name="open_sans_regular_16">
+        <item name="android:fontFamily">@font/open_sans_regular</item>
+        <item name="android:textColor">@color/white</item>
+        <item name="android:textSize">@dimen/_12sdp</item>
+    </style>
+
+
+
+
+</resources>
+
+
+

@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@android:color/transparent"
+    android:elevation="0dp">
+
+
+    <com.google.android.material.bottomappbar.BottomAppBar
+        android:id="@+id/bottomNavBar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom"
+        app:contentInsetEnd="0dp"
+        app:contentInsetStart="0dp"
+        android:background="@color/white"
+        android:backgroundTint="@color/white"
+        app:elevation="@dimen/_4sdp"
+        app:fabAlignmentMode="center"
+        app:fabCradleMargin="@dimen/_7sdp"
+        app:fabCradleRoundedCornerRadius="0dp"
+        app:fabCradleVerticalOffset="@dimen/_1sdp">
+
+
+        <com.google.android.material.bottomnavigation.BottomNavigationView
+            android:id="@+id/bottomNavigationView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/bottom_bar_background"
+            app:menu="@menu/bottom_nav_menu" />
+
+
+    </com.google.android.material.bottomappbar.BottomAppBar>
+
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/fabQrScan"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:maxImageSize="@dimen/_24sdp"
+        android:contentDescription="@null"
+        app:backgroundTint="@color/white"
+        app:fabSize="normal"
+        app:layout_anchor="@id/bottomNavBar"
+        app:srcCompat="@drawable/baseline_home_24"
+        app:tint="@null" />
+
+
+</androidx.coordinatorlayout.widget.CoordinatorLayout>
+
+
+

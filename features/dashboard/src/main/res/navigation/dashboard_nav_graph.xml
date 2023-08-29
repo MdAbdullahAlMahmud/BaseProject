@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/dashboard_nav_graph"
+    app:startDestination="@id/dashboardFragment">
+
+
+    <fragment
+        android:id="@+id/dashboardFragment"
+        android:name="com.mkrlabs.dashboard.ui.dashboard.DashboardFragment"
+        android:label="DashboardFragment" >
+        <action
+            android:id="@+id/action_dashboardFragment_to_topicFragment"
+            app:destination="@id/topicFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/topicFragment"
+        android:name="com.mkrlabs.dashboard.ui.dashboard.topic.TopicFragment"
+        android:label="fragment_topic"
+        tools:layout="@layout/fragment_topic" >
+        <action
+            android:id="@+id/action_topicFragment_to_subTopicFragment"
+            app:destination="@id/subTopicFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/subTopicFragment"
+        android:name="com.mkrlabs.dashboard.ui.dashboard.topic.sub_topic.SubTopicFragment"
+        android:label="fragment_sub_topic"
+        tools:layout="@layout/fragment_sub_topic" />
+</navigation>

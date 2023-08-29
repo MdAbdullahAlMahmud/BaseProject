@@ -1,0 +1,175 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/background_gradient"
+    >
+
+    <LinearLayout
+        android:layout_marginTop="8dp"
+        android:gravity="center_vertical"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <ImageView
+            android:layout_width="80dp"
+            android:layout_height="80dp"
+            android:src="@drawable/logo"
+            android:layout_gravity="center_horizontal"/>
+
+
+        <TextView
+            android:layout_marginTop="20dp"
+            android:layout_gravity="center_horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Login"
+            android:gravity="center"
+            android:fontFamily="@font/raleway"
+            android:textColor="@color/black"
+            android:textStyle="bold"
+            android:textSize="24sp"/>
+
+
+        <TextView
+            android:layout_gravity="center_horizontal"
+            android:layout_width="300dp"
+            android:layout_height="wrap_content"
+            android:textColor="@color/black"
+            android:text="Login to your account to get started"
+            android:fontFamily="@font/raleway"
+            android:gravity="center"
+            android:textSize="12sp"/>
+
+
+        <EditText
+            android:fontFamily="@font/raleway"
+            android:id="@+id/email"
+            android:layout_marginTop="20dp"
+            android:layout_gravity="center_horizontal"
+            android:layout_width="333dp"
+            android:layout_height="60dp"
+            android:hint="Email or Phone"
+            android:padding="20dp"
+            android:textColor="@color/textColor"
+            android:textColorHint="@color/hintColor"
+            android:background="@drawable/edittext_background" />
+
+
+
+        <EditText
+            android:fontFamily="@font/raleway"
+            android:id="@+id/password"
+            android:layout_marginTop="20dp"
+            android:layout_gravity="center_horizontal"
+            android:layout_width="333dp"
+            android:layout_height="60dp"
+            android:hint="Password"
+            android:padding="20dp"
+            android:textColor="@color/textColor"
+            android:textColorHint="@color/hintColor"
+            android:background="@drawable/edittext_background" />
+
+        <Button
+            android:id="@+id/loginBtn"
+            android:layout_marginTop="20dp"
+            android:layout_gravity="center_horizontal"
+            android:layout_width="333dp"
+            android:layout_height="60dp"
+            android:textStyle="bold"
+            android:textAllCaps="false"
+            android:text="Login"
+            android:textSize="20sp"
+            android:textColor="@color/white"
+            android:fontFamily="@font/regular"
+            android:background="@drawable/button_bg2"
+            android:layout_alignParentBottom="true"
+            />
+
+        <TextView
+            android:fontFamily="@font/raleway"
+            android:layout_marginTop="15dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Or"
+            android:textSize="16sp"
+            android:textColor="@color/black"
+            android:gravity="center"/>
+
+        <LinearLayout
+            android:layout_marginTop="15dp"
+            android:gravity="center"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <ImageButton
+                android:id="@+id/facebook"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:src="@drawable/facebook_logo"/>
+
+            <ImageButton
+                android:id="@+id/google"
+                android:layout_marginLeft="15dp"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:src="@drawable/google_logo"/>
+
+        </LinearLayout>
+
+
+        <TextView
+            android:id="@+id/forgotPasswordTV"
+            android:layout_marginTop="10dp"
+            android:layout_gravity="center_horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Forgot Password?"
+            android:fontFamily="@font/raleway"
+            android:textColor="@color/black"
+            android:gravity="center"
+            android:textSize="16sp"/>
+
+
+        <LinearLayout
+            android:layout_marginTop="10dp"
+            android:gravity="center"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_gravity="center_horizontal"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="New here?"
+                android:fontFamily="@font/raleway"
+                android:textColor="@color/black"
+                android:gravity="center"
+                android:textSize="16sp"/>
+
+            <TextView
+                android:id="@+id/registerNowTv"
+                android:layout_marginLeft="5dp"
+                android:layout_gravity="center_horizontal"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Register Now"
+                android:textStyle="bold"
+                android:fontFamily="@font/raleway"
+                android:textColor="@color/black"
+                android:gravity="center"
+                android:textSize="16sp"/>
+
+        </LinearLayout>
+
+
+
+    </LinearLayout>
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

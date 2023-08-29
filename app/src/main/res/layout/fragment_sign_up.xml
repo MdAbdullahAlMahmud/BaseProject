@@ -1,0 +1,191 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/background_gradient"
+    >
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:gravity="center_vertical"
+        android:orientation="vertical"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <ImageView
+            android:layout_width="80dp"
+            android:layout_height="80dp"
+            android:layout_gravity="center_horizontal"
+            android:src="@drawable/logo" />
+
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="20dp"
+            android:fontFamily="@font/raleway"
+            android:gravity="center"
+            android:text="Register"
+            android:textColor="@color/black"
+            android:textSize="24sp"
+            android:textStyle="bold" />
+
+
+        <TextView
+            android:layout_width="300dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:fontFamily="@font/raleway"
+            android:gravity="center"
+            android:text="Sign up to create an account"
+            android:textColor="@color/black"
+            android:textSize="12sp" />
+
+
+        <EditText
+            android:id="@+id/name"
+            android:layout_width="333dp"
+            android:layout_height="60dp"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="20dp"
+            android:background="@drawable/edittext_background"
+            android:fontFamily="@font/raleway"
+            android:hint="Name"
+            android:textColor="@color/textColor"
+            android:textColorHint="@color/hintColor"
+            android:padding="20dp" />
+
+
+        <EditText
+            android:id="@+id/email"
+            android:layout_width="333dp"
+            android:layout_height="60dp"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="20dp"
+            android:background="@drawable/edittext_background"
+            android:fontFamily="@font/raleway"
+            android:hint="Email"
+            android:textColor="@color/textColor"
+            android:textColorHint="@color/hintColor"
+            android:padding="20dp" />
+
+
+        <EditText
+            android:id="@+id/phone"
+            android:layout_width="333dp"
+            android:layout_height="60dp"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="20dp"
+            android:background="@drawable/edittext_background"
+            android:fontFamily="@font/raleway"
+            android:hint="Phone"
+            android:textColor="@color/textColor"
+            android:textColorHint="@color/hintColor"
+            android:padding="20dp" />
+
+
+        <EditText
+            android:id="@+id/password"
+            android:layout_width="333dp"
+            android:layout_height="60dp"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="20dp"
+            android:background="@drawable/edittext_background"
+            android:fontFamily="@font/raleway"
+            android:hint="Password"
+            android:textColor="@color/textColor"
+            android:textColorHint="@color/hintColor"
+            android:padding="20dp" />
+
+        <Button
+            android:id="@+id/start"
+            android:layout_width="333dp"
+            android:layout_height="60dp"
+            android:layout_alignParentBottom="true"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="20dp"
+            android:background="@drawable/button_bg2"
+            android:fontFamily="@font/regular"
+            android:text="Register"
+            android:textAllCaps="false"
+            android:textColor="@color/white"
+            android:textSize="20sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="15dp"
+            android:fontFamily="@font/raleway"
+            android:gravity="center"
+            android:text="Or"
+            android:textColor="@color/black"
+            android:textSize="16sp" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="15dp"
+            android:gravity="center"
+            android:orientation="horizontal">
+
+            <ImageButton
+                android:id="@+id/facebook"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:src="@drawable/facebook_logo" />
+
+            <ImageButton
+                android:id="@+id/google"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:layout_marginLeft="15dp"
+                android:src="@drawable/google_logo" />
+
+        </LinearLayout>
+
+
+        <LinearLayout
+            android:id="@+id/loginLl"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:gravity="center"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:fontFamily="@font/raleway"
+                android:gravity="center"
+                android:text="Already have an account?"
+                android:textColor="@color/black"
+                android:textSize="16sp" />
+
+            <TextView
+                android:id="@+id/register"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginLeft="5dp"
+                android:fontFamily="@font/raleway"
+                android:gravity="center"
+                android:text="Login"
+                android:textColor="@color/black"
+                android:textSize="16sp"
+                android:textStyle="bold" />
+
+        </LinearLayout>
+
+
+    </LinearLayout>
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>
