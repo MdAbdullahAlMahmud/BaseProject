@@ -1,7 +1,9 @@
 package com.mkrlabs.dashboard.data.repositoryImpl
 
 import com.mkrlabs.common.core.base.data.model.BaseResponse
+import com.mkrlabs.dashboard.data.model.request.QuizRequestItem
 import com.mkrlabs.dashboard.data.model.request.SubTopicRequest
+import com.mkrlabs.common.core.base.data.model.response.QuizResponseItem
 import com.mkrlabs.dashboard.data.model.response.SubTopicItem
 import com.mkrlabs.dashboard.data.model.response.TopicItem
 import com.mkrlabs.dashboard.data.repository.TopicRepository
@@ -20,4 +22,7 @@ class TopicRepositoryImpl @Inject constructor(
         return  topicService.getSubTopicList(subTopicRequest.cat_id.toString())
     }
 
+    override suspend fun requestQuizList(quizRequestItem: QuizRequestItem): Response<BaseResponse<List<QuizResponseItem>>> {
+        return topicService.getQuizList(quizRequestItem.cat_id.toString(),quizRequestItem.sub_cat_id.toString())
+    }
 }

@@ -20,12 +20,25 @@
         android:focusable="true">
 
         <View
+            android:id="@+id/subTopicView"
             android:layout_width="@dimen/_8sdp"
             android:layout_height="@dimen/_8sdp"
             android:background="@color/colorPrimary"
             android:layout_marginVertical="@dimen/_14sdp"
-            android:layout_marginStart="@dimen/_4sdp"
+            android:layout_marginHorizontal="@dimen/_4sdp"
             android:layout_gravity="center"
+            android:visibility="gone"
+            />
+        <com.google.android.material.card.MaterialCardView
+            android:id="@+id/quizViewCV"
+            android:layout_width="@dimen/_8sdp"
+            android:layout_height="@dimen/_8sdp"
+            app:cardCornerRadius="@dimen/_8sdp"
+            app:cardBackgroundColor="@color/colorPrimary"
+            android:layout_marginVertical="@dimen/_14sdp"
+            android:layout_marginHorizontal="@dimen/_4sdp"
+            android:layout_gravity="center"
+            android:visibility="gone"
             />
 
         <androidx.appcompat.widget.AppCompatTextView
@@ -35,7 +48,6 @@
             style="@style/open_sans_regular_14"
             android:textColor="@color/black"
             tools:text="Feature Name"
-            android:padding="@dimen/_4sdp"
             android:gravity="center_vertical"
             />
 

@@ -1,6 +1,7 @@
 package com.mkrlabs.dashboard.ui.dashboard.adapter
 
 import android.view.LayoutInflater
+import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.mkrlabs.dashboard.data.model.response.SubTopicItem
@@ -37,6 +38,7 @@ class SubTopicAdapter (private val onItemClicked: (item: SubTopicItem) -> Unit) 
     class SubTopicListViewHolder(val subTopicItemBinding: SubTopicItemBinding) :
         RecyclerView.ViewHolder(subTopicItemBinding.root) {
         fun bind(item: SubTopicItem) {
+            subTopicItemBinding.subTopicView.visibility = View.VISIBLE
             subTopicItemBinding.tvTopicName.text = item.category_name
         }
     }

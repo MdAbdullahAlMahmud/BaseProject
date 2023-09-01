@@ -32,12 +32,16 @@ class TopicFragment : BaseFragment<TopicViewModel,FragmentTopicBinding>() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         initView()
+        callOnInit()
         setObserver()
     }
     private fun initView(){
         initAdapter()
-        mViewModel.getTopicList()
 
+    }
+
+    private fun callOnInit(){
+        mViewModel.getTopicList()
     }
     private fun initAdapter(){
         topicAdapter = TopicAdapter (this::topicItemClickListener)

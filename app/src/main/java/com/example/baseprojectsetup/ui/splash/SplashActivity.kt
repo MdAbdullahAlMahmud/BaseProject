@@ -19,39 +19,19 @@ import dagger.hilt.android.AndroidEntryPoint
 @AndroidEntryPoint
 class SplashActivity : AppCompatActivity() {
 
-    private val IS_AUTHENTICATED = "IS_AUTHENTICATED"
-    private lateinit var sharedPref : SharedPreferences
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_splash)
-         sharedPref = getSharedPreferences("PREF", Context.MODE_PRIVATE)
-
-        if (isAuthenticated()){
-             delayAndMoveToHome()
-            }else{
-                delayAndMoveToMainActivity()
-            }
-
+        delayAndMoveToMainActivity()
     }
 
-    fun delayAndMoveToHome(){
-        Handler(Looper.getMainLooper()).postDelayed({
-            val mainIntent = Intent(this, DashboardActivity::class.java)
-            startActivity(mainIntent)
-            finish()
-        }, SPLASH_DISPLAY_LENGTH)
-    }
-    fun delayAndMoveToMainActivity(){
+    fun delayAndMoveToMainActivity() {
         Handler(Looper.getMainLooper()).postDelayed({
             val mainIntent = Intent(this@SplashActivity, MainActivity::class.java)
             startActivity(mainIntent)
             finish()
         }, SPLASH_DISPLAY_LENGTH)
-    }
-
-
-     fun isAuthenticated() : Boolean{
-       return sharedPref.getBoolean(IS_AUTHENTICATED,false)
     }
 
 

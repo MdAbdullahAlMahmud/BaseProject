@@ -27,5 +27,14 @@
         android:id="@+id/subTopicFragment"
         android:name="com.mkrlabs.dashboard.ui.dashboard.topic.sub_topic.SubTopicFragment"
         android:label="fragment_sub_topic"
-        tools:layout="@layout/fragment_sub_topic" />
+        tools:layout="@layout/fragment_sub_topic" >
+        <action
+            android:id="@+id/action_subTopicFragment_to_quizListFragment"
+            app:destination="@id/quizListFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/quizListFragment"
+        android:name="com.mkrlabs.dashboard.ui.dashboard.topic.quiz_list.QuizListFragment"
+        android:label="fragment_quiz_list"
+        tools:layout="@layout/fragment_quiz_list" />
 </navigation>

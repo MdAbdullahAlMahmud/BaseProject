@@ -5,8 +5,9 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.viewModelScope
 import com.mkrlabs.common.core.base.BaseViewModel
 import com.mkrlabs.common.core.base.utils.SingleLiveEvent
-import com.mkrlabs.dashboard.data.model.FeatureItem
+import com.mkrlabs.dashboard.data.model.request.QuizRequestItem
 import com.mkrlabs.dashboard.data.model.request.SubTopicRequest
+import com.mkrlabs.common.core.base.data.model.response.QuizResponseItem
 import com.mkrlabs.dashboard.data.model.response.SubTopicItem
 import com.mkrlabs.dashboard.data.model.response.TopicItem
 import com.mkrlabs.dashboard.data.repository.TopicRepository
@@ -25,6 +26,9 @@ class TopicViewModel @Inject constructor(
     private val _subTopicList = MutableLiveData<SingleLiveEvent<List<SubTopicItem>>>()
     val subTopicList : LiveData<SingleLiveEvent<List<SubTopicItem>>> = _subTopicList
 
+    private val _quizList = MutableLiveData<SingleLiveEvent<List<QuizResponseItem>>>()
+    val quizList : LiveData<SingleLiveEvent<List<QuizResponseItem>>> = _quizList
+
 
 
     fun getTopicList(){
@@ -41,6 +45,15 @@ class TopicViewModel @Inject constructor(
             val  result = callService { topicRepository.requestSubTopicList(subTopicRequest) }
             result?.data?.let {
                 _subTopicList.value = SingleLiveEvent(it)
+            }
+        }
+    }
+
+    fun getQuizList(quizRequestItem: QuizRequestItem){
+        viewModelScope.launch {
+            val  result = callService {  topicRepository.requestQuizList(quizRequestItem)}
+            result?.data?.let {
+                _quizList.value = SingleLiveEvent(it)
             }
         }
     }

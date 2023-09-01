@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.coordinatorlayout.widget.CoordinatorLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -19,7 +18,7 @@
         android:backgroundTint="@color/white"
         app:elevation="@dimen/_4sdp"
         app:fabAlignmentMode="center"
-        app:fabCradleMargin="@dimen/_10sdp"
+        app:fabCradleMargin="@dimen/_7sdp"
         app:fabCradleRoundedCornerRadius="0dp"
         app:fabCradleVerticalOffset="@dimen/_1sdp">
 

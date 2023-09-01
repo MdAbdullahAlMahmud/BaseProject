@@ -5,9 +5,11 @@ import android.view.View
 import androidx.fragment.app.activityViewModels
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
+import androidx.navigation.fragment.findNavController
 import com.mkrlabs.common.core.base.BaseFragment
 import com.mkrlabs.dashboard.DashboardActivity
 import com.mkrlabs.dashboard.DashboardHomeViewModel
+import com.mkrlabs.dashboard.R
 import com.mkrlabs.dashboard.data.model.request.SubTopicRequest
 import com.mkrlabs.dashboard.data.model.response.SubTopicItem
 import com.mkrlabs.dashboard.data.model.response.TopicItem
@@ -29,7 +31,6 @@ class SubTopicFragment : BaseFragment<TopicViewModel, FragmentSubTopicBinding>()
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         initView()
-        callOnInit()
         setObserver()
     }
     private fun callOnInit(){
@@ -37,6 +38,7 @@ class SubTopicFragment : BaseFragment<TopicViewModel, FragmentSubTopicBinding>()
         mViewModel.getSubTopicList(subTopicRequest)
     }
     private fun initView(){
+        callOnInit()
         initAdapter()
     }
     private fun initAdapter(){
@@ -44,7 +46,8 @@ class SubTopicFragment : BaseFragment<TopicViewModel, FragmentSubTopicBinding>()
         mViewBinding.subTopicRV.adapter = subTopicAdapter
     }
     private fun subTopicItemClickListener(topicItem: SubTopicItem){
-
+        sharedViewModel.subTopicItem = topicItem
+        findNavController().navigate(R.id.action_subTopicFragment_to_quizListFragment)
     }
     private fun setObserver(){
         mViewModel.subTopicList.observe(viewLifecycleOwner, Observer {
