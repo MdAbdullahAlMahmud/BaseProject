@@ -8,7 +8,8 @@
     android:clickable="true"
     app:cardBackgroundColor="@color/white"
     android:layout_marginHorizontal="@dimen/_8sdp"
-    android:layout_marginTop="@dimen/_15sdp">
+    android:layout_marginVertical="@dimen/_10sdp"
+    >
 
     <LinearLayout
         android:id="@+id/featureRoot"

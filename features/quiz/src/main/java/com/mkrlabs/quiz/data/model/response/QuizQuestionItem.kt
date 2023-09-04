@@ -1,5 +1,7 @@
 package com.mkrlabs.quiz.data.model.response
 
+import com.mkrlabs.quiz.data.model.enums.QuestionAnswer
+
 data class QuizQuestionItem(
     val Choice_A: String ? = null,
     val Choice_B: String? = null,
@@ -13,5 +15,6 @@ data class QuizQuestionItem(
     val no_of_choice: String? = null,
     val question: String? = null,
     val quiz_image: String? = null,
-    val type: String? = null
+    val type: String? = null,
+    var userChoice : QuestionAnswer?=null
 )

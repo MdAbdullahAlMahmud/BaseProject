@@ -79,6 +79,11 @@ class QuizActivity : BaseActivity<QuizHomeViewModel, ActivityQuizActivityBinding
 
     }
 
+    fun setCountdown(countDown : String ){
+        mViewBinding.quizAppBar.quizTimer.text = countDown
+
+    }
+
     fun hideTimerTv() {
         mViewBinding.quizAppBar.timeLL.visibility = View.GONE
 

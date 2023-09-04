@@ -18,10 +18,10 @@
     <color name="color_black">#FF000000</color>
     <color name="text_default">#181919</color>
     <color name="loader_color">#27D881</color>
-    <color name="btn_primary_disabled_dark">#F0E2D0AD</color>
-    <color name="btn_primary_disabled_light">#F8E4DCC0</color>
-    <color name="btn_primary_enabled_dark">#AF9252</color>
-    <color name="btn_primary_enabled_light">#E9D298</color>
+    <color name="btn_primary_disabled_dark">#1A7395</color>
+    <color name="btn_primary_disabled_light">#1A7395</color>
+    <color name="btn_primary_enabled_dark">#00ADEE</color>
+    <color name="btn_primary_enabled_light">#1A7395</color>
     <color name="language_yellow_stroke">#E9D298</color>
     <color name="color_ash">#2B2B2B</color>
     <color name="black50">#50000000</color>
@@ -29,4 +29,8 @@
     <color name="black_70">#70000000</color>
     <color name="black_30">#30000000</color>
     <color name="questionBoxCardColor">#F5F6FF</color>
+    <color name="explanationStockColor">#20F7941D</color>
+    <color name="explanationSolidColor">#80F7941D</color>
+    <color name="optionSelectedWrong">#EAB7B7</color>
+    <color name="optionSelectedRight">#E0FFE7</color>
 </resources>

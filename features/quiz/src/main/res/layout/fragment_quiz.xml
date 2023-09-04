@@ -38,15 +38,22 @@
             android:textColor="@color/black"
             android:text="Questions" />
     </LinearLayout>
-
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/quizFinishButton"
+        style="@style/PrimaryButton"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Finish"
+        android:textColor="@color/white"
+        />
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/quizQuestionRV"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        tools:listitem="@layout/question_layout"
         app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-        tools:itemCount="5"
         />
+
+
 
 
 </LinearLayout>
