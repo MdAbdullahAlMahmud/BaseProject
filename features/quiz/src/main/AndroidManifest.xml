@@ -4,7 +4,9 @@
     <application>
         <activity
             android:name=".QuizActivity"
-            android:exported="false" />
+            android:exported="false" >
+            <nav-graph android:value="@navigation/quiz_nav"/>
+        </activity>
     </application>
 
 </manifest>

@@ -23,6 +23,7 @@ android {
             minifyEnabled false
             shrinkResources false
             buildConfigField 'String', 'BASE_URL', '"https://edubee.supabex.com"'
+            buildConfigField 'String', 'LOCAL_URL', '"http://10.0.2.2/"'
         }
         release {
             minifyEnabled false

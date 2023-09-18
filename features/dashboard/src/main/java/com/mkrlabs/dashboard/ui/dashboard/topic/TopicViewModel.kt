@@ -31,9 +31,9 @@ class TopicViewModel @Inject constructor(
 
 
 
-    fun getTopicList(){
+    fun getTopicList(topicId : String){
         viewModelScope.launch {
-            val  result = callService { topicRepository.requestTopicList() }
+            val  result = callService { topicRepository.requestTopicList(topicId) }
             result?.data?.let {
                 _topicList.value = SingleLiveEvent(it)
             }

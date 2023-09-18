@@ -22,6 +22,9 @@
         <action
             android:id="@+id/action_topicFragment_to_subTopicFragment"
             app:destination="@id/subTopicFragment" />
+        <action
+            android:id="@+id/action_topicFragment_to_quizListFragment"
+            app:destination="@id/quizListFragment" />
     </fragment>
     <fragment
         android:id="@+id/subTopicFragment"

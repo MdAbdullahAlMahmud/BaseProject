@@ -13,6 +13,8 @@ class DashboardHomeViewModel @Inject constructor():  BaseViewModel(){
     var featureItem : FeatureItem? = null
     var topicItem : TopicItem? = null
     var subTopicItem : SubTopicItem? = null
+    var step : Int ? = null
+    var topicId : String? = "0"
 
 
 

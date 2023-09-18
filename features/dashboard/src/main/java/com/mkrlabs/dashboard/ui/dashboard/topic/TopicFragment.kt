@@ -13,6 +13,7 @@ import com.mkrlabs.common.core.base.BaseFragment
 import com.mkrlabs.dashboard.DashboardActivity
 import com.mkrlabs.dashboard.DashboardHomeViewModel
 import com.mkrlabs.dashboard.R
+import com.mkrlabs.dashboard.data.model.response.SubTopicItem
 import com.mkrlabs.dashboard.data.model.response.TopicItem
 import com.mkrlabs.dashboard.databinding.FragmentTopicBinding
 import com.mkrlabs.dashboard.ui.dashboard.adapter.FeatureListAdapter
@@ -41,7 +42,7 @@ class TopicFragment : BaseFragment<TopicViewModel,FragmentTopicBinding>() {
     }
 
     private fun callOnInit(){
-        mViewModel.getTopicList()
+        mViewModel.getTopicList(sharedViewModel.topicId.toString())
     }
     private fun initAdapter(){
         topicAdapter = TopicAdapter (this::topicItemClickListener)
@@ -49,7 +50,19 @@ class TopicFragment : BaseFragment<TopicViewModel,FragmentTopicBinding>() {
     }
     private fun topicItemClickListener(topicItem: TopicItem){
         sharedViewModel.topicItem = topicItem
-        findNavController().navigate(R.id.action_topicFragment_to_subTopicFragment)
+
+        if(sharedViewModel.step == 3 ){
+            findNavController().navigate(R.id.action_topicFragment_to_subTopicFragment)
+        }else{
+            sharedViewModel.subTopicItem = SubTopicItem(
+                id = "0",
+                cid = topicItem.cid,
+                category_name = "",
+                category_image = "",
+            )
+            findNavController().navigate(R.id.action_topicFragment_to_quizListFragment)
+
+        }
 
     }
     private fun setObserver(){

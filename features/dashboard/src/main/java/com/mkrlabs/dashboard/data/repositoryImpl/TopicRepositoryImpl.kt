@@ -14,8 +14,8 @@ import javax.inject.Inject
 class TopicRepositoryImpl @Inject constructor(
     private val topicService: TopicService
 ): TopicRepository {
-    override suspend fun requestTopicList(): Response<BaseResponse<List<TopicItem>>> {
-        return topicService.getTopicList()
+    override suspend fun requestTopicList(topicId : String): Response<BaseResponse<List<TopicItem>>> {
+        return topicService.getTopicList(topicId)
     }
 
     override suspend fun requestSubTopicList(subTopicRequest: SubTopicRequest): Response<BaseResponse<List<SubTopicItem>>> {

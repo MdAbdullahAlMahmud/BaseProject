@@ -11,7 +11,12 @@
         android:label="QuizFragment" >
         <action
             android:id="@+id/action_quizFragment_to_quizResultFragment"
-            app:destination="@id/quizResultFragment" />
+            app:destination="@id/quizResultFragment"
+            app:launchSingleTop="false"
+            app:popUpToInclusive="false" />
+
+        <deepLink
+            app:uri="android-app://com.mkrlabs.quiz/quizFragment" />
     </fragment>
     <fragment
         android:id="@+id/quizResultFragment"

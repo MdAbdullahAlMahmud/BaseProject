@@ -5,4 +5,5 @@ data class TopicItem (
     val cid : String ? = null,
     val category_name : String ? = null,
     val category_image : String ? = null,
+    val category_view : String ? = null,
 )

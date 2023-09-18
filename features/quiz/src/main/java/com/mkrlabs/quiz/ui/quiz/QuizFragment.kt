@@ -109,6 +109,8 @@ class QuizFragment : BaseFragment<QuizViewModel, FragmentQuizBinding>() {
         sharedQuizViewModel.questionAnswerList = adapter?.getQuestionWithAnswer()
         findNavController().navigate(R.id.action_quizFragment_to_quizResultFragment)
 
+
+
     }
 
     override fun setDefaultProperties() {

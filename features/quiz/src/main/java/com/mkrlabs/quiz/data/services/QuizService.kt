@@ -10,7 +10,7 @@ import retrofit2.http.POST
 interface QuizService {
 
     @FormUrlEncoded
-    @POST("/api.php?getQuestion")
+    @POST("/edubee/api.php?getQuestion")
     suspend fun getQuizQuestion(
         @Field("sub_quiz_list") sub_quiz_list : String
     ) : Response<BaseResponse<List<QuizQuestionItem>>>

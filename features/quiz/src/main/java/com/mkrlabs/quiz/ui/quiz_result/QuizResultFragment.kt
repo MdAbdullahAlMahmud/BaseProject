@@ -8,6 +8,7 @@ import android.view.ViewGroup
 import androidx.core.content.ContextCompat
 import androidx.fragment.app.activityViewModels
 import androidx.fragment.app.viewModels
+import androidx.lifecycle.Observer
 import com.mkrlabs.common.core.base.BaseFragment
 import com.mkrlabs.quiz.QuizActivity
 import com.mkrlabs.quiz.R
@@ -37,8 +38,13 @@ class QuizResultFragment : BaseFragment<QuizViewModel,FragmentQuizResultBinding>
 
     private fun initView(){
         initAdapter()
+        parseQuizData()
 
-
+    }
+    private fun parseQuizData(){
+        sharedViewModel.questionAnswerList?.let {
+            mViewModel.userQuizResult(it)
+        }
     }
 
     private fun initAdapter(){
@@ -49,6 +55,20 @@ class QuizResultFragment : BaseFragment<QuizViewModel,FragmentQuizResultBinding>
     }
     private fun setObserver(){
 
+        mViewModel.quizUserMetaData.observe(viewLifecycleOwner, Observer {
+            it?.getContentIfNotHandled()?.let {
+                mViewBinding.examGridStatistic.timeTakenDataTV.text = it.timeTaken
+                mViewBinding.examGridStatistic.yourScoreDataTV.text = "${it.correctAns}/${it.totalQs}"
+                mViewBinding.examGridStatistic.topScoreDataTV.text = "${it.topScoreQs}/${it.totalQs}"
+
+                mViewBinding.totalQuestionDataTv.text = it.totalQs
+                mViewBinding.totalCorrectAnsDataTv.text = it.correctAns
+                mViewBinding.totalWrongAnsDataTv.text = it.wrongAns
+                mViewBinding.totalUnAnsDataTv.text = it.unAns
+
+            }
+        })
+
     }
 
 
@@ -57,11 +77,9 @@ class QuizResultFragment : BaseFragment<QuizViewModel,FragmentQuizResultBinding>
         val activity = requireActivity()
 
         if (activity is QuizActivity){
-            activity.hideBackButton()
+            activity.showBackButton()
             activity.setActionBarTitle("Review")
             activity.hideTimerTv()
         }
-
-
     }
 }

@@ -9,7 +9,7 @@ import com.mkrlabs.dashboard.data.model.response.TopicItem
 import retrofit2.Response
 
 interface TopicRepository {
-    suspend fun requestTopicList() : Response<BaseResponse<List<TopicItem>>>
+    suspend fun requestTopicList(topicId : String) : Response<BaseResponse<List<TopicItem>>>
     suspend fun requestSubTopicList(subTopicRequest: SubTopicRequest) : Response<BaseResponse<List<SubTopicItem>>>
     suspend fun requestQuizList(quizRequestItem: QuizRequestItem) : Response<BaseResponse<List<QuizResponseItem>>>
 }

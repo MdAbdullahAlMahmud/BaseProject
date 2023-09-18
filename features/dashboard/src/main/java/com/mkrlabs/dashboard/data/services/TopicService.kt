@@ -12,17 +12,20 @@ import retrofit2.http.POST
 
 interface TopicService {
 
-    @GET("/api.php?cat_list")
-    suspend fun getTopicList() : Response<BaseResponse<List<TopicItem>>>
+    @FormUrlEncoded
+    @POST("/edubee/api.php?cat_list")
+    suspend fun getTopicList(
+        @Field("topic_id") topic_id : String
+    ) : Response<BaseResponse<List<TopicItem>>>
 
     @FormUrlEncoded
-    @POST("/api.php?sub_cat_list")
+    @POST("/edubee/api.php?sub_cat_list")
     suspend fun getSubTopicList(
         @Field("cat_id") cat_id : String
     ) : Response<BaseResponse<List<SubTopicItem>>>
 
     @FormUrlEncoded
-    @POST("/api.php?quiz_list")
+    @POST("/edubee/api.php?quiz_list")
     suspend fun getQuizList(
         @Field("cat_id") cat_id : String,
         @Field("sub_cat_id") sub_cat_id : String

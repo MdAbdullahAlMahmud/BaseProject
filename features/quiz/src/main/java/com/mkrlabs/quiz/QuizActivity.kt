@@ -59,8 +59,24 @@ class QuizActivity : BaseActivity<QuizHomeViewModel, ActivityQuizActivityBinding
 
     override fun onBackPressListener() {
         mViewBinding.quizAppBar.ivBack.setOnClickListener {
-            navController.navigateUp()
+
+            when(navController.currentDestination?.id){
+
+                R.id.quizResultFragment ->{
+                    finish()
+                }
+
+            }
         }
+    }
+
+    override fun onBackPressed() = when(navController.currentDestination?.id){
+
+        R.id.quizResultFragment ->{
+            finish()
+        }
+        else ->super.onBackPressed()
+
     }
 
     override fun menuPressListener() {

@@ -2,9 +2,12 @@ package com.mkrlabs.dashboard.ui.dashboard.topic.quiz_list
 
 import android.os.Bundle
 import android.view.View
+import androidx.core.net.toUri
 import androidx.fragment.app.activityViewModels
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
+import androidx.navigation.NavDeepLinkRequest
+import androidx.navigation.fragment.findNavController
 import com.mkrlabs.common.core.base.BaseFragment
 import com.mkrlabs.common.core.base.interfaces.CommunicatorImpl
 import com.mkrlabs.dashboard.DashboardActivity

@@ -11,6 +11,7 @@ import com.mkrlabs.dashboard.DashboardActivity
 import com.mkrlabs.dashboard.DashboardHomeViewModel
 import com.mkrlabs.dashboard.R
 import com.mkrlabs.dashboard.data.model.FeatureItem
+import com.mkrlabs.dashboard.data.model.enums.Categories
 import com.mkrlabs.dashboard.databinding.FragmentDashboardHomeBinding
 import com.mkrlabs.dashboard.ui.dashboard.adapter.FeatureListAdapter
 import com.mkrlabs.dashboard.data.model.enums.Features
@@ -98,6 +99,20 @@ class DashboardFragment : BaseFragment<DashboardViewModel, FragmentDashboardHome
             }
 
             Features.TOPIC_VITTIK_ONUSILON.code ->{
+                sharedViewModel.step = 3
+                sharedViewModel.topicId = Categories.CAT_TOPIC_VITTIK_ONUSILON.code
+                findNavController().navigate(R.id.action_dashboardFragment_to_topicFragment)
+            }
+
+            Features.TOPIC_VITTIK_PORIKKHA.code -> {
+                sharedViewModel.step = 2
+                sharedViewModel.topicId = Categories.CAT_TOPIC_VITTIK_PORIKKHA.code
+                findNavController().navigate(R.id.action_dashboardFragment_to_topicFragment)
+            }
+
+            Features.BISOY_VITTIK_PORIKKHA.code -> {
+                sharedViewModel.step = 2
+                sharedViewModel.topicId = Categories.CAT_BISOY_VITTIK_PORIKKHA.code
                 findNavController().navigate(R.id.action_dashboardFragment_to_topicFragment)
             }
 
