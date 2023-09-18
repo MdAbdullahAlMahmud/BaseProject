@@ -66,7 +66,7 @@
                     android:padding="@dimen/_8sdp">
 
                     <TextView
-                        style="@style/open_sans_regular_12"
+                        style="@style/open_sans_regular_14"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:padding="@dimen/_3sdp"
@@ -74,7 +74,7 @@
 
                     <TextView
                         android:id="@+id/totalQuestionDataTv"
-                        style="@style/open_sans_semi_bold_10"
+                        style="@style/open_sans_semi_bold_14"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="20" />
@@ -101,7 +101,7 @@
                     android:padding="@dimen/_8sdp">
 
                     <TextView
-                        style="@style/open_sans_regular_12"
+                        style="@style/open_sans_regular_14"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:padding="@dimen/_3sdp"
@@ -109,7 +109,7 @@
 
                     <TextView
                         android:id="@+id/totalCorrectAnsDataTv"
-                        style="@style/open_sans_semi_bold_10"
+                        style="@style/open_sans_semi_bold_14"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="10" />
@@ -144,7 +144,7 @@
                     android:padding="@dimen/_8sdp">
 
                     <TextView
-                        style="@style/open_sans_regular_12"
+                        style="@style/open_sans_regular_14"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:padding="@dimen/_3sdp"
@@ -152,7 +152,7 @@
 
                     <TextView
                         android:id="@+id/totalWrongAnsDataTv"
-                        style="@style/open_sans_semi_bold_10"
+                        style="@style/open_sans_semi_bold_14"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="9" />
@@ -179,7 +179,7 @@
                     android:padding="@dimen/_8sdp">
 
                     <TextView
-                        style="@style/open_sans_regular_12"
+                        style="@style/open_sans_regular_14"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:padding="@dimen/_3sdp"
@@ -187,7 +187,7 @@
 
                     <TextView
                         android:id="@+id/totalUnAnsDataTv"
-                        style="@style/open_sans_semi_bold_10"
+                        style="@style/open_sans_semi_bold_14"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="5" />

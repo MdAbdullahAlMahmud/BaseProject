@@ -17,6 +17,7 @@ import com.mkrlabs.quiz.ui.QuizHomeViewModel
 import com.mkrlabs.quiz.ui.quiz.QuizViewModel
 import com.mkrlabs.quiz.ui.quiz_result.adapter.QuizResultPreviewAdapter
 import dagger.hilt.android.AndroidEntryPoint
+import kotlin.jvm.internal.Intrinsics.Kotlin
 
 @AndroidEntryPoint
 class QuizResultFragment : BaseFragment<QuizViewModel,FragmentQuizResultBinding>() {
@@ -43,8 +44,11 @@ class QuizResultFragment : BaseFragment<QuizViewModel,FragmentQuizResultBinding>
     }
     private fun parseQuizData(){
         sharedViewModel.questionAnswerList?.let {
-            mViewModel.userQuizResult(it)
+            sharedViewModel.timePassesInMillsLong?.let { it1 -> mViewModel.userQuizResult(it1,it) }?:kotlin.run {
+                mViewModel.userQuizResult(0,it)
+            }
         }
+
     }
 
     private fun initAdapter(){
@@ -70,6 +74,7 @@ class QuizResultFragment : BaseFragment<QuizViewModel,FragmentQuizResultBinding>
         })
 
     }
+
 
 
 

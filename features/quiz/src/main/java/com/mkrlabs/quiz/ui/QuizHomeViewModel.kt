@@ -12,6 +12,7 @@ class QuizHomeViewModel  @Inject constructor():  BaseViewModel(){
     var quizItem  : QuizResponseItem ? = null
 
     var questionAnswerList : List<QuizQuestionItem> ? = null
+    var  timePassesInMillsLong : Long ?  = null
 
 
 }

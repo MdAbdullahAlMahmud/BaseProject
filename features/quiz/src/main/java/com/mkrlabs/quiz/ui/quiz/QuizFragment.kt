@@ -75,11 +75,14 @@ class QuizFragment : BaseFragment<QuizViewModel, FragmentQuizBinding>() {
         val activity = requireActivity()
         val totalTimeInMillis = QUIZ_DURATION * 60000 // Total countdown time in milliseconds (e.g., 1 minute)
 
+        var timePassed = 0L
         countdownTimer = object : CountDownTimer(totalTimeInMillis.toLong(), 1000) {
             override fun onTick(millisUntilFinished: Long) {
                 val minutes = millisUntilFinished / 60000
                 val seconds = (millisUntilFinished % 60000) / 1000
 
+                timePassed = totalTimeInMillis - millisUntilFinished
+                sharedQuizViewModel.timePassesInMillsLong = timePassed
                 if (activity is QuizActivity){
                     activity.setCountdown(String.format("%02d:%02d", minutes, seconds))
                 }

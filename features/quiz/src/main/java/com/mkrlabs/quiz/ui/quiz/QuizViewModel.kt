@@ -38,7 +38,7 @@ class QuizViewModel @Inject constructor(
 
     }
 
-    fun userQuizResult(questionList : List<QuizQuestionItem>){
+    fun userQuizResult(timeTaken : Long , questionList : List<QuizQuestionItem>){
 
         var correctAns = 0
         var wrongAns = 0
@@ -62,7 +62,7 @@ class QuizViewModel @Inject constructor(
             metaData.unAns = unAns.toString()
             metaData.totalQs = questionList.size.toString()
             metaData.topScoreQs = questionList.size.toString()
-            metaData.timeTaken = "Empty"
+            metaData.timeTaken = formattedTakenTime(timeTaken)
 
             _quizUserMetaData.value = SingleLiveEvent(metaData)
         }
@@ -70,7 +70,11 @@ class QuizViewModel @Inject constructor(
     }
 
 
-
+    fun formattedTakenTime(millisUntilFinished : Long) : String{
+        val minutes = millisUntilFinished / 60000
+        val seconds = (millisUntilFinished % 60000) / 1000
+        return (String.format("%02d:%02d", minutes, seconds))
+    }
 
 
 
