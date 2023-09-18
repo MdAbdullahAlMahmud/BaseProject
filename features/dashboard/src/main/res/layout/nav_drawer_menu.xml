@@ -26,7 +26,7 @@
         android:id="@+id/svSidebarOptions"
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        app:layout_constraintBottom_toTopOf="@id/tvVersionNumber"
+        app:layout_constraintBottom_toTopOf="@id/nav_drawer_footer"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/navMenuHeader"
         android:scrollbars="none">
@@ -38,16 +38,6 @@
             android:layout_marginTop="@dimen/_8sdp"
             android:orientation="vertical">
 
-
-            <androidx.appcompat.widget.AppCompatTextView
-                android:id="@+id/tvSettings"
-                style="@style/open_sans_semi_bold_14"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/_8sdp"
-                android:text="Settings"
-                android:textColor="@color/black_70"
-                />
 
 
             <include
@@ -73,22 +63,6 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/_8sdp" />
 
-
-            <include
-                layout="@layout/horizontal_divider"
-                android:layout_width="match_parent"
-                android:layout_height="1dp"
-                android:layout_marginVertical="@dimen/_8sdp" />
-
-
-            <androidx.appcompat.widget.AppCompatTextView
-                android:id="@+id/tvAccountService"
-                style="@style/open_sans_semi_bold_14"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="Account Service"
-                android:textColor="@color/black_70"
-                />
 
 
 
@@ -132,23 +106,6 @@
 
 
             <include
-                layout="@layout/horizontal_divider"
-                android:layout_width="match_parent"
-                android:layout_height="1dp"
-                android:layout_marginVertical="@dimen/_8sdp" />
-
-
-            <androidx.appcompat.widget.AppCompatTextView
-                android:id="@+id/tvSupport"
-                style="@style/open_sans_semi_bold_14"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="Support"
-                android:textColor="@color/black_70"
-                />
-
-
-            <include
                 android:id="@+id/containerFeedback"
                 layout="@layout/nav_drawer_menu_item"
                 android:layout_width="match_parent"
@@ -178,16 +135,15 @@
     </ScrollView>
 
 
-    <androidx.appcompat.widget.AppCompatTextView
-        android:id="@+id/tvVersionNumber"
+    <include
+        android:id="@+id/nav_drawer_footer"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        tools:text="UAT v 3.0.0"
-        android:textColor="@color/black"
-        android:textSize="@dimen/_12sdp"
+       layout="@layout/nav_drawer_footer"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/svSidebarOptions" />
+
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

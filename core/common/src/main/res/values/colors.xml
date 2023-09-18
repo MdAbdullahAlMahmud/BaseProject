@@ -33,4 +33,5 @@
     <color name="explanationSolidColor">#80F7941D</color>
     <color name="optionSelectedWrong">#EAB7B7</color>
     <color name="optionSelectedRight">#E0FFE7</color>
+    <color name="nav_drawer_text_color">#082755</color>
 </resources>

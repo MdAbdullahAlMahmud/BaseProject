@@ -1,43 +1,31 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:id="@+id/layout_item"
     android:layout_height="match_parent">
 
 
-    <androidx.appcompat.widget.AppCompatImageView
-        android:id="@+id/ivLeftIcon"
-        android:layout_width="@dimen/_32sdp"
-        android:layout_height="@dimen/_32sdp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/baseline_access_time_24" />
-
-
     <androidx.appcompat.widget.AppCompatTextView
-        style="@style/open_sans_semi_bold_14"
+        style="@style/open_sans_regular_14"
         android:id="@+id/tvItemLevel"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="@dimen/_8sdp"
         android:text="NavDrawe Item"
-        android:textColor="@color/color_black"
-        app:layout_constraintBottom_toBottomOf="@id/ivLeftIcon"
-        app:layout_constraintStart_toEndOf="@id/ivLeftIcon"
-        app:layout_constraintTop_toTopOf="@id/ivLeftIcon" />
+        android:paddingVertical="@dimen/_6sdp"
+        android:textColor="@color/nav_drawer_text_color"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <View
+        android:layout_width="@dimen/_120sdp"
+        android:layout_height="@dimen/_1sdp"
+        android:background="@color/black"
+        app:layout_constraintStart_toStartOf="@+id/tvItemLevel"
+        app:layout_constraintTop_toBottomOf="@+id/tvItemLevel" />
 
 
-    <androidx.appcompat.widget.AppCompatImageView
-        android:id="@+id/ivRightIcon"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginEnd="@dimen/_8sdp"
-        app:layout_constraintBottom_toBottomOf="@id/tvItemLevel"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1"
-        app:layout_constraintStart_toEndOf="@id/tvItemLevel"
-        app:layout_constraintTop_toTopOf="@id/tvItemLevel"
-        app:srcCompat="@drawable/baseline_arrow_back_24" />
 </androidx.constraintlayout.widget.ConstraintLayout>
 
