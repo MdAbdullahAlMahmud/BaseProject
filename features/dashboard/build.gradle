@@ -114,4 +114,7 @@ dependencies {
 
     //auto fit textview
     implementation 'me.grantland:autofittextview:0.2.1'
+
+
+
 }

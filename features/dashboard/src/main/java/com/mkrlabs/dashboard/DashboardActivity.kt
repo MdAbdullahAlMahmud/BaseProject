@@ -43,11 +43,29 @@ class DashboardActivity : BaseActivity<DashboardViewModel, ActivityDashboardBind
 
 
     private fun initView(){
+        setNavDraweMenuItem()
         mViewBinding.actionBar.drawerMenuIcon.setOnClickListener {
             openSideBar()
         }
 
 
+    }
+
+    private fun setNavDraweMenuItem(){
+        mViewBinding.containerMenu.containerProfile.tvItemLevel.text = "Profile"
+        mViewBinding.containerMenu.containerNotification.tvItemLevel.text = "Notification"
+        mViewBinding.containerMenu.containerSubscription.tvItemLevel.text = "Subscription"
+        mViewBinding.containerMenu.containerResults.tvItemLevel.text = "Rasults"
+        mViewBinding.containerMenu.containerReviewUs.tvItemLevel.text = "Review Us"
+        mViewBinding.containerMenu.containerFacebookPage.tvItemLevel.text = "Facebook Page"
+        mViewBinding.containerMenu.containerFacebookGroup.tvItemLevel.text = "Facebook Group"
+        mViewBinding.containerMenu.containerShareApp.tvItemLevel.text = "Share App"
+        mViewBinding.containerMenu.containerCoontactUs.tvItemLevel.text = "Contact Us"
+        mViewBinding.containerMenu.containerPaymentHistory.tvItemLevel.text = "Payment History"
+        mViewBinding.containerMenu.containerTermsAndCondition.tvItemLevel.text = "Terms & Conditions"
+        mViewBinding.containerMenu.containerAboutUs.tvItemLevel.text = "About Us"
+        mViewBinding.containerMenu.containerPrivacyPolicy.tvItemLevel.text = "Privacy Policy"
+        mViewBinding.containerMenu.containerLogout.tvItemLevel.text = "Log Out"
     }
 
     private fun setListener(){
@@ -85,7 +103,71 @@ class DashboardActivity : BaseActivity<DashboardViewModel, ActivityDashboardBind
         }
     }
     private fun navigationDrawerListeners(){
+        mViewBinding.containerMenu.containerProfile.root.setOnClickListener {
+            comingSoonDialog()
+        }
 
+         mViewBinding.containerMenu.containerNotification.root.setOnClickListener {
+             comingSoonDialog()
+        }
+
+         mViewBinding.containerMenu.containerSubscription.root.setOnClickListener {
+             comingSoonDialog()
+        }
+
+         mViewBinding.containerMenu.containerResults.root.setOnClickListener {
+             comingSoonDialog()
+        }
+
+         mViewBinding.containerMenu.containerReviewUs.root.setOnClickListener {
+             comingSoonDialog()
+        }
+
+         mViewBinding.containerMenu.containerFacebookPage.root.setOnClickListener {
+             comingSoonDialog()
+        }
+        mViewBinding.containerMenu.containerFacebookGroup.root.setOnClickListener {
+            comingSoonDialog()
+        }
+
+         mViewBinding.containerMenu.containerShareApp.root.setOnClickListener {
+             comingSoonDialog()
+        }
+
+         mViewBinding.containerMenu.containerCoontactUs.root.setOnClickListener {
+             comingSoonDialog()
+        }
+        mViewBinding.containerMenu.containerPaymentHistory.root.setOnClickListener {
+            comingSoonDialog()
+        }
+
+         mViewBinding.containerMenu.containerShareApp.root.setOnClickListener {
+             comingSoonDialog()
+        }
+
+         mViewBinding.containerMenu.containerTermsAndCondition.root.setOnClickListener {
+             comingSoonDialog()
+        }
+        mViewBinding.containerMenu.containerAboutUs.root.setOnClickListener {
+            comingSoonDialog()
+        }
+
+         mViewBinding.containerMenu.containerPrivacyPolicy.root.setOnClickListener {
+             comingSoonDialog()
+        }
+
+         mViewBinding.containerMenu.containerLogout.root.setOnClickListener {
+             comingSoonDialog()
+        }
+
+
+    }
+
+
+    private fun comingSoonDialog(){
+        showCustomDialog(
+            message = "Features Coming soon."
+        )
     }
     override fun setActionBarTitle(title: String?) {
         mViewBinding.actionBar.apply {

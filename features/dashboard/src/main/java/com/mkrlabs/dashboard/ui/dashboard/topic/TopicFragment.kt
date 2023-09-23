@@ -53,7 +53,9 @@ class TopicFragment : BaseFragment<TopicViewModel,FragmentTopicBinding>() {
 
         if(sharedViewModel.step == 3 ){
             findNavController().navigate(R.id.action_topicFragment_to_subTopicFragment)
-        }else{
+        }else if (sharedViewModel.step == 2 && sharedViewModel.isPDF == true){
+            findNavController().navigate(R.id.action_topicFragment_to_subTopicFragment)
+        } else{
             sharedViewModel.subTopicItem = SubTopicItem(
                 id = "0",
                 cid = topicItem.cid,

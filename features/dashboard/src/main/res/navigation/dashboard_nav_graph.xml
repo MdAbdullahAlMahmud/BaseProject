@@ -34,10 +34,22 @@
         <action
             android:id="@+id/action_subTopicFragment_to_quizListFragment"
             app:destination="@id/quizListFragment" />
+        <action
+            android:id="@+id/action_subTopicFragment_to_pdfPreviewFragment"
+            app:destination="@id/pdfPreviewFragment" />
     </fragment>
     <fragment
         android:id="@+id/quizListFragment"
         android:name="com.mkrlabs.dashboard.ui.dashboard.topic.quiz_list.QuizListFragment"
         android:label="fragment_quiz_list"
-        tools:layout="@layout/fragment_quiz_list" />
+        tools:layout="@layout/fragment_quiz_list" >
+        <action
+            android:id="@+id/action_quizListFragment_to_pdfPreviewFragment"
+            app:destination="@id/pdfPreviewFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/pdfPreviewFragment"
+        android:name="com.mkrlabs.dashboard.ui.dashboard.pdf_preview.PdfPreviewFragment"
+        android:label="fragment_pdf_preview"
+        tools:layout="@layout/fragment_pdf_preview" />
 </navigation>

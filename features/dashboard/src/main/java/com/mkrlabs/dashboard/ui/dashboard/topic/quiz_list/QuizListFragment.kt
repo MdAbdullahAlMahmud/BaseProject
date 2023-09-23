@@ -14,6 +14,7 @@ import com.mkrlabs.dashboard.DashboardActivity
 import com.mkrlabs.dashboard.DashboardHomeViewModel
 import com.mkrlabs.dashboard.data.model.request.QuizRequestItem
 import com.mkrlabs.common.core.base.data.model.response.QuizResponseItem
+import com.mkrlabs.dashboard.R
 import com.mkrlabs.dashboard.databinding.FragmentQuizListBinding
 import com.mkrlabs.dashboard.ui.dashboard.adapter.QuizListAdapter
 import com.mkrlabs.dashboard.ui.dashboard.topic.TopicViewModel
@@ -62,7 +63,10 @@ class QuizListFragment : BaseFragment<TopicViewModel,FragmentQuizListBinding>() 
     }
 
     private fun quizListItemClickListener( quizResponseItem: QuizResponseItem){
-        CommunicatorImpl.callback?.gotoQuizActivity(quizResponseItem)
+        if (sharedViewModel.isPDF == true){
+            findNavController().navigate(R.id.action_quizListFragment_to_pdfPreviewFragment)
+        }else
+            CommunicatorImpl.callback?.gotoQuizActivity(quizResponseItem)
     }
     override fun setDefaultProperties() {
         val  activity = requireActivity()

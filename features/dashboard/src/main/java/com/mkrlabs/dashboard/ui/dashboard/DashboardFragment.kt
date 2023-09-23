@@ -75,43 +75,67 @@ class DashboardFragment : BaseFragment<DashboardViewModel, FragmentDashboardHome
         when(item.featureCode){
 
             Features.TOPIC_VITTIK_JOB_SOLUTIONS.code ->{
+               /* sharedViewModel.step = 3
+                sharedViewModel.isPDF = true
+                sharedViewModel.topicId = Categories.CAT_TOPIC_VITTIK_JOB_SOLUTIONS.code
+                findNavController().navigate(R.id.action_dashboardFragment_to_topicFragment)*/
+
 
             }
 
             Features.BCS_PRELIMINARY.code ->{
-
+                sharedViewModel.step = 2
+                sharedViewModel.isPDF = true
+                sharedViewModel.topicId = Categories.CAT_BCS_PRELIMINARY.code
+                findNavController().navigate(R.id.action_dashboardFragment_to_topicFragment)
             }
 
             Features.BANK_NIYOG.code ->{
-
+                sharedViewModel.step = 2
+                sharedViewModel.isPDF = true
+                sharedViewModel.topicId = Categories.CAT_BANK_NIYOG.code
+                findNavController().navigate(R.id.action_dashboardFragment_to_topicFragment)
             }
 
             Features.NINE_TEN_GRADE.code ->{
-
+                sharedViewModel.step = 2
+                sharedViewModel.isPDF = true
+                sharedViewModel.topicId = Categories.CAT_NINE_TEN_GRADE.code
+                findNavController().navigate(R.id.action_dashboardFragment_to_topicFragment)
             }
 
             Features.PRIMARY_AND_NTRCA.code ->{
+                sharedViewModel.step = 2
+                sharedViewModel.isPDF = true
+                sharedViewModel.topicId = Categories.CAT_PRIMARY_AND_NTRCA.code
+                findNavController().navigate(R.id.action_dashboardFragment_to_topicFragment)
 
             }
 
             Features.ELEVEN_TWENTY_GRADE.code ->{
-
+                sharedViewModel.step = 2
+                sharedViewModel.isPDF = true
+                sharedViewModel.topicId = Categories.CAT_ELEVEN_TWENTY_GRADE.code
+                findNavController().navigate(R.id.action_dashboardFragment_to_topicFragment)
             }
 
             Features.TOPIC_VITTIK_ONUSILON.code ->{
                 sharedViewModel.step = 3
+                sharedViewModel.isPDF = false
                 sharedViewModel.topicId = Categories.CAT_TOPIC_VITTIK_ONUSILON.code
                 findNavController().navigate(R.id.action_dashboardFragment_to_topicFragment)
             }
 
             Features.TOPIC_VITTIK_PORIKKHA.code -> {
                 sharedViewModel.step = 2
+                sharedViewModel.isPDF = false
                 sharedViewModel.topicId = Categories.CAT_TOPIC_VITTIK_PORIKKHA.code
                 findNavController().navigate(R.id.action_dashboardFragment_to_topicFragment)
             }
 
             Features.BISOY_VITTIK_PORIKKHA.code -> {
                 sharedViewModel.step = 2
+                sharedViewModel.isPDF = false
                 sharedViewModel.topicId = Categories.CAT_BISOY_VITTIK_PORIKKHA.code
                 findNavController().navigate(R.id.action_dashboardFragment_to_topicFragment)
             }

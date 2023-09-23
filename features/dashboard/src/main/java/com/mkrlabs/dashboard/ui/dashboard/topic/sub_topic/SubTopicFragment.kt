@@ -45,9 +45,13 @@ class SubTopicFragment : BaseFragment<TopicViewModel, FragmentSubTopicBinding>()
         subTopicAdapter = SubTopicAdapter(this::subTopicItemClickListener)
         mViewBinding.subTopicRV.adapter = subTopicAdapter
     }
-    private fun subTopicItemClickListener(topicItem: SubTopicItem){
-        sharedViewModel.subTopicItem = topicItem
-        findNavController().navigate(R.id.action_subTopicFragment_to_quizListFragment)
+    private fun subTopicItemClickListener(subTopicItem: SubTopicItem){
+        sharedViewModel.subTopicItem = subTopicItem
+        if(sharedViewModel.isPDF == true){
+            findNavController().navigate(R.id.action_subTopicFragment_to_pdfPreviewFragment)
+        }else{
+            findNavController().navigate(R.id.action_subTopicFragment_to_quizListFragment)
+        }
     }
     private fun setObserver(){
         mViewModel.subTopicList.observe(viewLifecycleOwner, Observer {

@@ -13,20 +13,19 @@
         android:gravity="center"
         android:padding="@dimen/_8sdp">
         <ImageView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:src="@drawable/facebook_logo"
+            android:layout_width="@dimen/_30sdp"
+            android:layout_height="@dimen/_30sdp"
+            android:src="@drawable/ic_facebook_icon"
             android:layout_marginHorizontal="@dimen/_10sdp"/>
         <ImageView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:src="@drawable/textbook1"
+            android:layout_width="@dimen/_30sdp"
+            android:layout_height="@dimen/_30sdp"
+            android:src="@drawable/ic_twitter_icon"
             android:layout_marginHorizontal="@dimen/_10sdp"/>
-
-         <ImageView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:src="@drawable/topic1"
+        <ImageView
+            android:layout_width="@dimen/_30sdp"
+            android:layout_height="@dimen/_30sdp"
+            android:src="@drawable/ic_youtube_icon"
             android:layout_marginHorizontal="@dimen/_10sdp"/>
 
     </LinearLayout>
