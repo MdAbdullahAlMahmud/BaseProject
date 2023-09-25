@@ -4,6 +4,8 @@ import com.mkrlabs.common.core.base.data.model.BaseResponse
 import com.mkrlabs.dashboard.data.model.request.QuizRequestItem
 import com.mkrlabs.dashboard.data.model.request.SubTopicRequest
 import com.mkrlabs.common.core.base.data.model.response.QuizResponseItem
+import com.mkrlabs.dashboard.data.model.request.PDFItemRequest
+import com.mkrlabs.dashboard.data.model.response.PDFItemResponse
 import com.mkrlabs.dashboard.data.model.response.SubTopicItem
 import com.mkrlabs.dashboard.data.model.response.TopicItem
 import com.mkrlabs.dashboard.data.repository.TopicRepository
@@ -25,4 +27,10 @@ class TopicRepositoryImpl @Inject constructor(
     override suspend fun requestQuizList(quizRequestItem: QuizRequestItem): Response<BaseResponse<List<QuizResponseItem>>> {
         return topicService.getQuizList(quizRequestItem.cat_id.toString(),quizRequestItem.sub_cat_id.toString())
     }
+
+     override suspend fun requestPdf(pdfItemRequest: PDFItemRequest): Response<BaseResponse<PDFItemResponse>> {
+        return topicService.getPDFContent(pdfItemRequest.cat_id.toString(),pdfItemRequest.sub_cat_id.toString())
+    }
+
+
 }

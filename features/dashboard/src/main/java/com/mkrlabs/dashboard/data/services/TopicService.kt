@@ -2,6 +2,7 @@ package com.mkrlabs.dashboard.data.services
 
 import com.mkrlabs.common.core.base.data.model.BaseResponse
 import com.mkrlabs.common.core.base.data.model.response.QuizResponseItem
+import com.mkrlabs.dashboard.data.model.response.PDFItemResponse
 import com.mkrlabs.dashboard.data.model.response.SubTopicItem
 import com.mkrlabs.dashboard.data.model.response.TopicItem
 import retrofit2.Response
@@ -30,6 +31,15 @@ interface TopicService {
         @Field("cat_id") cat_id : String,
         @Field("sub_cat_id") sub_cat_id : String
     ) : Response<BaseResponse<List<QuizResponseItem>>>
+
+
+    @FormUrlEncoded
+    @POST("/edubee/api.php?pdf")
+    suspend fun getPDFContent(
+        @Field("cat_id") cat_id : String,
+        @Field("sub_cat_id") sub_cat_id : String
+    ) : Response<BaseResponse<PDFItemResponse>>
+
 
 
 }

@@ -8,6 +8,8 @@ import com.mkrlabs.common.core.base.utils.SingleLiveEvent
 import com.mkrlabs.dashboard.data.model.request.QuizRequestItem
 import com.mkrlabs.dashboard.data.model.request.SubTopicRequest
 import com.mkrlabs.common.core.base.data.model.response.QuizResponseItem
+import com.mkrlabs.dashboard.data.model.request.PDFItemRequest
+import com.mkrlabs.dashboard.data.model.response.PDFItemResponse
 import com.mkrlabs.dashboard.data.model.response.SubTopicItem
 import com.mkrlabs.dashboard.data.model.response.TopicItem
 import com.mkrlabs.dashboard.data.repository.TopicRepository
@@ -28,6 +30,9 @@ class TopicViewModel @Inject constructor(
 
     private val _quizList = MutableLiveData<SingleLiveEvent<List<QuizResponseItem>>>()
     val quizList : LiveData<SingleLiveEvent<List<QuizResponseItem>>> = _quizList
+
+    private val _pdfContent = MutableLiveData<SingleLiveEvent<PDFItemResponse>>()
+    val pdfContent : LiveData<SingleLiveEvent<PDFItemResponse>> = _pdfContent
 
 
 
@@ -57,6 +62,16 @@ class TopicViewModel @Inject constructor(
             }
         }
     }
+    fun getPdfContent(pdfItemRequest: PDFItemRequest){
+        viewModelScope.launch {
+            val  result = callService { topicRepository.requestPdfContent(pdfItemRequest)}
+            result?.data?.let {
+                _pdfContent.value = SingleLiveEvent(it)
+            }
+        }
+    }
+
+
 
 
 
