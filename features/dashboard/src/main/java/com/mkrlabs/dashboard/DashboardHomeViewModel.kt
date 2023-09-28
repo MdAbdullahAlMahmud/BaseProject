@@ -18,5 +18,6 @@ class DashboardHomeViewModel @Inject constructor():  BaseViewModel(){
     var step : Int ? = null
     var topicId : String? = "0"
     var isPDF : Boolean? = false
+    var pdfId : String? = "0"
 
 }

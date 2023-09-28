@@ -44,6 +44,15 @@ class TopicViewModel @Inject constructor(
             }
         }
     }
+    fun getPDFTopicList(topicId : String){
+        viewModelScope.launch {
+            val  result = callService { topicRepository.requestPDFTopicList(topicId) }
+            result?.data?.let {
+                _topicList.value = SingleLiveEvent(it)
+            }
+        }
+    }
+
 
     fun getSubTopicList(subTopicRequest: SubTopicRequest){
         viewModelScope.launch {
@@ -54,9 +63,28 @@ class TopicViewModel @Inject constructor(
         }
     }
 
+    fun getPDFSubTopicList(subTopicRequest: SubTopicRequest){
+        viewModelScope.launch {
+            val  result = callService { topicRepository.requestPDFSubTopicList(subTopicRequest) }
+            result?.data?.let {
+                _subTopicList.value = SingleLiveEvent(it)
+            }
+        }
+    }
+
+
+
     fun getQuizList(quizRequestItem: QuizRequestItem){
         viewModelScope.launch {
             val  result = callService {  topicRepository.requestQuizList(quizRequestItem)}
+            result?.data?.let {
+                _quizList.value = SingleLiveEvent(it)
+            }
+        }
+    }
+    fun getPDFLessonList(quizRequestItem: QuizRequestItem){
+        viewModelScope.launch {
+            val  result = callService {  topicRepository.requestPDFLessonList(quizRequestItem)}
             result?.data?.let {
                 _quizList.value = SingleLiveEvent(it)
             }

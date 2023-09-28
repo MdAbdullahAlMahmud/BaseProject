@@ -9,6 +9,8 @@ import androidx.navigation.findNavController
 import androidx.navigation.fragment.NavHostFragment
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.mkrlabs.common.core.base.BaseActivity
+import com.mkrlabs.common.core.base.interfaces.CommunicatorImpl
+import com.mkrlabs.common.core.base.utils.AppConstant
 import com.mkrlabs.dashboard.databinding.ActivityDashboardBinding
 import com.mkrlabs.dashboard.ui.dashboard.DashboardViewModel
 import dagger.hilt.android.AndroidEntryPoint
@@ -157,10 +159,28 @@ class DashboardActivity : BaseActivity<DashboardViewModel, ActivityDashboardBind
         }
 
          mViewBinding.containerMenu.containerLogout.root.setOnClickListener {
-             comingSoonDialog()
+           logOut()
         }
 
 
+    }
+
+    private fun  logOut(){
+        showCustomDialog(
+            title = "Logout",
+            message = "Do you want to logout ?",
+            positiveButtonEnabled = true,
+            negativeButtonEnabled = true,
+            positiveText = "Yes",
+            negativeText = "Cancel",
+            positiveFunction = {
+                setBooleanPreferenceData(AppConstant.IS_AUTHENTICATED,false)
+                CommunicatorImpl.callback?.authenticationFailed("You have been logout")
+            },
+            negativeFunction = {
+                dialog.dismiss()
+            }
+        )
     }
 
 

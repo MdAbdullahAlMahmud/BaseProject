@@ -19,18 +19,28 @@ class TopicRepositoryImpl @Inject constructor(
     override suspend fun requestTopicList(topicId : String): Response<BaseResponse<List<TopicItem>>> {
         return topicService.getTopicList(topicId)
     }
+    override suspend fun requestPDFTopicList(topicId : String): Response<BaseResponse<List<TopicItem>>> {
+        return topicService.getPDFTopicList(topicId)
+    }
 
     override suspend fun requestSubTopicList(subTopicRequest: SubTopicRequest): Response<BaseResponse<List<SubTopicItem>>> {
         return  topicService.getSubTopicList(subTopicRequest.cat_id.toString())
+    }
+    override suspend fun requestPDFSubTopicList(subTopicRequest: SubTopicRequest): Response<BaseResponse<List<SubTopicItem>>> {
+        return  topicService.getPDFSubTopicList(subTopicRequest.cat_id.toString())
     }
 
     override suspend fun requestQuizList(quizRequestItem: QuizRequestItem): Response<BaseResponse<List<QuizResponseItem>>> {
         return topicService.getQuizList(quizRequestItem.cat_id.toString(),quizRequestItem.sub_cat_id.toString())
     }
-
-     override suspend fun requestPdf(pdfItemRequest: PDFItemRequest): Response<BaseResponse<PDFItemResponse>> {
-        return topicService.getPDFContent(pdfItemRequest.cat_id.toString(),pdfItemRequest.sub_cat_id.toString())
+    override suspend fun requestPDFLessonList(quizRequestItem: QuizRequestItem): Response<BaseResponse<List<QuizResponseItem>>> {
+        return topicService.getPDFLessonList(quizRequestItem.cat_id.toString(),quizRequestItem.sub_cat_id.toString())
     }
+
+    override suspend fun requestPdfContent(pdfItemRequest: PDFItemRequest): Response<BaseResponse<PDFItemResponse>> {
+        return topicService.getPDFContent(pdfItemRequest.pdf_id.toString())
+    }
+
 
 
 }

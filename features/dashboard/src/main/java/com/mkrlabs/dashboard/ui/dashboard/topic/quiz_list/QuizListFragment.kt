@@ -51,7 +51,11 @@ class QuizListFragment : BaseFragment<TopicViewModel,FragmentQuizListBinding>() 
     }
     private fun callOnInit(){
         val quizRequestItem = QuizRequestItem(cat_id = sharedViewModel.subTopicItem?.cid, sub_cat_id = sharedViewModel.subTopicItem?.id)
-        mViewModel.getQuizList(quizRequestItem)
+        if (sharedViewModel.isPDF == true){
+            mViewModel.getPDFLessonList(quizRequestItem)
+        }else{
+            mViewModel.getQuizList(quizRequestItem)
+        }
     }
 
     private fun setObserver(){
@@ -64,6 +68,7 @@ class QuizListFragment : BaseFragment<TopicViewModel,FragmentQuizListBinding>() 
 
     private fun quizListItemClickListener( quizResponseItem: QuizResponseItem){
         if (sharedViewModel.isPDF == true){
+            sharedViewModel.pdfId = quizResponseItem.qz_id
             findNavController().navigate(R.id.action_quizListFragment_to_pdfPreviewFragment)
         }else
             CommunicatorImpl.callback?.gotoQuizActivity(quizResponseItem)

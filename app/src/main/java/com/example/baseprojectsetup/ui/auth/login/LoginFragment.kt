@@ -1,19 +1,16 @@
 package com.example.baseprojectsetup.ui.auth.login
 
-import android.content.Context
-import android.content.SharedPreferences
 import android.os.Bundle
 import android.view.View
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
 import androidx.navigation.fragment.findNavController
 import com.example.baseprojectsetup.R
-import com.mkrlabs.common.core.base.BaseFragment
-import com.mkrlabs.common.core.base.interfaces.Communicator
 import com.mkrlabs.common.core.base.interfaces.CommunicatorImpl
 import com.example.baseprojectsetup.data.model.request.LoginRequest
 import com.example.baseprojectsetup.databinding.FragmentLoginBinding
 import com.example.baseprojectsetup.ui.MainActivity
+import com.mkrlabs.common.core.base.utils.AppConstant.IS_AUTHENTICATED
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
@@ -25,13 +22,8 @@ class LoginFragment :
     override fun getViewBinding(): FragmentLoginBinding = FragmentLoginBinding.inflate(layoutInflater)
 
 
-    private lateinit var sharedPreferences: SharedPreferences
-    private lateinit var editor: SharedPreferences.Editor
-    private val IS_AUTHENTICATED = "IS_AUTHENTICATED"
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        sharedPreferences = requireActivity(). getSharedPreferences("PREF", Context.MODE_PRIVATE)
-        editor = sharedPreferences.edit()
         initView()
         uiOptimization()
         setOnClickListener()
@@ -43,12 +35,8 @@ class LoginFragment :
     }
     private fun setObserver(){
         mViewModel.loginResponse.observe(viewLifecycleOwner, Observer {
-
-
-
             it.getContentIfNotHandled()?.apply {
-                println("$userName   $userId")
-                editor.putBoolean(IS_AUTHENTICATED,true).apply()
+              setBooleanPreferenceData(IS_AUTHENTICATED,true)
                 CommunicatorImpl.callback?.gotoDashboard()
             }
 

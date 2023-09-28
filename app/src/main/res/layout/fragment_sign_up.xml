@@ -44,7 +44,9 @@
             android:fontFamily="@font/raleway"
             android:gravity="center"
             android:text="Sign up to create an account"
+            android:imeOptions="actionNext"
             android:textColor="@color/black"
+            android:windowSoftInputMode="adjustPan"
             android:textSize="12sp" />
 
 
@@ -57,10 +59,11 @@
             android:background="@drawable/edittext_background"
             android:fontFamily="@font/raleway"
             android:hint="Name"
+            android:imeOptions="actionNext"
+            android:singleLine="true"
+            android:padding="20dp"
             android:textColor="@color/textColor"
-            android:textColorHint="@color/hintColor"
-            android:padding="20dp" />
-
+            android:textColorHint="@color/hintColor" />
 
         <EditText
             android:id="@+id/email"
@@ -71,6 +74,8 @@
             android:background="@drawable/edittext_background"
             android:fontFamily="@font/raleway"
             android:hint="Email"
+            android:singleLine="true"
+            android:imeOptions="actionNext"
             android:textColor="@color/textColor"
             android:textColorHint="@color/hintColor"
             android:padding="20dp" />
@@ -85,6 +90,8 @@
             android:background="@drawable/edittext_background"
             android:fontFamily="@font/raleway"
             android:hint="Phone"
+            android:inputType="phone"
+            android:imeOptions="actionNext"
             android:textColor="@color/textColor"
             android:textColorHint="@color/hintColor"
             android:padding="20dp" />
@@ -99,6 +106,8 @@
             android:background="@drawable/edittext_background"
             android:fontFamily="@font/raleway"
             android:hint="Password"
+            android:singleLine="true"
+            android:imeOptions="actionNext"
             android:textColor="@color/textColor"
             android:textColorHint="@color/hintColor"
             android:padding="20dp" />

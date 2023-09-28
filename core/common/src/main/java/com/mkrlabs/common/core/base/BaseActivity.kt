@@ -4,6 +4,7 @@ import android.app.Activity
 import android.app.Dialog
 import android.content.Context
 import android.content.Intent
+import android.content.SharedPreferences
 import android.content.pm.PackageManager
 import android.graphics.Bitmap
 import android.graphics.Canvas
@@ -25,6 +26,7 @@ import androidx.fragment.app.DialogFragment
 import androidx.viewbinding.ViewBinding
 import com.google.android.material.snackbar.Snackbar
 import com.mkrlabs.common.R
+import com.mkrlabs.common.core.base.interfaces.CommunicatorImpl
 import com.mkrlabs.common.core.base.utils.AppConstant
 import com.mkrlabs.common.core.base.utils.SingleLiveEvent
 import com.mkrlabs.common.databinding.LayoutAlertDialogBinding
@@ -47,7 +49,6 @@ abstract class BaseActivity<VM : BaseViewModel, VB : ViewBinding> : AppCompatAct
         super.onCreate(savedInstanceState)
         dialog = Dialog(this)
         mViewBinding = getViewBinding()
-
         setUpObservers()
         onBackPressListener()
         setNotificationPermission()
@@ -167,6 +168,17 @@ abstract class BaseActivity<VM : BaseViewModel, VB : ViewBinding> : AppCompatAct
         editor?.putString(key,value)
         editor?.apply()
     }
+    fun setBooleanPreferenceData(key : String, value : Boolean){
+        val  shred_pref = applicationContext?.getSharedPreferences(
+            AppConstant.PREFERENCE_NAME,
+            Context.MODE_PRIVATE
+        )
+        val editor = shred_pref?.edit()
+        editor?.putBoolean(key,value)
+        editor?.apply()
+    }
+
+
 
      fun getStringPreferenceData(key : String) : String{
         val  shred_pref = applicationContext?.getSharedPreferences(
@@ -176,8 +188,30 @@ abstract class BaseActivity<VM : BaseViewModel, VB : ViewBinding> : AppCompatAct
         return shred_pref?.getString(key,"") ?: ""
     }
 
+    fun getBooleanPreferenceData(key : String) : Boolean{
+        val  shred_pref = applicationContext?.getSharedPreferences(
+            AppConstant.PREFERENCE_NAME,
+            Context.MODE_PRIVATE
+        )
+        return shred_pref?.getBoolean(key,false) ?: false
+    }
 
 
+    fun reLaunchApp() {
+        if (CommunicatorImpl.callback == null) {
+            val intent = packageManager.getLaunchIntentForPackage(this.packageName)
+            intent!!.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
+            startActivity(intent)
+            finish()
+        }
+
+    }
+    fun logOutUser(){
+        val intent = packageManager.getLaunchIntentForPackage(this.packageName)
+        intent!!.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
+        startActivity(intent)
+        finish()
+    }
 
 
     fun isInternetAvailable(context: Context): Boolean {
@@ -257,7 +291,6 @@ abstract class BaseActivity<VM : BaseViewModel, VB : ViewBinding> : AppCompatAct
         }
         dialog.show()
     }
-
 
     fun getIpAddress(): String {
         val wifiManager = applicationContext.getSystemService(AppCompatActivity.WIFI_SERVICE) as WifiManager

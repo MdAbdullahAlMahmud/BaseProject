@@ -42,7 +42,13 @@ class TopicFragment : BaseFragment<TopicViewModel,FragmentTopicBinding>() {
     }
 
     private fun callOnInit(){
-        mViewModel.getTopicList(sharedViewModel.topicId.toString())
+        showToast("Topic ID : ${sharedViewModel.topicId.toString()}")
+        if (sharedViewModel.isPDF == true){
+            mViewModel.getPDFTopicList(sharedViewModel.topicId.toString())
+        }else{
+            mViewModel.getTopicList(sharedViewModel.topicId.toString())
+
+        }
     }
     private fun initAdapter(){
         topicAdapter = TopicAdapter (this::topicItemClickListener)
@@ -53,9 +59,9 @@ class TopicFragment : BaseFragment<TopicViewModel,FragmentTopicBinding>() {
 
         if(sharedViewModel.step == 3 ){
             findNavController().navigate(R.id.action_topicFragment_to_subTopicFragment)
-        }else if (sharedViewModel.step == 2 && sharedViewModel.isPDF == true){
+        }/*else if (sharedViewModel.step == 2 && sharedViewModel.isPDF == true){
             findNavController().navigate(R.id.action_topicFragment_to_subTopicFragment)
-        } else{
+        }*/ else{
             sharedViewModel.subTopicItem = SubTopicItem(
                 id = "0",
                 cid = topicItem.cid,

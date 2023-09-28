@@ -35,7 +35,11 @@ class SubTopicFragment : BaseFragment<TopicViewModel, FragmentSubTopicBinding>()
     }
     private fun callOnInit(){
         val  subTopicRequest = SubTopicRequest(sharedViewModel.topicItem?.cid)
-        mViewModel.getSubTopicList(subTopicRequest)
+        if (sharedViewModel.isPDF == true){
+            mViewModel.getPDFSubTopicList(subTopicRequest)
+        }else{
+            mViewModel.getSubTopicList(subTopicRequest)
+        }
     }
     private fun initView(){
         callOnInit()
@@ -47,11 +51,13 @@ class SubTopicFragment : BaseFragment<TopicViewModel, FragmentSubTopicBinding>()
     }
     private fun subTopicItemClickListener(subTopicItem: SubTopicItem){
         sharedViewModel.subTopicItem = subTopicItem
-        if(sharedViewModel.isPDF == true){
+        /*if(sharedViewModel.isPDF == true){
             findNavController().navigate(R.id.action_subTopicFragment_to_pdfPreviewFragment)
         }else{
             findNavController().navigate(R.id.action_subTopicFragment_to_quizListFragment)
-        }
+        }*/
+        findNavController().navigate(R.id.action_subTopicFragment_to_quizListFragment)
+
     }
     private fun setObserver(){
         mViewModel.subTopicList.observe(viewLifecycleOwner, Observer {

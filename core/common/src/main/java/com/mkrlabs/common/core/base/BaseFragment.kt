@@ -197,6 +197,26 @@ abstract class BaseFragment<VM : BaseViewModel, VB : ViewBinding> : Fragment() {
         editor?.apply()
     }
 
+     protected fun getBooleanPreferenceData(key: String): Boolean {
+        val activity = requireActivity()
+        if (activity is BaseActivity<*, *>) {
+            return activity.getBooleanPreferenceData(key)
+        }
+        return false
+    }
+
+    fun setBooleanPreferenceData(key : String, value : Boolean){
+        val  shred_pref = requireActivity().applicationContext?.getSharedPreferences(
+            AppConstant.PREFERENCE_NAME,
+            Context.MODE_PRIVATE
+        )
+        val editor = shred_pref?.edit()
+        editor?.putBoolean(key,value)
+        editor?.apply()
+    }
+
+
+
     fun getCurrentLayoutAsBitmap(view: View): Bitmap {
         val returnedBitmap = Bitmap.createBitmap(view.width, view.height, Bitmap.Config.ARGB_8888)
         val canvas = Canvas(returnedBitmap)

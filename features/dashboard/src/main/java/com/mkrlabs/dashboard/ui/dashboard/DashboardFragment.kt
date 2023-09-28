@@ -15,6 +15,7 @@ import com.mkrlabs.dashboard.data.model.enums.Categories
 import com.mkrlabs.dashboard.databinding.FragmentDashboardHomeBinding
 import com.mkrlabs.dashboard.ui.dashboard.adapter.FeatureListAdapter
 import com.mkrlabs.dashboard.data.model.enums.Features
+import com.mkrlabs.dashboard.data.model.enums.IndentityCode
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
@@ -27,6 +28,8 @@ class DashboardFragment : BaseFragment<DashboardViewModel, FragmentDashboardHome
 
     private var qsBankAdapter : FeatureListAdapter? = null
     private var onusilonAdapter : FeatureListAdapter? = null
+    private var vocabularyAdapter : FeatureListAdapter? = null
+    private var learnByHeartAdapter : FeatureListAdapter? = null
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         initView()
@@ -44,6 +47,13 @@ class DashboardFragment : BaseFragment<DashboardViewModel, FragmentDashboardHome
         onusilonAdapter = FeatureListAdapter(this::qsBankItemClickListener)
         mViewBinding.onusilonRV.adapter = onusilonAdapter
 
+        vocabularyAdapter = FeatureListAdapter(this::qsBankItemClickListener)
+        mViewBinding.vocabularyRV.adapter = vocabularyAdapter
+
+        learnByHeartAdapter = FeatureListAdapter(this::qsBankItemClickListener)
+        mViewBinding.learnByHeartRV.adapter = learnByHeartAdapter
+
+
 
     }
 
@@ -59,6 +69,21 @@ class DashboardFragment : BaseFragment<DashboardViewModel, FragmentDashboardHome
                 onusilonAdapter?.submitList(it)
             }
         })
+        mViewModel.vocabularyTopicList.observe(viewLifecycleOwner, Observer {
+            it.getContentIfNotHandled()?.let {
+                vocabularyAdapter?.submitList(it)
+            }
+        })
+
+        mViewModel.learnByHeartTopicList.observe(viewLifecycleOwner, Observer {
+            it.getContentIfNotHandled()?.let {
+                learnByHeartAdapter?.submitList(it)
+            }
+        })
+
+
+
+
 
 
 
@@ -75,10 +100,10 @@ class DashboardFragment : BaseFragment<DashboardViewModel, FragmentDashboardHome
         when(item.featureCode){
 
             Features.TOPIC_VITTIK_JOB_SOLUTIONS.code ->{
-               /* sharedViewModel.step = 3
+                sharedViewModel.step = 3
                 sharedViewModel.isPDF = true
-                sharedViewModel.topicId = Categories.CAT_TOPIC_VITTIK_JOB_SOLUTIONS.code
-                findNavController().navigate(R.id.action_dashboardFragment_to_topicFragment)*/
+                sharedViewModel.topicId = Categories.PDF_TOPIC_VITTIK_JOB_SOLUTIONS.code
+                findNavController().navigate(R.id.action_dashboardFragment_to_topicFragment)
 
 
             }
@@ -86,28 +111,28 @@ class DashboardFragment : BaseFragment<DashboardViewModel, FragmentDashboardHome
             Features.BCS_PRELIMINARY.code ->{
                 sharedViewModel.step = 2
                 sharedViewModel.isPDF = true
-                sharedViewModel.topicId = Categories.CAT_BCS_PRELIMINARY.code
+                sharedViewModel.topicId = Categories.PDF_BCS_PRELIMINARY.code
                 findNavController().navigate(R.id.action_dashboardFragment_to_topicFragment)
             }
 
             Features.BANK_NIYOG.code ->{
                 sharedViewModel.step = 2
                 sharedViewModel.isPDF = true
-                sharedViewModel.topicId = Categories.CAT_BANK_NIYOG.code
+                sharedViewModel.topicId = Categories.PDF_BANK_NIYOG.code
                 findNavController().navigate(R.id.action_dashboardFragment_to_topicFragment)
             }
 
             Features.NINE_TEN_GRADE.code ->{
                 sharedViewModel.step = 2
                 sharedViewModel.isPDF = true
-                sharedViewModel.topicId = Categories.CAT_NINE_TEN_GRADE.code
+                sharedViewModel.topicId = Categories.PDF_NINE_TEN_GRADE.code
                 findNavController().navigate(R.id.action_dashboardFragment_to_topicFragment)
             }
 
             Features.PRIMARY_AND_NTRCA.code ->{
                 sharedViewModel.step = 2
                 sharedViewModel.isPDF = true
-                sharedViewModel.topicId = Categories.CAT_PRIMARY_AND_NTRCA.code
+                sharedViewModel.topicId = Categories.PDF_PRIMARY_AND_NTRCA.code
                 findNavController().navigate(R.id.action_dashboardFragment_to_topicFragment)
 
             }
@@ -115,29 +140,78 @@ class DashboardFragment : BaseFragment<DashboardViewModel, FragmentDashboardHome
             Features.ELEVEN_TWENTY_GRADE.code ->{
                 sharedViewModel.step = 2
                 sharedViewModel.isPDF = true
-                sharedViewModel.topicId = Categories.CAT_ELEVEN_TWENTY_GRADE.code
+                sharedViewModel.topicId = Categories.PDF_ELEVEN_TWENTY_GRADE.code
                 findNavController().navigate(R.id.action_dashboardFragment_to_topicFragment)
             }
 
             Features.TOPIC_VITTIK_ONUSILON.code ->{
                 sharedViewModel.step = 3
                 sharedViewModel.isPDF = false
-                sharedViewModel.topicId = Categories.CAT_TOPIC_VITTIK_ONUSILON.code
+                sharedViewModel.topicId = IndentityCode.QuizCategory.TOPIC_VITTIK_ONUSILON.code
                 findNavController().navigate(R.id.action_dashboardFragment_to_topicFragment)
             }
 
             Features.TOPIC_VITTIK_PORIKKHA.code -> {
                 sharedViewModel.step = 2
                 sharedViewModel.isPDF = false
-                sharedViewModel.topicId = Categories.CAT_TOPIC_VITTIK_PORIKKHA.code
+                sharedViewModel.topicId = IndentityCode.QuizCategory.TOPIC_VITTIK_PORIKKHA.code
                 findNavController().navigate(R.id.action_dashboardFragment_to_topicFragment)
             }
 
             Features.BISOY_VITTIK_PORIKKHA.code -> {
                 sharedViewModel.step = 2
                 sharedViewModel.isPDF = false
-                sharedViewModel.topicId = Categories.CAT_BISOY_VITTIK_PORIKKHA.code
+                sharedViewModel.topicId =IndentityCode.QuizCategory.BISOY_VITTIK_PORIKKHA.code
                 findNavController().navigate(R.id.action_dashboardFragment_to_topicFragment)
+            }
+
+
+            Features.GRE_333.code ->{
+                sharedViewModel.step = 2
+                sharedViewModel.isPDF = true
+                sharedViewModel.topicId = Categories.PDF_GRE_333.code
+                findNavController().navigate(R.id.action_dashboardFragment_to_topicFragment)
+
+            }
+
+            Features.GRE_1000.code ->{
+                sharedViewModel.step = 2
+                sharedViewModel.isPDF = true
+                sharedViewModel.topicId = Categories.PDF_VOCABULARY_GREE_1000.code
+                findNavController().navigate(R.id.action_dashboardFragment_to_topicFragment)
+
+            }
+
+            Features.WORD_SMART_1.code ->{
+                sharedViewModel.step = 2
+                sharedViewModel.isPDF = true
+                sharedViewModel.topicId = Categories.PDF_WORD_SMART_1.code
+                findNavController().navigate(R.id.action_dashboardFragment_to_topicFragment)
+
+            }
+
+            Features.NEWSPAPER_EDITORIAL.code ->{
+                sharedViewModel.step = 2
+                sharedViewModel.isPDF = true
+                sharedViewModel.topicId = Categories.PDF_NEWSPAPER_EDITORIAL.code
+                findNavController().navigate(R.id.action_dashboardFragment_to_topicFragment)
+
+            }
+
+            Features.IDOMS_AND_PHRASES.code ->{
+                sharedViewModel.step = 2
+                sharedViewModel.isPDF = true
+                sharedViewModel.topicId = Categories.PDF_IDOMS_AND_PHRASES.code
+                findNavController().navigate(R.id.action_dashboardFragment_to_topicFragment)
+
+            }
+
+            Features.GROUP_VERB.code ->{
+                sharedViewModel.step = 2
+                sharedViewModel.isPDF = true
+                sharedViewModel.topicId = Categories.PDF_GROUP_VERB.code
+                findNavController().navigate(R.id.action_dashboardFragment_to_topicFragment)
+
             }
 
 
@@ -150,6 +224,8 @@ class DashboardFragment : BaseFragment<DashboardViewModel, FragmentDashboardHome
     private fun initView(){
         mViewModel.getQsBankTopicList()
         mViewModel.getOnusilonTopicList()
+        mViewModel.getVocabularyTopicList()
+        mViewModel.getLearnByHeartTopicList()
 
     }
     override fun setDefaultProperties() {
@@ -157,6 +233,7 @@ class DashboardFragment : BaseFragment<DashboardViewModel, FragmentDashboardHome
         if (activity is DashboardActivity){
             activity.hideBackButton()
             activity.setActionBarTitle("Hello Abdullah")
+            activity.showBottomNavBar()
         }
     }
 }

@@ -18,6 +18,14 @@ class  DashboardViewModel @Inject constructor():  BaseViewModel(){
     private val _onusilonTopicList = MutableLiveData<SingleLiveEvent<List<FeatureItem>>>()
     val onusilonTopicList : LiveData<SingleLiveEvent<List<FeatureItem>>> = _onusilonTopicList
 
+    private val _vocabularyTopicList = MutableLiveData<SingleLiveEvent<List<FeatureItem>>>()
+    val vocabularyTopicList : LiveData<SingleLiveEvent<List<FeatureItem>>> = _vocabularyTopicList
+
+    private val _learnByHeartTopicList = MutableLiveData<SingleLiveEvent<List<FeatureItem>>>()
+    val learnByHeartTopicList : LiveData<SingleLiveEvent<List<FeatureItem>>> = _learnByHeartTopicList
+
+
+
 
 
 
@@ -44,6 +52,31 @@ class  DashboardViewModel @Inject constructor():  BaseViewModel(){
 
         _onusilonTopicList.value = SingleLiveEvent(list)
     }
+
+     fun getVocabularyTopicList(){
+        var list = arrayListOf<FeatureItem>()
+
+        list.add(FeatureItem(Features.GRE_333.code,"GRE 333","", R.drawable.understanding1))
+        list.add(FeatureItem(Features.GRE_1000.code,"GRE 1000","", R.drawable.english1))
+        list.add(FeatureItem(Features.WORD_SMART_1.code,"Word Smart-1","", R.drawable.word1))
+
+         _vocabularyTopicList.value = SingleLiveEvent(list)
+    }
+
+    fun getLearnByHeartTopicList(){
+        var list = arrayListOf<FeatureItem>()
+
+        list.add(FeatureItem(Features.NEWSPAPER_EDITORIAL.code,"Newspaper Editorial","", R.drawable.newspaper1))
+        list.add(FeatureItem(Features.IDOMS_AND_PHRASES.code,"Idiom & Phrase","", R.drawable.ok1))
+        list.add(FeatureItem(Features.GROUP_VERB.code,"Group Verb","", R.drawable.puzzle1))
+
+        _learnByHeartTopicList.value = SingleLiveEvent(list)
+    }
+
+
+
+
+
 
 
 

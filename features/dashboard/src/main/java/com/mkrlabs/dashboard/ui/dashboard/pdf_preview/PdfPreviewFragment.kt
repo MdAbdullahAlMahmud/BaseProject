@@ -8,9 +8,11 @@ import android.webkit.WebView
 import android.webkit.WebViewClient
 import androidx.fragment.app.activityViewModels
 import androidx.fragment.app.viewModels
+import androidx.lifecycle.Observer
 import com.mkrlabs.common.core.base.BaseFragment
 import com.mkrlabs.dashboard.DashboardActivity
 import com.mkrlabs.dashboard.DashboardHomeViewModel
+import com.mkrlabs.dashboard.data.model.request.PDFItemRequest
 import com.mkrlabs.dashboard.databinding.FragmentPdfPreviewBinding
 import dagger.hilt.android.AndroidEntryPoint
 
@@ -26,9 +28,14 @@ class PdfPreviewFragment : BaseFragment<PdfPreviewViewModel,FragmentPdfPreviewBi
 
     override fun getViewBinding(): FragmentPdfPreviewBinding = FragmentPdfPreviewBinding.inflate(layoutInflater)
 
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        mViewModel.requestForPdf(PDFItemRequest(pdf_id = sharedViewModel.pdfId))
+    }
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         initView()
+        setObserver()
     }
 
     fun initView(){
@@ -52,12 +59,22 @@ class PdfPreviewFragment : BaseFragment<PdfPreviewViewModel,FragmentPdfPreviewBi
             }
 
         }
-        val pdfOpenUrl = "https://drive.google.com/viewerng/viewer?embedded=true&url="
-        var url = sharedViewModel.subTopicItem?.pdfUrl
-        mViewBinding.pdfWebView.loadUrl(pdfOpenUrl+url)
-
 
     }
+
+    fun setObserver(){
+        mViewModel.pdfContent.observe(viewLifecycleOwner, Observer {
+            it?.getContentIfNotHandled()?.let {
+                val pdfOpenUrl = "https://drive.google.com/viewerng/viewer?embedded=true&url="
+
+                var url = it.pdf_url
+                mViewBinding.pdfWebView.loadUrl(pdfOpenUrl+url)
+            }
+        })
+    }
+
+
+
     override fun setDefaultProperties() {
         val activity = requireActivity()
         if (activity is DashboardActivity){

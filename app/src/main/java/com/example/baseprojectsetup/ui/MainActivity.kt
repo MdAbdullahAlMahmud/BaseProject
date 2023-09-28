@@ -9,6 +9,7 @@ import android.os.Looper
 import android.view.View
 import androidx.activity.viewModels
 import androidx.navigation.NavController
+import androidx.navigation.findNavController
 import androidx.navigation.fragment.NavHostFragment
 import com.example.baseprojectsetup.R
 import com.example.baseprojectsetup.databinding.ActivityMainBinding
@@ -28,8 +29,6 @@ class MainActivity : BaseActivity<MainViewModel, ActivityMainBinding>(),
 
     private lateinit var navController: NavController
     override fun getViewBinding(): ActivityMainBinding = ActivityMainBinding.inflate(layoutInflater)
-    private val IS_AUTHENTICATED = "IS_AUTHENTICATED"
-    private lateinit var sharedPref: SharedPreferences
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(mViewBinding.root)
@@ -38,7 +37,6 @@ class MainActivity : BaseActivity<MainViewModel, ActivityMainBinding>(),
         initViews()
     }
     fun setInitialScreenProperties() {
-        sharedPref = getSharedPreferences("PREF", Context.MODE_PRIVATE)
         if (isAuthenticated()) {
             val mainIntent = Intent(this, DashboardActivity::class.java)
             startActivity(mainIntent)
@@ -48,7 +46,7 @@ class MainActivity : BaseActivity<MainViewModel, ActivityMainBinding>(),
 
 
     fun isAuthenticated(): Boolean {
-        return sharedPref.getBoolean(IS_AUTHENTICATED, false)
+        return getBooleanPreferenceData(AppConstant.IS_AUTHENTICATED)
     }
     fun setObserver() {
         com.mkrlabs.common.core.base.interfaces.CommunicatorImpl.setCommunicator(this)
@@ -94,6 +92,7 @@ class MainActivity : BaseActivity<MainViewModel, ActivityMainBinding>(),
     }
 
     override fun authenticationFailed(message: String?) {
+        logOutUser()
 
     }
 
@@ -109,5 +108,7 @@ class MainActivity : BaseActivity<MainViewModel, ActivityMainBinding>(),
 
 
     }
+
+
 
 }

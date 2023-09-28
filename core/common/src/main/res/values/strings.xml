@@ -3,4 +3,7 @@
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="developed_by_supabex">Developed by Supabex</string>
+    <string name="app_full_access_buy_package">অ্যাপের ফুল অ্যাক্সেস পেতে
+সাবস্ক্রিপশন প্যাকেজ কিনুন</string>
+    <string name="package_kinun">প্যাকেজ কিনুন</string>
 </resources>

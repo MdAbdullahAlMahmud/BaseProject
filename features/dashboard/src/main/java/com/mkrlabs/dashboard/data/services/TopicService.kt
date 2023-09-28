@@ -14,32 +14,51 @@ import retrofit2.http.POST
 interface TopicService {
 
     @FormUrlEncoded
-    @POST("/edubee/api.php?cat_list")
+    @POST("api.php?cat_list")
     suspend fun getTopicList(
         @Field("topic_id") topic_id : String
     ) : Response<BaseResponse<List<TopicItem>>>
 
     @FormUrlEncoded
-    @POST("/edubee/api.php?sub_cat_list")
+    @POST("api.php?sub_cat_list")
     suspend fun getSubTopicList(
         @Field("cat_id") cat_id : String
     ) : Response<BaseResponse<List<SubTopicItem>>>
 
     @FormUrlEncoded
-    @POST("/edubee/api.php?quiz_list")
+    @POST("api.php?quiz_list")
     suspend fun getQuizList(
         @Field("cat_id") cat_id : String,
         @Field("sub_cat_id") sub_cat_id : String
     ) : Response<BaseResponse<List<QuizResponseItem>>>
 
 
+
+
+    //PDF Content
     @FormUrlEncoded
-    @POST("/edubee/api.php?pdf")
-    suspend fun getPDFContent(
+    @POST("api.php?pdf_cat_list")
+    suspend fun getPDFTopicList(
+        @Field("topic_id") topic_id : String
+    ) : Response<BaseResponse<List<TopicItem>>>
+
+    @FormUrlEncoded
+    @POST("api.php?pdf_sub_cat_list")
+    suspend fun getPDFSubTopicList(
+        @Field("cat_id") cat_id : String
+    ) : Response<BaseResponse<List<SubTopicItem>>>
+
+
+    @FormUrlEncoded
+    @POST("api.php?pdf_lesson_list")
+    suspend fun getPDFLessonList(
         @Field("cat_id") cat_id : String,
         @Field("sub_cat_id") sub_cat_id : String
+    ) : Response<BaseResponse<List<QuizResponseItem>>>
+
+    @FormUrlEncoded
+    @POST("api.php?getPdfContent")
+    suspend fun getPDFContent(
+        @Field("pdf_id") pdf_id : String,
     ) : Response<BaseResponse<PDFItemResponse>>
-
-
-
 }
