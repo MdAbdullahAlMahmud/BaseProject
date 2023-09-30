@@ -7,6 +7,7 @@ import com.mkrlabs.common.core.base.BaseViewModel
 import com.mkrlabs.common.core.base.utils.SingleLiveEvent
 import com.mkrlabs.dashboard.data.model.FeatureItem
 import com.mkrlabs.dashboard.data.model.enums.Features
+import com.mkrlabs.dashboard.data.model.enums.IndentityCode
 import dagger.hilt.android.lifecycle.HiltViewModel
 import javax.inject.Inject
 
@@ -24,6 +25,8 @@ class  DashboardViewModel @Inject constructor():  BaseViewModel(){
     private val _learnByHeartTopicList = MutableLiveData<SingleLiveEvent<List<FeatureItem>>>()
     val learnByHeartTopicList : LiveData<SingleLiveEvent<List<FeatureItem>>> = _learnByHeartTopicList
 
+    private val _miscellaneousTopicList = MutableLiveData<SingleLiveEvent<List<FeatureItem>>>()
+    val miscellaneousTopicList : LiveData<SingleLiveEvent<List<FeatureItem>>> = _miscellaneousTopicList
 
 
 
@@ -72,6 +75,23 @@ class  DashboardViewModel @Inject constructor():  BaseViewModel(){
 
         _learnByHeartTopicList.value = SingleLiveEvent(list)
     }
+    fun getMiscellaneousTopicListTopicList(){
+        var list = arrayListOf<FeatureItem>()
+
+        list.add(FeatureItem(IndentityCode.MiscellaneousCategory.SAMPROTIK_THOTTHO.code,"সাম্প্রতিক তথ্য","", R.drawable.samprotik_tottho_icon))
+        list.add(FeatureItem(IndentityCode.MiscellaneousCategory.TEXTBOOK.code,"টেক্সটবুক","", R.drawable.textbook_icon_misc))
+        list.add(FeatureItem(IndentityCode.MiscellaneousCategory.SOMBADPOTRO.code,"সংবাদপত্র","", R.drawable.sombadpotro_icon))
+        list.add(FeatureItem(IndentityCode.MiscellaneousCategory.BCS_SYLABUS_GUIDELINE.code,"BCS সিলেবাস \n&গাইডলাইন","", R.drawable.bcs_sylabus_guideline))
+        list.add(FeatureItem(IndentityCode.MiscellaneousCategory.BCS_BISLESON.code,"BCS প্রশ্ন \nবিশ্লেষণ","", R.drawable.bcs_prosno_bisleson))
+        list.add(FeatureItem(IndentityCode.MiscellaneousCategory.COURSE_ROUTINE.code,"কোর্স রুটিন","", R.drawable.course_routine))
+        list.add(FeatureItem(IndentityCode.MiscellaneousCategory.NIYOG_BIGGOPPTI.code,"নিয়োগ বিজ্ঞপ্তি","", R.drawable.niyog_bigopti_icon))
+        list.add(FeatureItem(IndentityCode.MiscellaneousCategory.ANUBADOK.code,"অনুবাদক","", R.drawable.onubadok_icon))
+        list.add(FeatureItem(IndentityCode.MiscellaneousCategory.ITIHASER_PATAI.code,"ইতিহাসের \n পাতায়","", R.drawable.itihaser_patai_icon))
+        list.add(FeatureItem(IndentityCode.MiscellaneousCategory.BANK_SYLABUS_GUIDELINE.code,"Bank সিলেবাস \n&গাইডলাইন","", R.drawable.bank_sylabus_guideline))
+        _miscellaneousTopicList.value = SingleLiveEvent(list)
+    }
+
+
 
 
 

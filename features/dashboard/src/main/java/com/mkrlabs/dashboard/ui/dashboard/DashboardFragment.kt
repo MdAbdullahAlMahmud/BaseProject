@@ -16,6 +16,8 @@ import com.mkrlabs.dashboard.databinding.FragmentDashboardHomeBinding
 import com.mkrlabs.dashboard.ui.dashboard.adapter.FeatureListAdapter
 import com.mkrlabs.dashboard.data.model.enums.Features
 import com.mkrlabs.dashboard.data.model.enums.IndentityCode
+import com.mkrlabs.dashboard.ui.dashboard.adapter.MiscellaneousAdapter
+import com.mkrlabs.dashboard.utils.KeyConstant
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
@@ -30,6 +32,7 @@ class DashboardFragment : BaseFragment<DashboardViewModel, FragmentDashboardHome
     private var onusilonAdapter : FeatureListAdapter? = null
     private var vocabularyAdapter : FeatureListAdapter? = null
     private var learnByHeartAdapter : FeatureListAdapter? = null
+    private var miscellaneousAdapter : MiscellaneousAdapter? = null
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         initView()
@@ -52,6 +55,9 @@ class DashboardFragment : BaseFragment<DashboardViewModel, FragmentDashboardHome
 
         learnByHeartAdapter = FeatureListAdapter(this::qsBankItemClickListener)
         mViewBinding.learnByHeartRV.adapter = learnByHeartAdapter
+
+        miscellaneousAdapter = MiscellaneousAdapter(this::qsBankItemClickListener)
+        mViewBinding.miscellaneousRV.adapter = miscellaneousAdapter
 
 
 
@@ -80,6 +86,16 @@ class DashboardFragment : BaseFragment<DashboardViewModel, FragmentDashboardHome
                 learnByHeartAdapter?.submitList(it)
             }
         })
+
+
+         mViewModel.miscellaneousTopicList.observe(viewLifecycleOwner, Observer {
+            it.getContentIfNotHandled()?.let {
+                miscellaneousAdapter?.submitList(it)
+            }
+        })
+
+
+
 
 
 
@@ -214,6 +230,57 @@ class DashboardFragment : BaseFragment<DashboardViewModel, FragmentDashboardHome
 
             }
 
+            Features.SAMPROTIK_THOTTHO.code ->{
+                var bundle = Bundle()
+                bundle.putString("URL",KeyConstant.SAMPROTIK_TOTTHO_WEBSITE_LINK)
+                findNavController().navigate(R.id.action_dashboardFragment_to_webViewFragment,bundle)
+            }
+
+            Features.TEXTBOOK.code ->{
+               showToast("Coming soon")
+            }
+
+            Features.SOMBADPOTRO.code ->{
+                showToast("Coming soon")
+            }
+
+            Features.BCS_SYLABUS_GUIDELINE.code ->{
+                showToast("Coming soon")
+            }
+
+            Features.BCS_BISLESON.code ->{
+                showToast("Coming soon")
+            }
+
+            Features.COURSE_ROUTINE.code ->{
+                showToast("Coming soon")
+            }
+
+            Features.NIYOG_BIGGOPPTI.code ->{
+                showToast("Coming soon")
+            }
+
+            Features.ANUBADOK.code ->{
+                showToast("Coming soon")
+            }
+
+            Features.ITIHASER_PATAI.code ->{
+                showToast("Coming soon")
+            }
+
+            Features.BANK_SYLABUS_GUIDELINE.code ->{
+                showToast("Coming soon")
+            }
+
+
+
+
+
+
+
+
+
+
 
 
         }
@@ -226,6 +293,7 @@ class DashboardFragment : BaseFragment<DashboardViewModel, FragmentDashboardHome
         mViewModel.getOnusilonTopicList()
         mViewModel.getVocabularyTopicList()
         mViewModel.getLearnByHeartTopicList()
+        mViewModel.getMiscellaneousTopicListTopicList()
 
     }
     override fun setDefaultProperties() {

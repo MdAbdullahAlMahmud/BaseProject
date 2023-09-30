@@ -226,6 +226,17 @@
                 android:text="@string/package_kinun"/>
         </LinearLayout>
 
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/miscellaneousRV"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
+            app:spanCount="2"
+            android:visibility="visible"
+            tools:itemCount="3"
+            android:layout_marginTop="@dimen/_4sdp"
+            tools:listitem="@layout/miscellaneous_item" />
+
     </LinearLayout>
 
 
