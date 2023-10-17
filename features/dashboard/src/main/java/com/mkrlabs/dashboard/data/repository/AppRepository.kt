@@ -10,7 +10,7 @@ import com.mkrlabs.dashboard.data.model.response.SubTopicItem
 import com.mkrlabs.dashboard.data.model.response.TopicItem
 import retrofit2.Response
 
-interface TopicRepository {
+interface AppRepository {
     suspend fun requestTopicList(topicId : String) : Response<BaseResponse<List<TopicItem>>>
     suspend fun requestPDFTopicList(topicId : String) : Response<BaseResponse<List<TopicItem>>>
     suspend fun requestSubTopicList(subTopicRequest: SubTopicRequest) : Response<BaseResponse<List<SubTopicItem>>>

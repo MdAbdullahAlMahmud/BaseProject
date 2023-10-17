@@ -7,6 +7,7 @@ import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
 import androidx.navigation.fragment.findNavController
 import com.mkrlabs.common.core.base.BaseFragment
+import com.mkrlabs.common.core.base.utils.AppConstant.USER_ID
 import com.mkrlabs.dashboard.DashboardActivity
 import com.mkrlabs.dashboard.DashboardHomeViewModel
 import com.mkrlabs.dashboard.R
@@ -39,6 +40,7 @@ class DashboardFragment : BaseFragment<DashboardViewModel, FragmentDashboardHome
         initAdapter()
         setClickListener()
         setObserver()
+        showToast("User ID : ${getStringPreferenceData(USER_ID)}")
 
     }
 
@@ -241,7 +243,7 @@ class DashboardFragment : BaseFragment<DashboardViewModel, FragmentDashboardHome
             }
 
             Features.SOMBADPOTRO.code ->{
-                showToast("Coming soon")
+                findNavController().navigate(R.id.action_dashboardFragment_to_sombadpotroFragment)
             }
 
             Features.BCS_SYLABUS_GUIDELINE.code ->{
@@ -261,7 +263,9 @@ class DashboardFragment : BaseFragment<DashboardViewModel, FragmentDashboardHome
             }
 
             Features.ANUBADOK.code ->{
-                showToast("Coming soon")
+                var bundle = Bundle()
+                bundle.putString("URL",KeyConstant.ANUBADOK_WEBSITE_LINK)
+                findNavController().navigate(R.id.action_dashboardFragment_to_webViewFragment,bundle)
             }
 
             Features.ITIHASER_PATAI.code ->{
@@ -300,8 +304,9 @@ class DashboardFragment : BaseFragment<DashboardViewModel, FragmentDashboardHome
         val  activity = requireActivity()
         if (activity is DashboardActivity){
             activity.hideBackButton()
-            activity.setActionBarTitle("Hello Abdullah")
+            activity.setActionBarTitle("Hello ")
             activity.showBottomNavBar()
+            activity.showDrawerMenu()
         }
     }
 }

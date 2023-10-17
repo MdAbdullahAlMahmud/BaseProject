@@ -8,14 +8,14 @@ import com.mkrlabs.dashboard.data.model.request.PDFItemRequest
 import com.mkrlabs.dashboard.data.model.response.PDFItemResponse
 import com.mkrlabs.dashboard.data.model.response.SubTopicItem
 import com.mkrlabs.dashboard.data.model.response.TopicItem
-import com.mkrlabs.dashboard.data.repository.TopicRepository
+import com.mkrlabs.dashboard.data.repository.AppRepository
 import com.mkrlabs.dashboard.data.services.TopicService
 import retrofit2.Response
 import javax.inject.Inject
 
-class TopicRepositoryImpl @Inject constructor(
+class AppRepositoryImpl @Inject constructor(
     private val topicService: TopicService
-): TopicRepository {
+): AppRepository {
     override suspend fun requestTopicList(topicId : String): Response<BaseResponse<List<TopicItem>>> {
         return topicService.getTopicList(topicId)
     }

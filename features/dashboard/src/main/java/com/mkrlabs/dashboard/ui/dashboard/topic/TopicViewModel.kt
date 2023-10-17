@@ -12,14 +12,14 @@ import com.mkrlabs.dashboard.data.model.request.PDFItemRequest
 import com.mkrlabs.dashboard.data.model.response.PDFItemResponse
 import com.mkrlabs.dashboard.data.model.response.SubTopicItem
 import com.mkrlabs.dashboard.data.model.response.TopicItem
-import com.mkrlabs.dashboard.data.repository.TopicRepository
+import com.mkrlabs.dashboard.data.repository.AppRepository
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 
 @HiltViewModel
 class TopicViewModel @Inject constructor(
-    private val topicRepository: TopicRepository
+    private val appRepository: AppRepository
 ): BaseViewModel(){
 
     private val _topicList = MutableLiveData<SingleLiveEvent<List<TopicItem>>>()
@@ -38,7 +38,7 @@ class TopicViewModel @Inject constructor(
 
     fun getTopicList(topicId : String){
         viewModelScope.launch {
-            val  result = callService { topicRepository.requestTopicList(topicId) }
+            val  result = callService { appRepository.requestTopicList(topicId) }
             result?.data?.let {
                 _topicList.value = SingleLiveEvent(it)
             }
@@ -46,7 +46,7 @@ class TopicViewModel @Inject constructor(
     }
     fun getPDFTopicList(topicId : String){
         viewModelScope.launch {
-            val  result = callService { topicRepository.requestPDFTopicList(topicId) }
+            val  result = callService { appRepository.requestPDFTopicList(topicId) }
             result?.data?.let {
                 _topicList.value = SingleLiveEvent(it)
             }
@@ -56,7 +56,7 @@ class TopicViewModel @Inject constructor(
 
     fun getSubTopicList(subTopicRequest: SubTopicRequest){
         viewModelScope.launch {
-            val  result = callService { topicRepository.requestSubTopicList(subTopicRequest) }
+            val  result = callService { appRepository.requestSubTopicList(subTopicRequest) }
             result?.data?.let {
                 _subTopicList.value = SingleLiveEvent(it)
             }
@@ -65,7 +65,7 @@ class TopicViewModel @Inject constructor(
 
     fun getPDFSubTopicList(subTopicRequest: SubTopicRequest){
         viewModelScope.launch {
-            val  result = callService { topicRepository.requestPDFSubTopicList(subTopicRequest) }
+            val  result = callService { appRepository.requestPDFSubTopicList(subTopicRequest) }
             result?.data?.let {
                 _subTopicList.value = SingleLiveEvent(it)
             }
@@ -76,7 +76,7 @@ class TopicViewModel @Inject constructor(
 
     fun getQuizList(quizRequestItem: QuizRequestItem){
         viewModelScope.launch {
-            val  result = callService {  topicRepository.requestQuizList(quizRequestItem)}
+            val  result = callService {  appRepository.requestQuizList(quizRequestItem)}
             result?.data?.let {
                 _quizList.value = SingleLiveEvent(it)
             }
@@ -84,7 +84,7 @@ class TopicViewModel @Inject constructor(
     }
     fun getPDFLessonList(quizRequestItem: QuizRequestItem){
         viewModelScope.launch {
-            val  result = callService {  topicRepository.requestPDFLessonList(quizRequestItem)}
+            val  result = callService {  appRepository.requestPDFLessonList(quizRequestItem)}
             result?.data?.let {
                 _quizList.value = SingleLiveEvent(it)
             }
@@ -92,7 +92,7 @@ class TopicViewModel @Inject constructor(
     }
     fun getPdfContent(pdfItemRequest: PDFItemRequest){
         viewModelScope.launch {
-            val  result = callService { topicRepository.requestPdfContent(pdfItemRequest)}
+            val  result = callService { appRepository.requestPdfContent(pdfItemRequest)}
             result?.data?.let {
                 _pdfContent.value = SingleLiveEvent(it)
             }

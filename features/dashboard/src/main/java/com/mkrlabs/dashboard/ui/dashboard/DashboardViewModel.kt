@@ -8,11 +8,15 @@ import com.mkrlabs.common.core.base.utils.SingleLiveEvent
 import com.mkrlabs.dashboard.data.model.FeatureItem
 import com.mkrlabs.dashboard.data.model.enums.Features
 import com.mkrlabs.dashboard.data.model.enums.IndentityCode
+import com.mkrlabs.dashboard.data.repository.AppRepository
 import dagger.hilt.android.lifecycle.HiltViewModel
 import javax.inject.Inject
 
 @HiltViewModel
-class  DashboardViewModel @Inject constructor():  BaseViewModel(){
+class  DashboardViewModel @Inject constructor(
+    private val appRepository: AppRepository
+
+):  BaseViewModel(){
     private val _qsBankTopicList = MutableLiveData<SingleLiveEvent<List<FeatureItem>>>()
     val qsBankTopicList : LiveData<SingleLiveEvent<List<FeatureItem>>> = _qsBankTopicList
 

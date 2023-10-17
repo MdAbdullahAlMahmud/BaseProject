@@ -16,6 +16,12 @@
         <action
             android:id="@+id/action_dashboardFragment_to_webViewFragment"
             app:destination="@id/webViewFragment" />
+        <action
+            android:id="@+id/action_dashboardFragment_to_sombadpotroFragment"
+            app:destination="@id/sombadpotroFragment" />
+        <action
+            android:id="@+id/action_dashboardFragment_to_profileFragment"
+            app:destination="@id/profileFragment" />
     </fragment>
     <fragment
         android:id="@+id/topicFragment"
@@ -60,4 +66,17 @@
         android:name="com.mkrlabs.dashboard.ui.dashboard.webview.WebViewFragment"
         android:label="fragment_web_view"
         tools:layout="@layout/fragment_web_view" />
+    <fragment
+        android:id="@+id/sombadpotroFragment"
+        android:name="com.mkrlabs.dashboard.ui.dashboard.webview.sombadpotro.SombadpotroFragment"
+        android:label="fragment_sombadpotro"
+        tools:layout="@layout/fragment_sombadpotro" >
+        <action
+            android:id="@+id/action_sombadpotroFragment_to_webViewFragment"
+            app:destination="@id/webViewFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/profileFragment"
+        android:name="com.mkrlabs.dashboard.ui.dashboard.profile.ProfileFragment"
+        android:label="ProfileFragment" />
 </navigation>

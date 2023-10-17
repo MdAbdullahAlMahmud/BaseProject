@@ -11,6 +11,7 @@ import com.example.baseprojectsetup.data.model.request.LoginRequest
 import com.example.baseprojectsetup.databinding.FragmentLoginBinding
 import com.example.baseprojectsetup.ui.MainActivity
 import com.mkrlabs.common.core.base.utils.AppConstant.IS_AUTHENTICATED
+import com.mkrlabs.common.core.base.utils.AppConstant.USER_ID
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
@@ -36,7 +37,8 @@ class LoginFragment :
     private fun setObserver(){
         mViewModel.loginResponse.observe(viewLifecycleOwner, Observer {
             it.getContentIfNotHandled()?.apply {
-              setBooleanPreferenceData(IS_AUTHENTICATED,true)
+                setBooleanPreferenceData(IS_AUTHENTICATED, true)
+                setStringPreferenceData(USER_ID,userId.toString())
                 CommunicatorImpl.callback?.gotoDashboard()
             }
 

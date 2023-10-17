@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_margin="@dimen/_4sdp"
+    android:gravity="center"
+    android:background="@color/white"
+    android:orientation="vertical"
+    android:layout_gravity="center"
+    >
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:weightSum="2">
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/prothomAloIv"
+            android:layout_width="0dp"
+            android:layout_height="@dimen/_100sdp"
+            android:layout_weight="1"
+            android:src="@drawable/prothomalo"/>
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/kalerKonthoIv"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="@dimen/_100sdp"
+            android:src="@drawable/kaler_kontho"/>
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:weightSum="2"
+        android:orientation="horizontal">
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/jugantorIv"
+            android:layout_width="0dp"
+            android:layout_height="@dimen/_100sdp"
+            android:layout_weight="1"
+            android:src="@drawable/jugantor"/>
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/bangladeshProtidinIv"
+            android:layout_width="0dp"
+            android:layout_height="@dimen/_100sdp"
+            android:layout_weight="1"
+            android:src="@drawable/bangladesh_protidin"/>
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:weightSum="2"
+        android:orientation="horizontal"
+        >
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/noyaDigintoIv"
+            android:layout_width="0dp"
+            android:layout_height="@dimen/_100sdp"
+            android:layout_weight="1"
+            android:src="@drawable/noya_diginto"/>
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/bonikBatraIv"
+            android:layout_width="0dp"
+            android:layout_height="@dimen/_100sdp"
+            android:layout_weight="1"
+            android:src="@drawable/bonik_barta"/>
+    </LinearLayout>
+
+
+
+</LinearLayout>

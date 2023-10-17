@@ -42,7 +42,6 @@ class TopicFragment : BaseFragment<TopicViewModel,FragmentTopicBinding>() {
     }
 
     private fun callOnInit(){
-        showToast("Topic ID : ${sharedViewModel.topicId.toString()}")
         if (sharedViewModel.isPDF == true){
             mViewModel.getPDFTopicList(sharedViewModel.topicId.toString())
         }else{

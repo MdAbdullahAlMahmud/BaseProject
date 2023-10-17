@@ -244,6 +244,8 @@ abstract class BaseActivity<VM : BaseViewModel, VB : ViewBinding> : AppCompatAct
 
     abstract fun menuPressListener()
 
+
+
     fun showCustomDialog(
         title: String = "",
         message: String,

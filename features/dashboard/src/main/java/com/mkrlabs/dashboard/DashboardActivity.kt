@@ -5,7 +5,6 @@ import android.view.View
 import androidx.activity.viewModels
 import androidx.drawerlayout.widget.DrawerLayout
 import androidx.navigation.NavController
-import androidx.navigation.findNavController
 import androidx.navigation.fragment.NavHostFragment
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.mkrlabs.common.core.base.BaseActivity
@@ -47,10 +46,8 @@ class DashboardActivity : BaseActivity<DashboardViewModel, ActivityDashboardBind
     private fun initView(){
         setNavDraweMenuItem()
         mViewBinding.actionBar.drawerMenuIcon.setOnClickListener {
-            openSideBar()
+            manageSideBar()
         }
-
-
     }
 
     private fun setNavDraweMenuItem(){
@@ -106,7 +103,8 @@ class DashboardActivity : BaseActivity<DashboardViewModel, ActivityDashboardBind
     }
     private fun navigationDrawerListeners(){
         mViewBinding.containerMenu.containerProfile.root.setOnClickListener {
-            comingSoonDialog()
+            manageSideBar()
+            navController.navigate(R.id.action_dashboardFragment_to_profileFragment)
         }
 
          mViewBinding.containerMenu.containerNotification.root.setOnClickListener {
@@ -241,7 +239,12 @@ class DashboardActivity : BaseActivity<DashboardViewModel, ActivityDashboardBind
         showToast("Initialed")
 
     }
-
+     fun hideDrawerMenu(){
+         mViewBinding.actionBar.drawerMenuIcon.visibility = View.GONE
+     }
+     fun showDrawerMenu(){
+         mViewBinding.actionBar.drawerMenuIcon.visibility = View.VISIBLE
+     }
 
     fun lockDrawerLayout() {
         mViewBinding.drawerLayout.setDrawerLockMode(DrawerLayout.LOCK_MODE_LOCKED_CLOSED)
@@ -251,13 +254,14 @@ class DashboardActivity : BaseActivity<DashboardViewModel, ActivityDashboardBind
     fun unLockDrawerLayout() {
         mViewBinding.drawerLayout.setDrawerLockMode(DrawerLayout.LOCK_MODE_UNLOCKED)
     }
-     fun openSideBar() {
+     fun manageSideBar() {
             if (mViewBinding.drawerLayout.isDrawerOpen(mViewBinding.containerMenu.containerNavDrawer)) {
                 mViewBinding.drawerLayout.closeDrawer(mViewBinding.containerMenu.containerNavDrawer)
             } else {
                 mViewBinding.drawerLayout.openDrawer(mViewBinding.containerMenu.containerNavDrawer)
             }
     }
+
 
     fun showBackButton() {
         mViewBinding.actionBar.backCV.visibility = View.VISIBLE

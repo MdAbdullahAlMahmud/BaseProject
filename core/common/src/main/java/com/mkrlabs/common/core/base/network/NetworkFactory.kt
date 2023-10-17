@@ -20,7 +20,7 @@ import javax.net.ssl.TrustManager
 import javax.net.ssl.X509TrustManager
 
 object NetworkFactory {
-   const val BASE_URL = BuildConfig.LOCAL_URL
+   const val BASE_URL = BuildConfig.BASE_URL
 
    const val TIME_OUT = 30L
    private lateinit var retrofit: Retrofit
