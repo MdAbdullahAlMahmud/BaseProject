@@ -110,21 +110,32 @@ class DashboardFragment : BaseFragment<DashboardViewModel, FragmentDashboardHome
     }
     private fun setClickListener(){
 
+        mViewBinding.bcsCV.setOnClickListener {
+            val  item = FeatureItem("","BCS প্রস্তুতি","", com.mkrlabs.common.R.drawable.topic1)
+            sharedViewModel.featureItem = item
+            sharedViewModel.step = 2
+            sharedViewModel.isPDF = true
+            sharedViewModel.topicId = Categories.PDF_BCS_PROSTUTI.code
+            findNavController().navigate(R.id.action_dashboardFragment_to_topicFragment)
+        }
+
+        mViewBinding.bankProstuti.setOnClickListener {
+            val  item = FeatureItem("","Bank প্রস্তুতি","", com.mkrlabs.common.R.drawable.topic1)
+            sharedViewModel.featureItem = item
+            sharedViewModel.step = 2
+            sharedViewModel.isPDF = true
+            sharedViewModel.topicId = Categories.PDF_BANK_PROSTUTI.code
+            findNavController().navigate(R.id.action_dashboardFragment_to_topicFragment)
+        }
+
+
+
     }
 
     private fun qsBankItemClickListener(item: FeatureItem){
         sharedViewModel.featureItem = item
 
         when(item.featureCode){
-
-            Features.TOPIC_VITTIK_JOB_SOLUTIONS.code ->{
-                sharedViewModel.step = 3
-                sharedViewModel.isPDF = true
-                sharedViewModel.topicId = Categories.PDF_TOPIC_VITTIK_JOB_SOLUTIONS.code
-                findNavController().navigate(R.id.action_dashboardFragment_to_topicFragment)
-
-
-            }
 
             Features.BCS_PRELIMINARY.code ->{
                 sharedViewModel.step = 2

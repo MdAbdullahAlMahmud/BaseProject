@@ -2,7 +2,7 @@
 <androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
+    android:layout_width="130dp"
     android:layout_height="130dp"
     app:cardCornerRadius="10dp"
     android:clickable="true"
@@ -24,9 +24,9 @@
 
     <androidx.appcompat.widget.AppCompatImageView
         android:id="@+id/ivFeatureIcon"
-        android:layout_width="match_parent"
+        android:layout_width="@dimen/_50sdp"
         android:layout_height="35dp"
-        android:layout_gravity="center_vertical"
+        android:layout_gravity="center"
         tools:src="@drawable/bank1"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -41,9 +41,6 @@
         android:textColor="@color/black"
         android:textAlignment="center"
         android:padding="@dimen/_8sdp"
-        app:layout_constraintEnd_toEndOf="@id/ivFeatureIcon"
-        app:layout_constraintStart_toStartOf="@id/ivFeatureIcon"
-        app:layout_constraintTop_toBottomOf="@id/ivFeatureIcon"
         tools:text="Feature Name" />
 
     </LinearLayout>

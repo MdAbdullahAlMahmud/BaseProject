@@ -32,6 +32,7 @@
             android:orientation="horizontal">
 
             <androidx.cardview.widget.CardView
+                android:id="@+id/bcsCV"
                 android:layout_width="155dp"
                 android:layout_height="122dp"
                 app:cardCornerRadius="10dp"
@@ -76,6 +77,7 @@
             </androidx.cardview.widget.CardView>
 
             <androidx.cardview.widget.CardView
+                android:id="@+id/bankProstuti"
                 android:layout_width="155dp"
                 android:layout_height="122dp"
                 app:cardCornerRadius="10dp"
@@ -133,10 +135,9 @@
             android:id="@+id/rvQsBank"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
-            app:spanCount="3"
+            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
             android:visibility="visible"
-            tools:itemCount="3"
+            android:orientation="horizontal"
             tools:listitem="@layout/feature_item" />
 
 
@@ -153,10 +154,9 @@
             android:id="@+id/onusilonRV"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
-            app:spanCount="3"
+            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
             android:visibility="visible"
-            tools:itemCount="3"
+            android:orientation="horizontal"
             tools:listitem="@layout/feature_item" />
 
         <androidx.appcompat.widget.AppCompatTextView
@@ -172,8 +172,8 @@
             android:id="@+id/vocabularyRV"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
-            app:spanCount="3"
+            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+            android:orientation="horizontal"
             android:visibility="visible"
             tools:itemCount="3"
             tools:listitem="@layout/feature_item" />
@@ -191,10 +191,9 @@
             android:id="@+id/learnByHeartRV"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
-            app:spanCount="3"
+            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
             android:visibility="visible"
-            tools:itemCount="3"
+            android:orientation="horizontal"
             tools:listitem="@layout/feature_item" />
 
 
