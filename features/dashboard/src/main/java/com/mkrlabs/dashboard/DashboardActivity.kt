@@ -5,6 +5,7 @@ import android.view.View
 import androidx.activity.viewModels
 import androidx.drawerlayout.widget.DrawerLayout
 import androidx.navigation.NavController
+import androidx.navigation.NavOptions
 import androidx.navigation.fragment.NavHostFragment
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.mkrlabs.common.core.base.BaseActivity
@@ -81,7 +82,9 @@ class DashboardActivity : BaseActivity<DashboardViewModel, ActivityDashboardBind
 
                     R.id.navLiveExam -> {
                         unLockDrawerLayout()
-                        //navController.navigate(R.id.dashboardFragment)
+
+                        val navOption = NavOptions.Builder().setLaunchSingleTop(true).build()
+                        navController.navigate(resId = R.id.liveQuizDashboardFragment , args = null, navOptions = navOption)
                         true
                     }
 

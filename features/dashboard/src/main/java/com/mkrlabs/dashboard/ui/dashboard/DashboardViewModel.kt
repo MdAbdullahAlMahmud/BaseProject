@@ -8,6 +8,7 @@ import com.mkrlabs.common.core.base.utils.SingleLiveEvent
 import com.mkrlabs.dashboard.data.model.FeatureItem
 import com.mkrlabs.dashboard.data.model.enums.Features
 import com.mkrlabs.dashboard.data.model.enums.IndentityCode
+import com.mkrlabs.dashboard.data.model.response.LiveDashboardItem
 import com.mkrlabs.dashboard.data.repository.AppRepository
 import dagger.hilt.android.lifecycle.HiltViewModel
 import javax.inject.Inject
@@ -31,6 +32,9 @@ class  DashboardViewModel @Inject constructor(
 
     private val _miscellaneousTopicList = MutableLiveData<SingleLiveEvent<List<FeatureItem>>>()
     val miscellaneousTopicList : LiveData<SingleLiveEvent<List<FeatureItem>>> = _miscellaneousTopicList
+
+    private val _liveQuizTopicList = MutableLiveData<SingleLiveEvent<List<LiveDashboardItem>>>()
+    val liveQuizTopicList : LiveData<SingleLiveEvent<List<LiveDashboardItem>>> = _liveQuizTopicList
 
 
 
@@ -106,6 +110,21 @@ class  DashboardViewModel @Inject constructor(
         list.add(FeatureItem(IndentityCode.MiscellaneousCategory.BANK_SYLABUS_GUIDELINE.code,"Bank সিলেবাস \n&গাইডলাইন","", R.drawable.bank_sylabus_guideline))
         _miscellaneousTopicList.value = SingleLiveEvent(list)
     }
+
+
+
+    fun getLiveQuizTopicListTopicList(){
+        var list = arrayListOf<LiveDashboardItem>()
+
+        list.add(LiveDashboardItem("101","BCS প্রস্তুতি ১৮০ দিন"))
+        list.add(LiveDashboardItem("102","BCS প্রস্তুতি ১২০ দিন"))
+        list.add(LiveDashboardItem("103","প্রাইমারি প্রস্তুতি ১৮০ দিন"))
+        list.add(LiveDashboardItem("104","প্রাইমারি প্রস্তুতি ১৮০ দিন"))
+
+        _liveQuizTopicList.value = SingleLiveEvent(list)
+    }
+
+
 
 
 

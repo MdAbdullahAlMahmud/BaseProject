@@ -22,6 +22,9 @@
         <action
             android:id="@+id/action_dashboardFragment_to_profileFragment"
             app:destination="@id/profileFragment" />
+        <action
+            android:id="@+id/action_dashboardFragment_to_liveQuizDashboardFragment"
+            app:destination="@id/liveQuizDashboardFragment" />
     </fragment>
     <fragment
         android:id="@+id/topicFragment"
@@ -79,4 +82,9 @@
         android:id="@+id/profileFragment"
         android:name="com.mkrlabs.dashboard.ui.dashboard.profile.ProfileFragment"
         android:label="ProfileFragment" />
+    <fragment
+        android:id="@+id/liveQuizDashboardFragment"
+        android:name="com.mkrlabs.dashboard.ui.dashboard.live_exam.LiveQuizDashboardFragment"
+        android:label="fragment_live_quiz_dashboard"
+        tools:layout="@layout/fragment_live_quiz_dashboard" />
 </navigation>
