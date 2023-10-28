@@ -8,6 +8,7 @@ import android.view.ViewGroup
 import androidx.fragment.app.activityViewModels
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
+import androidx.navigation.fragment.findNavController
 import com.mkrlabs.common.core.base.BaseFragment
 import com.mkrlabs.dashboard.DashboardActivity
 import com.mkrlabs.dashboard.DashboardHomeViewModel
@@ -54,7 +55,8 @@ class LiveQuizDashboardFragment : BaseFragment<DashboardViewModel,FragmentLiveQu
     }
 
     private fun onItemClicked(item : LiveDashboardItem){
-
+        sharedViewModel.liveQuizDashboardItem = item
+        findNavController().navigate(R.id.action_liveQuizDashboardFragment_to_liveQuizContentFragment)
     }
     override fun setDefaultProperties() {
         val activity = requireActivity()

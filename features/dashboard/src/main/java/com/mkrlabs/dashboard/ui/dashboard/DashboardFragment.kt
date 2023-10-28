@@ -40,7 +40,6 @@ class DashboardFragment : BaseFragment<DashboardViewModel, FragmentDashboardHome
         initAdapter()
         setClickListener()
         setObserver()
-        showToast("User ID : ${getStringPreferenceData(USER_ID)}")
 
     }
 

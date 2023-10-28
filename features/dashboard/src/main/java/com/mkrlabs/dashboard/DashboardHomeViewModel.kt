@@ -4,6 +4,7 @@ import android.text.BoringLayout
 import com.mkrlabs.common.core.base.BaseViewModel
 import com.mkrlabs.common.core.base.data.model.response.QuizResponseItem
 import com.mkrlabs.dashboard.data.model.FeatureItem
+import com.mkrlabs.dashboard.data.model.response.LiveDashboardItem
 import com.mkrlabs.dashboard.data.model.response.SubTopicItem
 import com.mkrlabs.dashboard.data.model.response.TopicItem
 import dagger.hilt.android.lifecycle.HiltViewModel
@@ -19,5 +20,6 @@ class DashboardHomeViewModel @Inject constructor():  BaseViewModel(){
     var topicId : String? = "0"
     var isPDF : Boolean? = false
     var pdfId : String? = "0"
+    var liveQuizDashboardItem : LiveDashboardItem ?= null
 
 }

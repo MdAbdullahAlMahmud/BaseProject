@@ -239,7 +239,6 @@ class DashboardActivity : BaseActivity<DashboardViewModel, ActivityDashboardBind
 
 
     override fun menuPressListener() {
-        showToast("Initialed")
 
     }
      fun hideDrawerMenu(){

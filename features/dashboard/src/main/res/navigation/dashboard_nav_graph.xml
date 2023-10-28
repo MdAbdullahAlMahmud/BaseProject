@@ -86,5 +86,14 @@
         android:id="@+id/liveQuizDashboardFragment"
         android:name="com.mkrlabs.dashboard.ui.dashboard.live_exam.LiveQuizDashboardFragment"
         android:label="fragment_live_quiz_dashboard"
-        tools:layout="@layout/fragment_live_quiz_dashboard" />
+        tools:layout="@layout/fragment_live_quiz_dashboard" >
+        <action
+            android:id="@+id/action_liveQuizDashboardFragment_to_liveQuizContentFragment"
+            app:destination="@id/liveQuizContentFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/liveQuizContentFragment"
+        android:name="com.mkrlabs.dashboard.ui.dashboard.live_exam.quiz_content.LiveQuizContentFragment"
+        android:label="fragment_live_quiz_content"
+        tools:layout="@layout/fragment_live_quiz_content" />
 </navigation>

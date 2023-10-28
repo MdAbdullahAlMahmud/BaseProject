@@ -6,4 +6,7 @@
     <string name="app_full_access_buy_package">অ্যাপের ফুল অ্যাক্সেস পেতে
 সাবস্ক্রিপশন প্যাকেজ কিনুন</string>
     <string name="package_kinun">প্যাকেজ কিনুন</string>
+    <string name="upcoming">আপকামিং</string>
+    <string name="archived">আর্কাইভ</string>
+
 </resources>
