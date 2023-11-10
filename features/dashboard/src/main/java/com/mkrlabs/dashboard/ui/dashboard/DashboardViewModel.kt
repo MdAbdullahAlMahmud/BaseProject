@@ -60,8 +60,8 @@ class  DashboardViewModel @Inject constructor(
         list.add(FeatureItem(Features.TOPIC_VITTIK_ONUSILON.code,"টপিকভিত্তিক অনুশীলন","", R.drawable.answer1))
         list.add(FeatureItem(Features.TOPIC_VITTIK_PORIKKHA.code,"টপিকভিত্তিক পরীক্ষা","", R.drawable.topic2))
         list.add(FeatureItem(Features.BISOY_VITTIK_PORIKKHA.code,"বিষয়ভিত্তিক পরীক্ষা","", R.drawable.book1))
-        list.add(FeatureItem("500","মডেল টেস্ট","", R.drawable.model_test_icon))
-        list.add(FeatureItem("501","জব সল্যুশন","", R.drawable.job_solution_icon))
+        list.add(FeatureItem(Features.MODEL_TEST.code,"মডেল টেস্ট","", R.drawable.model_test_icon))
+        list.add(FeatureItem(Features.JOB_SOLUTION.code,"জব সল্যুশন","", R.drawable.job_solution_icon))
 
         _onusilonTopicList.value = SingleLiveEvent(list)
     }
@@ -72,11 +72,11 @@ class  DashboardViewModel @Inject constructor(
         list.add(FeatureItem(Features.GRE_333.code,"GRE 333","", R.drawable.understanding1))
         list.add(FeatureItem(Features.GRE_1000.code,"GRE 1000","", R.drawable.english1))
         list.add(FeatureItem(Features.WORD_SMART_1.code,"Word Smart-1","", R.drawable.word1))
-        list.add(FeatureItem("600","Word Smart-2","", R.drawable.word_smart_2_icon))
-        list.add(FeatureItem("60","Magoosh","", R.drawable.magoosh_icon))
-        list.add(FeatureItem("60","Manhattan","", R.drawable.manhattan_icon))
-        list.add(FeatureItem("60","Previous Vcab","", R.drawable.previous_vocanulary_icon))
-        list.add(FeatureItem("60","Spelling","", R.drawable.spelling_icon))
+        list.add(FeatureItem(Features.WORD_SMART_2.code,"Word Smart-2","", R.drawable.word_smart_2_icon))
+        list.add(FeatureItem(Features.MAGOOSH.code,"Magoosh","", R.drawable.magoosh_icon))
+        list.add(FeatureItem(Features.MAHATTAN.code,"Manhattan","", R.drawable.manhattan_icon))
+        list.add(FeatureItem(Features.PREVIOUS_VCAB.code,"Previous Vcab","", R.drawable.previous_vocanulary_icon))
+        list.add(FeatureItem(Features.SPELLING.code,"Spelling","", R.drawable.spelling_icon))
 
          _vocabularyTopicList.value = SingleLiveEvent(list)
     }
@@ -87,11 +87,11 @@ class  DashboardViewModel @Inject constructor(
         list.add(FeatureItem(Features.NEWSPAPER_EDITORIAL.code,"Newspaper Editorial","", R.drawable.newspaper1))
         list.add(FeatureItem(Features.IDOMS_AND_PHRASES.code,"Idiom & Phrase","", R.drawable.ok1))
         list.add(FeatureItem(Features.GROUP_VERB.code,"Group Verb","", R.drawable.puzzle1))
-        list.add(FeatureItem(Features.GROUP_VERB.code,"Appropriate Preposition","", R.drawable.appropriate_preposition))
-        list.add(FeatureItem(Features.GROUP_VERB.code,"Analogy","", R.drawable.analogy_icon))
-        list.add(FeatureItem(Features.GROUP_VERB.code,"One Word Subject","", R.drawable.one_word_subject_icon))
-        list.add(FeatureItem(Features.GROUP_VERB.code,"Proverb","", R.drawable.proverb_icon))
-        list.add(FeatureItem(Features.GROUP_VERB.code,"Translation","", R.drawable.transaltion_icon))
+        list.add(FeatureItem(Features.APPROPRIATE_PREPOSITION.code,"Appropriate Preposition","", R.drawable.appropriate_preposition))
+        list.add(FeatureItem(Features.ANALOGY.code,"Analogy","", R.drawable.analogy_icon))
+        list.add(FeatureItem(Features.ONE_WORD_SUBJECT.code,"One Word Subject","", R.drawable.one_word_subject_icon))
+        list.add(FeatureItem(Features.PROVERB.code,"Proverb","", R.drawable.proverb_icon))
+        list.add(FeatureItem(Features.TRANSLATION.code,"Translation","", R.drawable.transaltion_icon))
 
         _learnByHeartTopicList.value = SingleLiveEvent(list)
     }
