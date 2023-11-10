@@ -17,6 +17,7 @@ import com.mkrlabs.dashboard.databinding.FragmentDashboardHomeBinding
 import com.mkrlabs.dashboard.ui.dashboard.adapter.FeatureListAdapter
 import com.mkrlabs.dashboard.data.model.enums.Features
 import com.mkrlabs.dashboard.data.model.enums.IndentityCode
+import com.mkrlabs.dashboard.data.model.response.TopicItem
 import com.mkrlabs.dashboard.ui.dashboard.adapter.MiscellaneousAdapter
 import com.mkrlabs.dashboard.utils.KeyConstant
 import dagger.hilt.android.AndroidEntryPoint
@@ -238,63 +239,71 @@ class DashboardFragment : BaseFragment<DashboardViewModel, FragmentDashboardHome
             Features.GRE_333.code ->{
                 sharedViewModel.step = 1
                 sharedViewModel.isPDF = true
-                sharedViewModel.topicId = Categories.PDF_GRE_333.code
-                findNavController().navigate(R.id.action_dashboardFragment_to_topicFragment)
+                var topicItem = TopicItem(cid = Categories.PDF_GRE_333.code )
+                sharedViewModel.topicItem = topicItem
+                findNavController().navigate(R.id.action_dashboardFragment_to_singlePdfListFragment)
 
             }
 
             Features.GRE_1000.code ->{
                 sharedViewModel.step = 1
                 sharedViewModel.isPDF = true
-                sharedViewModel.topicId = Categories.PDF_VOCABULARY_GREE_1000.code
-                findNavController().navigate(R.id.action_dashboardFragment_to_topicFragment)
+                var topicItem = TopicItem(cid =Categories.PDF_VOCABULARY_GREE_1000.code )
+                sharedViewModel.topicItem = topicItem
+                findNavController().navigate(R.id.action_dashboardFragment_to_singlePdfListFragment)
 
             }
 
             Features.WORD_SMART_1.code ->{
                 sharedViewModel.step = 1
                 sharedViewModel.isPDF = true
-                sharedViewModel.topicId = Categories.PDF_WORD_SMART_1.code
-                findNavController().navigate(R.id.action_dashboardFragment_to_topicFragment)
+                var topicItem = TopicItem(cid = Categories.PDF_WORD_SMART_1.code )
+                sharedViewModel.topicItem = topicItem
+                findNavController().navigate(R.id.action_dashboardFragment_to_singlePdfListFragment)
 
             }
 
              Features.WORD_SMART_2.code ->{
                 sharedViewModel.step = 1
                 sharedViewModel.isPDF = true
-                sharedViewModel.topicId = Categories.PDF_WORD_SMART_2.code
-                findNavController().navigate(R.id.action_dashboardFragment_to_topicFragment)
+                 var topicItem = TopicItem(cid = Categories.PDF_WORD_SMART_2.code )
+                 sharedViewModel.topicItem = topicItem
+                 findNavController().navigate(R.id.action_dashboardFragment_to_singlePdfListFragment)
 
             }
 
              Features.MAGOOSH.code ->{
                 sharedViewModel.step = 1
                 sharedViewModel.isPDF = true
-                sharedViewModel.topicId = Categories.PDF_MAGOOSH.code
-                findNavController().navigate(R.id.action_dashboardFragment_to_topicFragment)
+                 var topicItem = TopicItem(cid = Categories.PDF_MAGOOSH.code )
+                 sharedViewModel.topicItem = topicItem
+                 findNavController().navigate(R.id.action_dashboardFragment_to_singlePdfListFragment)
 
             }
 
             Features.MAHATTAN.code ->{
                 sharedViewModel.step = 1
                 sharedViewModel.isPDF = true
-                sharedViewModel.topicId = Categories.PDF_MANHATTAN.code
-                findNavController().navigate(R.id.action_dashboardFragment_to_topicFragment)
+                var topicItem = TopicItem(cid = Categories.PDF_MANHATTAN.code )
+                sharedViewModel.topicItem = topicItem
+                findNavController().navigate(R.id.action_dashboardFragment_to_singlePdfListFragment)
 
             }
 
             Features.PREVIOUS_VCAB.code ->{
                 sharedViewModel.step = 1
                 sharedViewModel.isPDF = true
-                sharedViewModel.topicId = Categories.PDF_PREVIOUS_VOCABULARY.code
-                findNavController().navigate(R.id.action_dashboardFragment_to_topicFragment)
+                var topicItem = TopicItem(cid = Categories.PDF_PREVIOUS_VOCABULARY.code )
+                sharedViewModel.topicItem = topicItem
+                findNavController().navigate(R.id.action_dashboardFragment_to_singlePdfListFragment)
 
             }
             Features.SPELLING.code ->{
                 sharedViewModel.step = 1
                 sharedViewModel.isPDF = true
-                sharedViewModel.topicId = Categories.PDF_SPELLING.code
-                findNavController().navigate(R.id.action_dashboardFragment_to_topicFragment)
+                var topicItem = TopicItem(cid = Categories.PDF_SPELLING.code )
+                sharedViewModel.topicItem = topicItem
+                findNavController().navigate(R.id.action_dashboardFragment_to_singlePdfListFragment)
 
             }
 
@@ -311,24 +320,27 @@ class DashboardFragment : BaseFragment<DashboardViewModel, FragmentDashboardHome
             Features.NEWSPAPER_EDITORIAL.code ->{
                 sharedViewModel.step = 1
                 sharedViewModel.isPDF = true
-                sharedViewModel.topicId = Categories.PDF_NEWSPAPER_EDITORIAL.code
-                findNavController().navigate(R.id.action_dashboardFragment_to_topicFragment)
+                var topicItem = TopicItem(cid = Categories.PDF_NEWSPAPER_EDITORIAL.code )
+                sharedViewModel.topicItem = topicItem
+                findNavController().navigate(R.id.action_dashboardFragment_to_singlePdfListFragment)
 
             }
 
             Features.IDOMS_AND_PHRASES.code ->{
                 sharedViewModel.step = 1
                 sharedViewModel.isPDF = true
-                sharedViewModel.topicId = Categories.PDF_IDOMS_AND_PHRASES.code
-                findNavController().navigate(R.id.action_dashboardFragment_to_topicFragment)
+                var topicItem = TopicItem(cid = Categories.PDF_IDOMS_AND_PHRASES.code )
+                sharedViewModel.topicItem = topicItem
+                findNavController().navigate(R.id.action_dashboardFragment_to_singlePdfListFragment)
 
             }
 
             Features.GROUP_VERB.code ->{
                 sharedViewModel.step = 1
                 sharedViewModel.isPDF = true
-                sharedViewModel.topicId = Categories.PDF_GROUP_VERB.code
-                findNavController().navigate(R.id.action_dashboardFragment_to_topicFragment)
+                var topicItem = TopicItem(cid = Categories.PDF_GROUP_VERB.code )
+                sharedViewModel.topicItem = topicItem
+                findNavController().navigate(R.id.action_dashboardFragment_to_singlePdfListFragment)
 
             }
 
@@ -336,37 +348,42 @@ class DashboardFragment : BaseFragment<DashboardViewModel, FragmentDashboardHome
             Features.APPROPRIATE_PREPOSITION.code ->{
                 sharedViewModel.step = 1
                 sharedViewModel.isPDF = true
-                sharedViewModel.topicId = Categories.PDF_APPROPRIATE_PREPOSITION.code
-                findNavController().navigate(R.id.action_dashboardFragment_to_topicFragment)
+                var topicItem = TopicItem(cid = Categories.PDF_APPROPRIATE_PREPOSITION.code )
+                sharedViewModel.topicItem = topicItem
+                findNavController().navigate(R.id.action_dashboardFragment_to_singlePdfListFragment)
 
             }
 
             Features.ANALOGY.code ->{
                 sharedViewModel.step = 1
                 sharedViewModel.isPDF = true
-                sharedViewModel.topicId = Categories.PDF_ANALOGY.code
-                findNavController().navigate(R.id.action_dashboardFragment_to_topicFragment)
+                var topicItem = TopicItem(cid = Categories.PDF_ANALOGY.code )
+                sharedViewModel.topicItem = topicItem
+                findNavController().navigate(R.id.action_dashboardFragment_to_singlePdfListFragment)
             }
 
             Features.ONE_WORD_SUBJECT.code ->{
                 sharedViewModel.step = 1
                 sharedViewModel.isPDF = true
-                sharedViewModel.topicId = Categories.PDF_ONE_WORD_SUBSTITUTION.code
-                findNavController().navigate(R.id.action_dashboardFragment_to_topicFragment)
+                var topicItem = TopicItem(cid = Categories.PDF_ONE_WORD_SUBSTITUTION.code )
+                sharedViewModel.topicItem = topicItem
+                findNavController().navigate(R.id.action_dashboardFragment_to_singlePdfListFragment)
             }
 
             Features.PROVERB.code ->{
                 sharedViewModel.step = 1
                 sharedViewModel.isPDF = true
-                sharedViewModel.topicId = Categories.PDF_PROVERB.code
-                findNavController().navigate(R.id.action_dashboardFragment_to_topicFragment)
+                var topicItem = TopicItem(cid = Categories.PDF_PROVERB.code )
+                sharedViewModel.topicItem = topicItem
+                findNavController().navigate(R.id.action_dashboardFragment_to_singlePdfListFragment)
             }
 
             Features.TRANSLATION.code ->{
                 sharedViewModel.step = 1
                 sharedViewModel.isPDF = true
-                sharedViewModel.topicId = Categories.PDF_TRANSLATION.code
-                findNavController().navigate(R.id.action_dashboardFragment_to_topicFragment)
+                var topicItem = TopicItem(cid = Categories.PDF_TRANSLATION.code )
+                sharedViewModel.topicItem = topicItem
+                findNavController().navigate(R.id.action_dashboardFragment_to_singlePdfListFragment)
             }
 
         // ------------------------------------------------------------------------------------------
@@ -400,32 +417,34 @@ class DashboardFragment : BaseFragment<DashboardViewModel, FragmentDashboardHome
             Features.BCS_SYLABUS_GUIDELINE.code ->{
                 sharedViewModel.step = 1
                 sharedViewModel.isPDF = true
-                sharedViewModel.topicId = Categories.PDF_BCS_SYLYBUS_AND_GUIDELINE.code
-                findNavController().navigate(R.id.action_dashboardFragment_to_topicFragment)
+                var topicItem = TopicItem(cid = Categories.PDF_BCS_SYLYBUS_AND_GUIDELINE.code )
+                sharedViewModel.topicItem = topicItem
+                findNavController().navigate(R.id.action_dashboardFragment_to_singlePdfListFragment)
             }
 
             Features.BCS_BISLESON.code ->{
                 sharedViewModel.step = 1
                 sharedViewModel.isPDF = true
-                sharedViewModel.topicId = Categories.PDF_BCS_PROSNO_BISLESON.code
-                findNavController().navigate(R.id.action_dashboardFragment_to_topicFragment)
+                var topicItem = TopicItem(cid = Categories.PDF_BCS_PROSNO_BISLESON.code )
+                sharedViewModel.topicItem = topicItem
+                findNavController().navigate(R.id.action_dashboardFragment_to_singlePdfListFragment)
 
             }
 
             Features.COURSE_ROUTINE.code ->{
                 sharedViewModel.step = 1
                 sharedViewModel.isPDF = true
-                sharedViewModel.topicId = Categories.PDF_BCS_COURSE_ROUTINE.code
-                findNavController().navigate(R.id.action_dashboardFragment_to_topicFragment)
-
+                var topicItem = TopicItem(cid = Categories.PDF_BCS_COURSE_ROUTINE.code )
+                sharedViewModel.topicItem = topicItem
+                findNavController().navigate(R.id.action_dashboardFragment_to_singlePdfListFragment)
             }
 
             Features.NIYOG_BIGGOPPTI.code ->{
                 sharedViewModel.step = 1
                 sharedViewModel.isPDF = true
-                sharedViewModel.topicId = Categories.PDF_BCS_NIYOG_BIGOPTTI.code
-                findNavController().navigate(R.id.action_dashboardFragment_to_topicFragment)
-
+                var topicItem = TopicItem(cid = Categories.PDF_BCS_NIYOG_BIGOPTTI.code )
+                sharedViewModel.topicItem = topicItem
+                findNavController().navigate(R.id.action_dashboardFragment_to_singlePdfListFragment)
             }
 
             Features.ANUBADOK.code ->{
@@ -444,9 +463,9 @@ class DashboardFragment : BaseFragment<DashboardViewModel, FragmentDashboardHome
             Features.BANK_SYLABUS_GUIDELINE.code ->{
                 sharedViewModel.step = 1
                 sharedViewModel.isPDF = true
-                sharedViewModel.topicId = Categories.PDF_BANK_SYLYBUS_AND_GUIDELINE.code
-                findNavController().navigate(R.id.action_dashboardFragment_to_topicFragment)
-            }
+                var topicItem = TopicItem(cid = Categories.PDF_BANK_SYLYBUS_AND_GUIDELINE.code )
+                sharedViewModel.topicItem = topicItem
+                findNavController().navigate(R.id.action_dashboardFragment_to_singlePdfListFragment)            }
 
 
 

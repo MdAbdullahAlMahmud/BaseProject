@@ -25,6 +25,12 @@
         <action
             android:id="@+id/action_dashboardFragment_to_liveQuizDashboardFragment"
             app:destination="@id/liveQuizDashboardFragment" />
+        <action
+            android:id="@+id/action_dashboardFragment_to_subTopicFragment"
+            app:destination="@id/subTopicFragment" />
+        <action
+            android:id="@+id/action_dashboardFragment_to_singlePdfListFragment"
+            app:destination="@id/singlePdfListFragment" />
     </fragment>
     <fragment
         android:id="@+id/topicFragment"
@@ -96,4 +102,13 @@
         android:name="com.mkrlabs.dashboard.ui.dashboard.live_exam.quiz_content.LiveQuizContentFragment"
         android:label="fragment_live_quiz_content"
         tools:layout="@layout/fragment_live_quiz_content" />
+    <fragment
+        android:id="@+id/singlePdfListFragment"
+        android:name="com.mkrlabs.dashboard.ui.dashboard.topic.single_pdf.SinglePdfListFragment"
+        android:label="fragment_single_pdf_list"
+        tools:layout="@layout/fragment_single_pdf_list" >
+        <action
+            android:id="@+id/action_singlePdfListFragment_to_pdfPreviewFragment"
+            app:destination="@id/pdfPreviewFragment" />
+    </fragment>
 </navigation>

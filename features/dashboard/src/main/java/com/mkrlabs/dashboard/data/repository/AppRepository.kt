@@ -6,6 +6,7 @@ import com.mkrlabs.dashboard.data.model.request.SubTopicRequest
 import com.mkrlabs.common.core.base.data.model.response.QuizResponseItem
 import com.mkrlabs.dashboard.data.model.request.PDFItemRequest
 import com.mkrlabs.dashboard.data.model.response.PDFItemResponse
+import com.mkrlabs.dashboard.data.model.response.SinglePdfCatItem
 import com.mkrlabs.dashboard.data.model.response.SubTopicItem
 import com.mkrlabs.dashboard.data.model.response.TopicItem
 import retrofit2.Response
@@ -18,4 +19,7 @@ interface AppRepository {
     suspend fun requestQuizList(quizRequestItem: QuizRequestItem) : Response<BaseResponse<List<QuizResponseItem>>>
     suspend fun requestPDFLessonList(quizRequestItem: QuizRequestItem) : Response<BaseResponse<List<QuizResponseItem>>>
     suspend fun requestPdfContent(pdfItemRequest: PDFItemRequest) : Response<BaseResponse<PDFItemResponse>>
+    suspend fun requestSinglePdfCatList( id : String ) : Response<BaseResponse<List<SinglePdfCatItem>>>
+    suspend fun requestSinglePdfId(cid : String, mid : String) : Response<BaseResponse<PDFItemResponse>>
+    suspend fun requestForSinglePDFUrl(pid : String) : Response<BaseResponse<PDFItemResponse>>
 }

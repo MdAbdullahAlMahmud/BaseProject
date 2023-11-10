@@ -17,14 +17,14 @@ enum class Features(val code : String) {
 
 
 
-    GRE_333("201"),
-    GRE_1000("202"),
-    WORD_SMART_1("203"),
-    WORD_SMART_2("204"),
-    MAGOOSH("205"),
-    MAHATTAN("206"),
-    PREVIOUS_VCAB("207"),
-    SPELLING("208"),
+    GRE_333("401"),
+    GRE_1000("402"),
+    WORD_SMART_1("403"),
+    WORD_SMART_2("404"),
+    MAGOOSH("405"),
+    MAHATTAN("406"),
+    PREVIOUS_VCAB("407"),
+    SPELLING("408"),
 
 
 

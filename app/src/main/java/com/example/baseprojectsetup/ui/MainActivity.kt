@@ -37,11 +37,14 @@ class MainActivity : BaseActivity<MainViewModel, ActivityMainBinding>(),
         initViews()
     }
     fun setInitialScreenProperties() {
-        if (isAuthenticated()) {
+        /*if (isAuthenticated()) {
             val mainIntent = Intent(this, DashboardActivity::class.java)
             startActivity(mainIntent)
             finish()
-        }
+        }*/
+        val mainIntent = Intent(this, DashboardActivity::class.java)
+        startActivity(mainIntent)
+        finish()
     }
 
 

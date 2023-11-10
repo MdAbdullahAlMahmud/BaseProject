@@ -1,5 +1,6 @@
 package com.mkrlabs.dashboard.ui.dashboard.topic
 
+import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.viewModelScope
@@ -10,6 +11,7 @@ import com.mkrlabs.dashboard.data.model.request.SubTopicRequest
 import com.mkrlabs.common.core.base.data.model.response.QuizResponseItem
 import com.mkrlabs.dashboard.data.model.request.PDFItemRequest
 import com.mkrlabs.dashboard.data.model.response.PDFItemResponse
+import com.mkrlabs.dashboard.data.model.response.SinglePdfCatItem
 import com.mkrlabs.dashboard.data.model.response.SubTopicItem
 import com.mkrlabs.dashboard.data.model.response.TopicItem
 import com.mkrlabs.dashboard.data.repository.AppRepository
@@ -34,6 +36,13 @@ class TopicViewModel @Inject constructor(
     private val _pdfContent = MutableLiveData<SingleLiveEvent<PDFItemResponse>>()
     val pdfContent : LiveData<SingleLiveEvent<PDFItemResponse>> = _pdfContent
 
+    private val _pdfUrlResponse = MutableLiveData<SingleLiveEvent<PDFItemResponse>>()
+    val pdfUrlResponse : LiveData<SingleLiveEvent<PDFItemResponse>> = _pdfUrlResponse
+
+
+
+    private val _singleTopicList = MutableLiveData<SingleLiveEvent<List<SinglePdfCatItem>>>()
+    val singleTopicList : LiveData<SingleLiveEvent<List<SinglePdfCatItem>>> = _singleTopicList
 
 
     fun getTopicList(topicId : String){
@@ -49,6 +58,14 @@ class TopicViewModel @Inject constructor(
             val  result = callService { appRepository.requestPDFTopicList(topicId) }
             result?.data?.let {
                 _topicList.value = SingleLiveEvent(it)
+            }
+        }
+    }
+    fun getSinglePDFTopicList(topicId: String) {
+        viewModelScope.launch {
+            val result = callService { appRepository.requestSinglePdfCatList(topicId) }
+            result?.data?.let {
+                _singleTopicList.value = SingleLiveEvent(it)
             }
         }
     }
@@ -98,6 +115,26 @@ class TopicViewModel @Inject constructor(
             }
         }
     }
+
+
+    fun requestForPdfId(cid : String , mid : String){
+        viewModelScope.launch {
+            val  result = callService { appRepository.requestSinglePdfId(cid,mid)}
+            result?.data?.let {
+                _pdfContent.value = SingleLiveEvent(it)
+            }
+        }
+    }
+
+    fun requestForSinglePDFUrl(pdfId: String){
+        viewModelScope.launch {
+            val  result = callService { appRepository.requestForSinglePDFUrl(pdfId)}
+            result?.data?.let {
+                _pdfUrlResponse.value = SingleLiveEvent(it)
+            }
+        }
+    }
+
 
 
 

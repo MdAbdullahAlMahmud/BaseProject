@@ -6,6 +6,7 @@ import com.mkrlabs.dashboard.data.model.request.SubTopicRequest
 import com.mkrlabs.common.core.base.data.model.response.QuizResponseItem
 import com.mkrlabs.dashboard.data.model.request.PDFItemRequest
 import com.mkrlabs.dashboard.data.model.response.PDFItemResponse
+import com.mkrlabs.dashboard.data.model.response.SinglePdfCatItem
 import com.mkrlabs.dashboard.data.model.response.SubTopicItem
 import com.mkrlabs.dashboard.data.model.response.TopicItem
 import com.mkrlabs.dashboard.data.repository.AppRepository
@@ -39,6 +40,21 @@ class AppRepositoryImpl @Inject constructor(
 
     override suspend fun requestPdfContent(pdfItemRequest: PDFItemRequest): Response<BaseResponse<PDFItemResponse>> {
         return topicService.getPDFContent(pdfItemRequest.pdf_id.toString())
+    }
+
+    override suspend fun requestSinglePdfCatList(id: String): Response<BaseResponse<List<SinglePdfCatItem>>> {
+        return topicService.getSinglePDFCatList(id)
+    }
+
+    override suspend fun requestSinglePdfId(
+        cid: String,
+        mid: String
+    ): Response<BaseResponse<PDFItemResponse>> {
+        return topicService.getSinglePdfId(cid,mid)
+    }
+
+    override suspend fun requestForSinglePDFUrl(pid: String): Response<BaseResponse<PDFItemResponse>> {
+        return topicService.getPDFContent(pid)
     }
 
 

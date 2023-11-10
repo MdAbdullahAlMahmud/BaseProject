@@ -3,6 +3,7 @@ package com.mkrlabs.dashboard.data.services
 import com.mkrlabs.common.core.base.data.model.BaseResponse
 import com.mkrlabs.common.core.base.data.model.response.QuizResponseItem
 import com.mkrlabs.dashboard.data.model.response.PDFItemResponse
+import com.mkrlabs.dashboard.data.model.response.SinglePdfCatItem
 import com.mkrlabs.dashboard.data.model.response.SubTopicItem
 import com.mkrlabs.dashboard.data.model.response.TopicItem
 import retrofit2.Response
@@ -61,4 +62,21 @@ interface TopicService {
     suspend fun getPDFContent(
         @Field("pdf_id") pdf_id : String,
     ) : Response<BaseResponse<PDFItemResponse>>
+    @FormUrlEncoded
+    @POST("api.php?single_pdf_cat_list")
+    suspend fun getSinglePDFCatList(
+        @Field("topic_id") id : String,
+    ) : Response<BaseResponse<List<SinglePdfCatItem>>>
+
+    @FormUrlEncoded
+    @POST("api.php?single_pdf_id")
+    suspend fun getSinglePdfId(
+        @Field("cat_id") mid : String,
+        @Field("sub_cat_id") cid : String,
+    ) : Response<BaseResponse<PDFItemResponse>>
+
+
+
+
+
 }
