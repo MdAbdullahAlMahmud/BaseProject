@@ -45,7 +45,6 @@ class QuizFragment : BaseFragment<QuizViewModel, FragmentQuizBinding>() {
     private fun initView() {
         callOnInit()
         initAdapter()
-        startCountdown()
 
     }
     private fun callOnInit(){
@@ -62,7 +61,7 @@ class QuizFragment : BaseFragment<QuizViewModel, FragmentQuizBinding>() {
     private fun setObserver() {
         mViewModel.quizQuestionList.observe(viewLifecycleOwner, Observer {
             it?.getContentIfNotHandled()?.let { data ->
-
+                startCountdown()
                 adapter?.submitList(data)
 
             }
