@@ -4,6 +4,7 @@ import android.graphics.Color
 import android.text.Spannable
 import android.text.SpannableStringBuilder
 import android.text.style.ForegroundColorSpan
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -67,7 +68,43 @@ class QuizResultPreviewAdapter :
 
         fun setAnswerPreview(item: QuizQuestionItem) {
             if (item.userChoice == null) {
+                when(item.answer){
+                    QuestionAnswer.Choice_A.toString() -> {
+                        binding.questionOption.optionA.optionItemBox.background = ContextCompat.getDrawable(binding.root.context, com.mkrlabs.common.R.drawable.no_ans_background_style)
+                        binding.questionOption.optionA.optionStatus.visibility = View.VISIBLE
+                        binding.questionOption.optionA.optionStatus.setImageResource(com.mkrlabs.common.R.drawable.baseline_right_ans_circle_24)
 
+                    }
+                    QuestionAnswer.Choice_B.toString() -> {
+                        binding.questionOption.optionB.optionItemBox.background = ContextCompat.getDrawable(binding.root.context, com.mkrlabs.common.R.drawable.no_ans_background_style)
+                        binding.questionOption.optionB.optionStatus.visibility = View.VISIBLE
+                        binding.questionOption.optionB.optionStatus.setImageResource(com.mkrlabs.common.R.drawable.baseline_right_ans_circle_24)
+
+                    }
+
+                    QuestionAnswer.Choice_C.toString() -> {
+                        binding.questionOption.optionC.optionItemBox.background = ContextCompat.getDrawable(binding.root.context, com.mkrlabs.common.R.drawable.no_ans_background_style)
+                        binding.questionOption.optionC.optionStatus.visibility = View.VISIBLE
+                        binding.questionOption.optionC.optionStatus.setImageResource(com.mkrlabs.common.R.drawable.baseline_right_ans_circle_24)
+
+                    }
+
+                    QuestionAnswer.Choice_D.toString() -> {
+                        binding.questionOption.optionD.optionItemBox.background = ContextCompat.getDrawable(binding.root.context, com.mkrlabs.common.R.drawable.no_ans_background_style)
+                        binding.questionOption.optionD.optionStatus.visibility = View.VISIBLE
+                        binding.questionOption.optionD.optionStatus.setImageResource(com.mkrlabs.common.R.drawable.baseline_right_ans_circle_24)
+
+                    }
+
+                    QuestionAnswer.Choice_E.toString() -> {
+                        binding.questionOption.optionE.optionItemBox.background = ContextCompat.getDrawable(binding.root.context, com.mkrlabs.common.R.drawable.no_ans_background_style)
+                        binding.questionOption.optionE.optionStatus.visibility = View.VISIBLE
+                        binding.questionOption.optionE.optionStatus.setImageResource(com.mkrlabs.common.R.drawable.baseline_right_ans_circle_24)
+
+                    }
+                }
+
+                Log.v("Quiz","-------------Choice Null-----------------")
             } else if (item.userChoice?.value.equals(item.answer)) {
                 when (item.userChoice) {
                     QuestionAnswer.Choice_A -> {

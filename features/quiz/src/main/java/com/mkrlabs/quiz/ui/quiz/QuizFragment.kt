@@ -18,6 +18,7 @@ import com.mkrlabs.quiz.databinding.FragmentQuizBinding
 import com.mkrlabs.quiz.ui.QuizHomeViewModel
 import com.mkrlabs.quiz.ui.quiz.adapter.QuizQuestionAdapter
 import dagger.hilt.android.AndroidEntryPoint
+import kotlin.time.Duration.Companion.minutes
 
 @AndroidEntryPoint
 class QuizFragment : BaseFragment<QuizViewModel, FragmentQuizBinding>() {
@@ -25,7 +26,7 @@ class QuizFragment : BaseFragment<QuizViewModel, FragmentQuizBinding>() {
     private val sharedQuizViewModel: QuizHomeViewModel by activityViewModels()
     private var countdownTimer: CountDownTimer? = null
 
-    private var QUIZ_DURATION = 1
+    private var QUIZ_DURATION = 1L
     override fun getViewBinding(): FragmentQuizBinding = FragmentQuizBinding.inflate(layoutInflater)
     private var adapter: QuizQuestionAdapter? = null
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -73,7 +74,16 @@ class QuizFragment : BaseFragment<QuizViewModel, FragmentQuizBinding>() {
     }
     private fun startCountdown() {
         val activity = requireActivity()
-        val totalTimeInMillis = QUIZ_DURATION * 60000 // Total countdown time in milliseconds (e.g., 1 minute)
+
+
+        sharedQuizViewModel.quizItem?.quiz_time?.let {
+            val quizTimeInSec = it.toLong()
+            //val quizTimeInMinutes = quizTimeInSec/ 60.0
+            QUIZ_DURATION = quizTimeInSec.toLong()
+        }
+
+
+        val totalTimeInMillis = QUIZ_DURATION * 1000 // Total countdown time in milliseconds (e.g., 1 minute)
 
         var timePassed = 0L
         countdownTimer = object : CountDownTimer(totalTimeInMillis.toLong(), 1000) {
@@ -103,7 +113,8 @@ class QuizFragment : BaseFragment<QuizViewModel, FragmentQuizBinding>() {
             title = "Time Over",
             positiveText = "Continue",
             positiveFunction = {
-                showToast("Completed")
+                storeUserAnswerAndRedirect()
+                //showToast("Completed")
             }
         )
     }
