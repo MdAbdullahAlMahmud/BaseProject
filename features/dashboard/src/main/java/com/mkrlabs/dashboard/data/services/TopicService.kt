@@ -1,7 +1,9 @@
 package com.mkrlabs.dashboard.data.services
 
 import com.mkrlabs.common.core.base.data.model.BaseResponse
+import com.mkrlabs.common.core.base.data.model.response.LiveQuizResponseItem
 import com.mkrlabs.common.core.base.data.model.response.QuizResponseItem
+import com.mkrlabs.dashboard.data.model.response.LiveDashboardItem
 import com.mkrlabs.dashboard.data.model.response.PDFItemResponse
 import com.mkrlabs.dashboard.data.model.response.SinglePdfCatItem
 import com.mkrlabs.dashboard.data.model.response.SubTopicItem
@@ -32,6 +34,17 @@ interface TopicService {
         @Field("cat_id") cat_id : String,
         @Field("sub_cat_id") sub_cat_id : String
     ) : Response<BaseResponse<List<QuizResponseItem>>>
+
+
+    @FormUrlEncoded
+    @POST("api.php?live_quiz_list")
+    suspend fun getLiveQuizList(
+        @Field("cat_id") cat_id : String,
+        @Field("sub_cat_id") sub_cat_id : String
+    ) : Response<BaseResponse<List<LiveQuizResponseItem>>>
+
+
+
 
 
 
@@ -76,7 +89,8 @@ interface TopicService {
     ) : Response<BaseResponse<PDFItemResponse>>
 
 
-
+    @GET("api.php?liveQuizTopic")
+    suspend fun requestLiveTopicList() : Response<BaseResponse<List<LiveDashboardItem>>>
 
 
 }

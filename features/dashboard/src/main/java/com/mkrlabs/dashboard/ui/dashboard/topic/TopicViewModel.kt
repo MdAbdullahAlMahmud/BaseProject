@@ -33,6 +33,10 @@ class TopicViewModel @Inject constructor(
     private val _quizList = MutableLiveData<SingleLiveEvent<List<QuizResponseItem>>>()
     val quizList : LiveData<SingleLiveEvent<List<QuizResponseItem>>> = _quizList
 
+
+
+
+
     private val _pdfContent = MutableLiveData<SingleLiveEvent<PDFItemResponse>>()
     val pdfContent : LiveData<SingleLiveEvent<PDFItemResponse>> = _pdfContent
 
@@ -99,6 +103,10 @@ class TopicViewModel @Inject constructor(
             }
         }
     }
+
+
+
+
     fun getPDFLessonList(quizRequestItem: QuizRequestItem){
         viewModelScope.launch {
             val  result = callService {  appRepository.requestPDFLessonList(quizRequestItem)}

@@ -11,15 +11,15 @@ object IndentityCode {
     }
 
     enum class MiscellaneousCategory(val code : String){
-        SAMPROTIK_THOTTHO("1"),
-        TEXTBOOK("2"),
+        SAMPROTIK_THOTTHO("31"),
+        TEXTBOOK("30"),
         SOMBADPOTRO("3"),
         BCS_SYLABUS_GUIDELINE("4"),
         BCS_BISLESON("5"),
         COURSE_ROUTINE("6"),
         NIYOG_BIGGOPPTI("7"),
         ANUBADOK("8"),
-        ITIHASER_PATAI("9"),
+        ITIHASER_PATAI("32"),
         BANK_SYLABUS_GUIDELINE("10"),
     }
 

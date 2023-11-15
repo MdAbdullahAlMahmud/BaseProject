@@ -10,8 +10,10 @@ import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
 import com.mkrlabs.common.R
 import com.mkrlabs.common.core.base.BaseFragment
+import com.mkrlabs.common.core.base.data.model.response.LiveQuizResponseItem
 import com.mkrlabs.dashboard.DashboardActivity
 import com.mkrlabs.dashboard.DashboardHomeViewModel
+import com.mkrlabs.dashboard.data.model.request.QuizRequestItem
 import com.mkrlabs.dashboard.data.model.response.LiveQuizItem
 import com.mkrlabs.dashboard.databinding.FragmentLiveQuizContentBinding
 import com.mkrlabs.dashboard.ui.dashboard.live_exam.LiveQuizViewModel
@@ -31,10 +33,10 @@ class LiveQuizContentFragment : BaseFragment<LiveQuizViewModel, FragmentLiveQuiz
     private val  liveListAdapter : LiveQuizAdapter = LiveQuizAdapter(this::onItemClicked)
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        getInitialData()
     }
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        getInitialData()
         setObserver()
         initView()
         setClickListener()
@@ -101,9 +103,13 @@ class LiveQuizContentFragment : BaseFragment<LiveQuizViewModel, FragmentLiveQuiz
     }
 
     private fun getInitialData(){
-        mViewModel.requestLiveQuizList()
+        //mViewModel.requestLiveQuizList()
+
+
+        val quizRequestItem = QuizRequestItem(cat_id = "47", sub_cat_id = "0")
+        mViewModel.getLiveQuizList(quizRequestItem)
     }
-    private fun onItemClicked(item : LiveQuizItem){
+    private fun onItemClicked(item : LiveQuizResponseItem){
 
     }
     override fun setDefaultProperties() {

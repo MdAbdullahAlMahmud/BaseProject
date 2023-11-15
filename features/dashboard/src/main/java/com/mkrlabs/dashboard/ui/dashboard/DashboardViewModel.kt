@@ -2,6 +2,7 @@ package com.mkrlabs.dashboard.ui.dashboard
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
+import androidx.lifecycle.viewModelScope
 import com.mkrlabs.common.R
 import com.mkrlabs.common.core.base.BaseViewModel
 import com.mkrlabs.common.core.base.utils.SingleLiveEvent
@@ -11,6 +12,7 @@ import com.mkrlabs.dashboard.data.model.enums.IndentityCode
 import com.mkrlabs.dashboard.data.model.response.LiveDashboardItem
 import com.mkrlabs.dashboard.data.repository.AppRepository
 import dagger.hilt.android.lifecycle.HiltViewModel
+import kotlinx.coroutines.launch
 import javax.inject.Inject
 
 @HiltViewModel
@@ -114,14 +116,13 @@ class  DashboardViewModel @Inject constructor(
 
 
     fun getLiveQuizTopicListTopicList(){
-        var list = arrayListOf<LiveDashboardItem>()
 
-        list.add(LiveDashboardItem("101","BCS প্রস্তুতি ১৮০ দিন"))
-        list.add(LiveDashboardItem("102","BCS প্রস্তুতি ১২০ দিন"))
-        list.add(LiveDashboardItem("103","প্রাইমারি প্রস্তুতি ১৮০ দিন"))
-        list.add(LiveDashboardItem("104","প্রাইমারি প্রস্তুতি ১৮০ দিন"))
-
-        _liveQuizTopicList.value = SingleLiveEvent(list)
+        viewModelScope.launch {
+            val result = callService { appRepository.requestLiveQuizTopic() }
+            result?.data?.let {
+                _liveQuizTopicList.value = SingleLiveEvent(it)
+            }
+        }
     }
 
 

@@ -5,16 +5,17 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.RecyclerView
+import com.mkrlabs.common.core.base.data.model.response.LiveQuizResponseItem
 import com.mkrlabs.dashboard.R
 import com.mkrlabs.dashboard.data.model.response.LiveQuizItem
 import com.mkrlabs.dashboard.databinding.LiveQuizItemBinding
 
-class LiveQuizAdapter (private val onItemClicked: (item: LiveQuizItem) -> Unit) :
+class LiveQuizAdapter (private val onItemClicked: (item: LiveQuizResponseItem) -> Unit) :
     RecyclerView.Adapter<LiveQuizAdapter.LiveQuizListViewHolder>(){
 
-    private  val items = arrayListOf<LiveQuizItem>()
+    private  val items = arrayListOf<LiveQuizResponseItem>()
 
-    fun submitList (data : List<LiveQuizItem>){
+    fun submitList (data : List<LiveQuizResponseItem>){
         items.clear()
         items.addAll(data)
         notifyDataSetChanged()
@@ -40,9 +41,12 @@ class LiveQuizAdapter (private val onItemClicked: (item: LiveQuizItem) -> Unit) 
 
 
     class  LiveQuizListViewHolder(val  featureItemBinding : LiveQuizItemBinding) : RecyclerView.ViewHolder(featureItemBinding.root){
-        fun bind(item: LiveQuizItem,context: Context){
-            featureItemBinding.quizNameTitleTV.text = item.title
-            if (item.isResultPublished == true){
+        fun bind(item: LiveQuizResponseItem,context: Context){
+            featureItemBinding.quizNameTitleTV.text = item.quiz_title
+            featureItemBinding.noOfQuestions.text = "Quiestions ${item.no_of_question}"
+            featureItemBinding.quizTime.text = "Time : ${item.quiz_time } min"
+            featureItemBinding.headerSection.quizDate.text = "Date : ${item.quiz_date }"
+            if (true == true){
                 featureItemBinding.examDinBtn.isEnabled = false
                 featureItemBinding.examDinBtn.alpha = 0.5f
                 featureItemBinding.quizBottomSection.folafolTv.setTextColor(ContextCompat.getColor(context, com.mkrlabs.common.R.color.text_default))
