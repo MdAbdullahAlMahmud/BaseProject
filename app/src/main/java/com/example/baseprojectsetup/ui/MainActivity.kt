@@ -19,6 +19,7 @@ import com.mkrlabs.common.core.base.interfaces.Communicator
 import com.mkrlabs.common.core.base.utils.AppConstant
 import com.mkrlabs.common.core.base.utils.IntentExtras
 import com.mkrlabs.dashboard.DashboardActivity
+import com.mkrlabs.live_quiz.LiveQuizActivity
 import com.mkrlabs.quiz.QuizActivity
 import dagger.hilt.android.AndroidEntryPoint
 
@@ -108,6 +109,11 @@ class MainActivity : BaseActivity<MainViewModel, ActivityMainBinding>(),
 
 
     }
+
+    override fun gotoLiveQuizActivity(quizItem: QuizResponseItem?) {
+        val intent = Intent(this, LiveQuizActivity::class.java)
+        intent.putExtra(IntentExtras.QUIZ_ITEM, quizItem)
+        startActivity(intent)    }
 
 
 

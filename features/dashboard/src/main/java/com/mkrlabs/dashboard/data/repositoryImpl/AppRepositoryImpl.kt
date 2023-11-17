@@ -6,6 +6,7 @@ import com.mkrlabs.dashboard.data.model.request.QuizRequestItem
 import com.mkrlabs.dashboard.data.model.request.SubTopicRequest
 import com.mkrlabs.common.core.base.data.model.response.QuizResponseItem
 import com.mkrlabs.dashboard.data.model.request.PDFItemRequest
+import com.mkrlabs.dashboard.data.model.response.LeaderBoardItem
 import com.mkrlabs.dashboard.data.model.response.LiveDashboardItem
 import com.mkrlabs.dashboard.data.model.response.PDFItemResponse
 import com.mkrlabs.dashboard.data.model.response.SinglePdfCatItem
@@ -66,6 +67,9 @@ class AppRepositoryImpl @Inject constructor(
 
     override suspend fun requestLiveQuizList(liveQuizRequestItem: QuizRequestItem): Response<BaseResponse<List<LiveQuizResponseItem>>> {
         return topicService.getLiveQuizList(liveQuizRequestItem.cat_id.toString(),liveQuizRequestItem.sub_cat_id.toString())
+    }
+    override suspend fun requestLeaderBoard(qz_id: String): Response<BaseResponse<List<LeaderBoardItem>>> {
+        return topicService.requestLeaderBoardList(qz_id)
     }
 
 }

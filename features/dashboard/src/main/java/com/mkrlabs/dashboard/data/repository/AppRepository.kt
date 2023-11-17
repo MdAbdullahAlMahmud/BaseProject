@@ -6,12 +6,16 @@ import com.mkrlabs.dashboard.data.model.request.QuizRequestItem
 import com.mkrlabs.dashboard.data.model.request.SubTopicRequest
 import com.mkrlabs.common.core.base.data.model.response.QuizResponseItem
 import com.mkrlabs.dashboard.data.model.request.PDFItemRequest
+import com.mkrlabs.dashboard.data.model.response.LeaderBoardItem
 import com.mkrlabs.dashboard.data.model.response.LiveDashboardItem
 import com.mkrlabs.dashboard.data.model.response.PDFItemResponse
 import com.mkrlabs.dashboard.data.model.response.SinglePdfCatItem
 import com.mkrlabs.dashboard.data.model.response.SubTopicItem
 import com.mkrlabs.dashboard.data.model.response.TopicItem
 import retrofit2.Response
+import retrofit2.http.Field
+import retrofit2.http.FormUrlEncoded
+import retrofit2.http.POST
 
 interface AppRepository {
     suspend fun requestTopicList(topicId : String) : Response<BaseResponse<List<TopicItem>>>
@@ -27,4 +31,6 @@ interface AppRepository {
     suspend fun requestForSinglePDFUrl(pid : String) : Response<BaseResponse<PDFItemResponse>>
 
     suspend fun requestLiveQuizTopic() : Response<BaseResponse<List<LiveDashboardItem>>>
+    suspend fun requestLeaderBoard(qz_id : String) : Response<BaseResponse<List<LeaderBoardItem>>>
+
 }

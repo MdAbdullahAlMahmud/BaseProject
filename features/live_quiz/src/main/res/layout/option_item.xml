@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<com.google.android.material.card.MaterialCardView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_marginHorizontal="@dimen/_8sdp"
+    android:layout_marginVertical="@dimen/_4sdp"
+    app:cardCornerRadius="@dimen/_10sdp"
+    android:padding="@dimen/_8sdp">
+
+    <LinearLayout
+        android:id="@+id/optionItemBox"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center_vertical"
+        android:orientation="horizontal"
+        android:padding="@dimen/_4sdp"
+        android:background="@drawable/option_seleceted_default"
+        android:foreground="?android:attr/selectableItemBackgroundBorderless"
+        >
+
+        <TextView
+            android:id="@+id/optionTitle"
+            style="@style/open_sans_regular_16"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:padding="@dimen/_8sdp"
+            android:text="@string/option_a" />
+
+        <TextView
+            android:id="@+id/optionDesc"
+            style="@style/open_sans_regular_16"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="wrap_content"
+            android:text="@string/option_a_desc" />
+        <ImageView
+            android:id="@+id/optionStatus"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:visibility="gone"
+            />
+
+
+    </LinearLayout>
+
+
+
+</com.google.android.material.card.MaterialCardView>
+

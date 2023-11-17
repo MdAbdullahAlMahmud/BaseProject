@@ -101,7 +101,11 @@
         android:id="@+id/liveQuizContentFragment"
         android:name="com.mkrlabs.dashboard.ui.dashboard.live_exam.quiz_content.LiveQuizContentFragment"
         android:label="fragment_live_quiz_content"
-        tools:layout="@layout/fragment_live_quiz_content" />
+        tools:layout="@layout/fragment_live_quiz_content" >
+        <action
+            android:id="@+id/action_liveQuizContentFragment_to_leaderBoardFragment"
+            app:destination="@id/leaderBoardFragment" />
+    </fragment>
     <fragment
         android:id="@+id/singlePdfListFragment"
         android:name="com.mkrlabs.dashboard.ui.dashboard.topic.single_pdf.SinglePdfListFragment"
@@ -111,4 +115,8 @@
             android:id="@+id/action_singlePdfListFragment_to_pdfPreviewFragment"
             app:destination="@id/pdfPreviewFragment" />
     </fragment>
+    <fragment
+        android:id="@+id/leaderBoardFragment"
+        android:name="com.mkrlabs.dashboard.ui.dashboard.live_exam.leaderboard.LeaderBoardFragment"
+        android:label="LeaderBoardFragment" />
 </navigation>

@@ -1,6 +1,7 @@
 package com.mkrlabs.dashboard.ui.dashboard.live_exam.quiz_content
 
 import android.os.Bundle
+import android.util.Log
 import android.view.View
 import androidx.appcompat.widget.AppCompatTextView
 import androidx.core.content.ContextCompat
@@ -8,9 +9,11 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
+import androidx.navigation.fragment.findNavController
 import com.mkrlabs.common.R
 import com.mkrlabs.common.core.base.BaseFragment
 import com.mkrlabs.common.core.base.data.model.response.LiveQuizResponseItem
+import com.mkrlabs.common.core.base.interfaces.CommunicatorImpl
 import com.mkrlabs.dashboard.DashboardActivity
 import com.mkrlabs.dashboard.DashboardHomeViewModel
 import com.mkrlabs.dashboard.data.model.request.QuizRequestItem
@@ -30,7 +33,7 @@ class LiveQuizContentFragment : BaseFragment<LiveQuizViewModel, FragmentLiveQuiz
     private var isUpcoming: Boolean = true;
 
 
-    private val  liveListAdapter : LiveQuizAdapter = LiveQuizAdapter(this::onItemClicked)
+    private val  liveListAdapter : LiveQuizAdapter = LiveQuizAdapter(this::onItemClicked ,this::medhaTalikaClicked)
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
     }
@@ -60,6 +63,13 @@ class LiveQuizContentFragment : BaseFragment<LiveQuizViewModel, FragmentLiveQuiz
                 isUpcoming=false
             }
         }
+
+
+    }
+
+    fun medhaTalikaClicked(item: LiveQuizResponseItem){
+        sharedViewModel.quizItem = item
+        findNavController().navigate(com.mkrlabs.dashboard.R.id.action_liveQuizContentFragment_to_leaderBoardFragment)
     }
 
     private fun resetLimitTitleBackground(view: View) {
@@ -106,10 +116,14 @@ class LiveQuizContentFragment : BaseFragment<LiveQuizViewModel, FragmentLiveQuiz
         //mViewModel.requestLiveQuizList()
 
 
-        val quizRequestItem = QuizRequestItem(cat_id = "47", sub_cat_id = "0")
+        val quizRequestItem = QuizRequestItem(sharedViewModel.liveQuizDashboardItem?.cid.toString(), sub_cat_id = "0")
         mViewModel.getLiveQuizList(quizRequestItem)
     }
-    private fun onItemClicked(item : LiveQuizResponseItem){
+    private fun onItemClicked(quizResponseItem : LiveQuizResponseItem){
+
+        Log.v("Live","live Quiz item  ---------------------${quizResponseItem.toString()}----------------------------")
+        CommunicatorImpl.callback?.gotoLiveQuizActivity(quizResponseItem)
+
 
     }
     override fun setDefaultProperties() {

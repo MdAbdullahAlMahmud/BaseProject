@@ -8,4 +8,5 @@ interface Communicator {
 
     fun gotoDashboard(navCode : Int = 0)
     fun gotoQuizActivity(quizItem : QuizResponseItem? = null)
+    fun gotoLiveQuizActivity(quizItem : QuizResponseItem? = null)
 }

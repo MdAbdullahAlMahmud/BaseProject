@@ -7,6 +7,7 @@ import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
 import androidx.navigation.fragment.findNavController
 import com.mkrlabs.common.core.base.BaseFragment
+import com.mkrlabs.common.core.base.utils.AppConstant
 import com.mkrlabs.common.core.base.utils.AppConstant.USER_ID
 import com.mkrlabs.dashboard.DashboardActivity
 import com.mkrlabs.dashboard.DashboardHomeViewModel
@@ -41,7 +42,7 @@ class DashboardFragment : BaseFragment<DashboardViewModel, FragmentDashboardHome
         initAdapter()
         setClickListener()
         setObserver()
-
+        showToast("User Id ${getStringPreferenceData(USER_ID)}")
     }
 
 

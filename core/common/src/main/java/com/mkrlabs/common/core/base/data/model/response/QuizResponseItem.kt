@@ -2,7 +2,7 @@ package com.mkrlabs.common.core.base.data.model.response
 
 import java.io.Serializable
 
-class QuizResponseItem : Serializable{
+open class QuizResponseItem : Serializable{
     val cat_id: String ? = null
     val category_name: String? = null
     val no_of_question: String? = null

@@ -1,5 +1,6 @@
 package com.mkrlabs.dashboard.ui.dashboard.live_exam
 
+import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.viewModelScope
@@ -9,6 +10,7 @@ import com.mkrlabs.common.core.base.data.model.response.QuizResponseItem
 import com.mkrlabs.common.core.base.utils.SingleLiveEvent
 import com.mkrlabs.dashboard.data.model.FeatureItem
 import com.mkrlabs.dashboard.data.model.request.QuizRequestItem
+import com.mkrlabs.dashboard.data.model.response.LeaderBoardItem
 import com.mkrlabs.dashboard.data.model.response.LiveQuizItem
 import com.mkrlabs.dashboard.data.repository.AppRepository
 import dagger.hilt.android.lifecycle.HiltViewModel
@@ -27,6 +29,10 @@ class LiveQuizViewModel @Inject constructor(
 
     private val _liveQuizAllList = MutableLiveData<SingleLiveEvent<List<QuizResponseItem>>>()
     val liveAllQuizList : LiveData<SingleLiveEvent<List<QuizResponseItem>>> = _liveQuizAllList
+
+    private val _leaderBoard = MutableLiveData<SingleLiveEvent<List<LeaderBoardItem>>>()
+    val leaderBoard: LiveData<SingleLiveEvent<List<LeaderBoardItem>>> = _leaderBoard
+
     fun  requestLiveQuizList(){
 
         viewModelScope.launch {
@@ -66,6 +72,16 @@ class LiveQuizViewModel @Inject constructor(
 
                 }*/
                 _liveQuizList.value = SingleLiveEvent(it)
+            }
+        }
+    }
+
+    fun requestLeaderBoard(qz_id : String){
+        Log.v("live","------------------------$qz_id---------------------------")
+        viewModelScope.launch {
+            val  result = callService { appRepository.requestLeaderBoard(qz_id) }
+            result?.data?.let {
+                _leaderBoard.value = SingleLiveEvent(it)
             }
         }
     }

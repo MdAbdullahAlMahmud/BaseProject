@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/live_quiz_nav"
+    app:startDestination="@id/liveQuizFragment">
+
+
+    <fragment
+        android:id="@+id/quizResultFragment"
+        android:name="com.mkrlabs.live_quiz.ui.quiz_result.QuizResultFragment"
+        android:label="fragment_quiz_result"
+        tools:layout="@layout/fragment_quiz_result" />
+    <fragment
+        android:id="@+id/liveQuizFragment"
+        android:name="com.mkrlabs.live_quiz.ui.quiz.LiveQuizFragment"
+        android:label="fragment_live_quiz"
+        tools:layout="@layout/fragment_live_quiz" >
+        <action
+            android:id="@+id/action_liveQuizFragment_to_quizResultFragment"
+            app:destination="@id/quizResultFragment" />
+    </fragment>
+</navigation>
