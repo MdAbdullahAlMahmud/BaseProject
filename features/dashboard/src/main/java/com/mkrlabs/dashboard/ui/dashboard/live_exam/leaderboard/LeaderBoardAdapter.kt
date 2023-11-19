@@ -37,10 +37,10 @@ class LeaderBoardAdapter (private val onItemClicked: (item: LeaderBoardItem) -> 
     class LeaderBoardListViewHolder(val binding: LeaderBoardItemBinding) :
         RecyclerView.ViewHolder(binding.root) {
         fun bind(item: LeaderBoardItem,position: Int) {
-            binding.leaderUserName.text = "User name"
+            binding.leaderUserName.text = "${item.name}"
             binding.leaderRankTv.text ="${ position +4}"
-            binding.leaderTimeTv.text = item.time
-            binding.leaderScoreTv.text = "${item.score}/100"
+            binding.leaderTimeTv.text = item.time_taken
+            binding.leaderScoreTv.text = "${item.total_score}"
 
         }
     }

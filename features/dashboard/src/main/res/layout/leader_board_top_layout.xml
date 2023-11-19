@@ -35,10 +35,10 @@
                     android:layout_gravity="center"
                     android:layout_marginVertical="@dimen/_12sdp"/>
                 <TextView
+                    android:id="@+id/secondTopperNameTv"
                     style="@style/open_sans_regular_16"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="Shah Alam"
                     android:gravity="center"
                     android:textAlignment="center"
                     android:padding="@dimen/_4sdp"
@@ -62,10 +62,10 @@
                             android:layout_height="@dimen/_15sdp"
                             android:src="@drawable/quiz_time_taken"/>
                         <TextView
+                            android:id="@+id/secondTopperTimeTakenTv"
                             style="@style/open_sans_regular_10"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="28:46"
                             android:padding="@dimen/_4sdp"
                             android:layout_marginVertical="@dimen/_5sdp"
                             />
@@ -82,10 +82,10 @@
                             android:layout_height="@dimen/_15sdp"
                             android:src="@drawable/quiz_score_icon"/>
                         <TextView
+                            android:id="@+id/secondTopperTotalScoreTv"
                             style="@style/open_sans_regular_10"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="06/146"
                             android:padding="@dimen/_4sdp"
                             android:layout_marginVertical="@dimen/_5sdp"
                             />
@@ -121,10 +121,10 @@
                     android:layout_marginTop="@dimen/_4sdp"
                     />
                 <TextView
+                    android:id="@+id/championNameTv"
                     style="@style/open_sans_regular_16"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="Shah Alam"
                     android:gravity="center"
                     android:textAlignment="center"
                     android:padding="@dimen/_4sdp"
@@ -148,10 +148,10 @@
                             android:layout_height="@dimen/_15sdp"
                             android:src="@drawable/quiz_time_taken"/>
                         <TextView
+                            android:id="@+id/championTimeTakenTv"
                             style="@style/open_sans_regular_10"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="28:46"
                             android:padding="@dimen/_4sdp"
                             android:layout_marginVertical="@dimen/_5sdp"
                             />
@@ -168,10 +168,10 @@
                             android:layout_height="@dimen/_15sdp"
                             android:src="@drawable/quiz_score_icon"/>
                         <TextView
+                            android:id="@+id/championTotalScoreTv"
                             style="@style/open_sans_regular_10"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="10/146"
                             android:padding="@dimen/_4sdp"
                             android:layout_marginVertical="@dimen/_5sdp"
                             />
@@ -206,10 +206,10 @@
                     android:layout_gravity="center"
                     android:layout_marginVertical="@dimen/_12sdp"/>
                 <TextView
+                    android:id="@+id/thirdTopperNameTv"
                     style="@style/open_sans_regular_16"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="Shah Alam"
                     android:gravity="center"
                     android:textAlignment="center"
                     android:padding="@dimen/_4sdp"
@@ -233,10 +233,10 @@
                             android:layout_height="@dimen/_15sdp"
                             android:src="@drawable/quiz_time_taken"/>
                         <TextView
+                            android:id="@+id/thirdTopperTimeTakenTv"
                             style="@style/open_sans_regular_10"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="28:46"
                             android:padding="@dimen/_4sdp"
                             android:layout_marginVertical="@dimen/_5sdp"
                             />
@@ -253,10 +253,10 @@
                             android:layout_height="@dimen/_15sdp"
                             android:src="@drawable/quiz_score_icon"/>
                         <TextView
+                            android:id="@+id/thirdTopperTotalScoreTv"
                             style="@style/open_sans_regular_10"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="28:46"
                             android:padding="@dimen/_4sdp"
                             android:layout_marginVertical="@dimen/_5sdp"
                             />
