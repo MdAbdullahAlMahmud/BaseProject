@@ -22,7 +22,7 @@ class PdfPreviewViewModel @Inject constructor(
     val pdfContent : LiveData<SingleLiveEvent<PDFItemResponse>> = _pdfContent
     fun requestForPdf(pdfRequest : PDFItemRequest){
         viewModelScope.launch {
-        val result = callService { appRepository.requestPdfContent(pdfRequest) }
+        val result = callService(isShowLoader =false) { appRepository.requestPdfContent(pdfRequest) }
             result?.data?.let {
                 _pdfContent.value = SingleLiveEvent(it)
             }

@@ -42,7 +42,6 @@ class LiveQuizFragment : BaseFragment<QuizViewModel, FragmentLiveQuizBinding>() 
         initView()
         setObserver()
         setOnClickListener()
-        showToast("Live Quiz Id ${sharedQuizViewModel.quizItem?.qz_id}")
 
     }
     private fun setOnClickListener(){
@@ -81,7 +80,6 @@ class LiveQuizFragment : BaseFragment<QuizViewModel, FragmentLiveQuizBinding>() 
 
     private fun filterData(subject : String , position: Int){
 
-        showToast("Position $position")
         if (position!=0){
             var newList = ArrayList<QuizQuestionItem>()
             questionList.forEach { item ->

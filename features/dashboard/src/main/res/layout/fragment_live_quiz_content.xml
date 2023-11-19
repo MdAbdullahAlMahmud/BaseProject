@@ -3,6 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/white"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context=".ui.dashboard.live_exam.quiz_content.LiveQuizContentFragment">
 
@@ -15,7 +16,8 @@
 
 
     <include
-        layout="@layout/live_quiz_item"/>
+        layout="@layout/live_quiz_item"
+        android:visibility="gone"/>
 
     <LinearLayout
         android:id="@+id/filterLL"

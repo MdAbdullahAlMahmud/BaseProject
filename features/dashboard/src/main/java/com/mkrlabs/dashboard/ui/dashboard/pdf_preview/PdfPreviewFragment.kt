@@ -33,7 +33,6 @@ class PdfPreviewFragment : BaseFragment<PdfPreviewViewModel,FragmentPdfPreviewBi
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        mViewModel.requestForPdf(PDFItemRequest(pdf_id = sharedViewModel.pdfId))
     }
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
@@ -42,6 +41,8 @@ class PdfPreviewFragment : BaseFragment<PdfPreviewViewModel,FragmentPdfPreviewBi
     }
 
     fun initView(){
+        mViewModel.requestForPdf(PDFItemRequest(pdf_id = sharedViewModel.pdfId))
+        mViewModel.showLoader()
         mViewBinding.pdfWebView.getSettings().setJavaScriptEnabled(true);
         mViewBinding.pdfWebView.webViewClient = object : WebViewClient() {
             override fun shouldOverrideUrlLoading(view: WebView?, url: String?): Boolean {
@@ -52,7 +53,7 @@ class PdfPreviewFragment : BaseFragment<PdfPreviewViewModel,FragmentPdfPreviewBi
             }
 
             override fun onPageStarted(view: WebView?, url: String?, favicon: Bitmap?) {
-                mViewModel.showLoader()
+               // mViewModel.showLoader()
                 super.onPageStarted(view, url, favicon)
             }
 

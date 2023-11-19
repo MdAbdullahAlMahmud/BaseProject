@@ -3,6 +3,7 @@ package com.mkrlabs.dashboard.ui.dashboard.live_exam.quiz_content
 import android.os.Bundle
 import android.util.Log
 import android.view.View
+import android.widget.ArrayAdapter
 import androidx.appcompat.widget.AppCompatTextView
 import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
@@ -21,6 +22,8 @@ import com.mkrlabs.dashboard.data.model.response.LiveQuizItem
 import com.mkrlabs.dashboard.databinding.FragmentLiveQuizContentBinding
 import com.mkrlabs.dashboard.ui.dashboard.live_exam.LiveQuizViewModel
 import com.mkrlabs.dashboard.ui.dashboard.live_exam.adapter.LiveQuizAdapter
+import com.mkrlabs.dashboard.utils.DateFormatter
+import com.mkrlabs.dashboard.utils.DateFormatter.examDateAndTodaysDateIsSame
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
@@ -32,8 +35,14 @@ class LiveQuizContentFragment : BaseFragment<LiveQuizViewModel, FragmentLiveQuiz
 
     private var isUpcoming: Boolean = true;
 
+    private var liveQuizResponseList = ArrayList<LiveQuizResponseItem>()
 
-    private val  liveListAdapter : LiveQuizAdapter = LiveQuizAdapter(this::onItemClicked ,this::medhaTalikaClicked)
+    private val  liveListAdapter : LiveQuizAdapter = LiveQuizAdapter(
+        this::onItemClicked ,
+        this::medhaTalikaClicked,
+        this::syllabusClickListener,
+        this::folafolClick
+    )
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
     }
@@ -53,24 +62,81 @@ class LiveQuizContentFragment : BaseFragment<LiveQuizViewModel, FragmentLiveQuiz
                 selectLimitTitleBackground(it)
                 resetLimitTitleBackground(mViewBinding.btnArchived)
                 isUpcoming=true
+                upcomingQuiz()
             }
         }
+
         mViewBinding.btnArchived.setOnClickListener {
             if(isUpcoming) {
 
                 selectLimitTitleBackground(it)
                 resetLimitTitleBackground(mViewBinding.btnUpcoming)
                 isUpcoming=false
+                archiveQuiz()
             }
         }
 
 
+
+
     }
+
+    fun upcomingQuiz(){
+        var upcomingList = java.util.ArrayList<LiveQuizResponseItem>()
+        liveQuizResponseList.forEach {
+            if (DateFormatter.afterToday(it.exam_date?:"") || examDateAndTodaysDateIsSame(it.exam_date?:"")){
+                upcomingList.add(it)
+            }
+        }
+        liveListAdapter?.submitList(upcomingList)
+
+    }
+
+
+
+
+    fun archiveQuiz(){
+        var archiveList = java.util.ArrayList<LiveQuizResponseItem>()
+        liveQuizResponseList.forEach {
+            if (DateFormatter.beforeToday(it.exam_date?:"")){
+                archiveList.add(it)
+            }
+        }
+        liveListAdapter?.submitList(archiveList)
+
+    }
+
+
 
     fun medhaTalikaClicked(item: LiveQuizResponseItem){
         sharedViewModel.quizItem = item
         findNavController().navigate(com.mkrlabs.dashboard.R.id.action_liveQuizContentFragment_to_leaderBoardFragment)
     }
+
+    fun syllabusClickListener(item: LiveQuizResponseItem){
+        showCustomDialog(
+            title = "Syllabus",
+            message = item.syllabus.toString(),
+            negativeButtonEnabled = false,
+            positiveText = "Okay"
+        )
+    }
+    fun folafolClick(item: LiveQuizResponseItem , isPublished : Boolean){
+        if (!isPublished){
+            showCustomDialog(
+                message = "Result is not published yet",
+                negativeButtonEnabled = false,
+                positiveText = "Okay"
+            )
+        }else{
+
+        }
+
+    }
+
+
+
+
 
     private fun resetLimitTitleBackground(view: View) {
         val background = view as AppCompatTextView
@@ -107,7 +173,10 @@ class LiveQuizContentFragment : BaseFragment<LiveQuizViewModel, FragmentLiveQuiz
     private fun setObserver(){
         mViewModel.liveQuizList.observe(viewLifecycleOwner, Observer {
             it?.getContentIfNotHandled()?.let {
-                liveListAdapter.submitList(it)
+                liveQuizResponseList.addAll(it)
+                upcomingQuiz()
+
+                //liveListAdapter.submitList(it)
             }
         })
     }

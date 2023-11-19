@@ -42,6 +42,7 @@
             android:layout_weight="1"
             android:backgroundTint="@color/colorPrimary"
             android:text="এক্সাম দিন"
+            android:enabled="false"
             android:textColor="@color/white"
             app:cornerRadius="@dimen/_8sdp" />
     </LinearLayout>
