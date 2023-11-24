@@ -1,13 +1,14 @@
 package com.mkrlabs.dashboard.ui.dashboard.live_exam.adapter
 
 import android.content.Context
+import android.os.Build
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import androidx.annotation.RequiresApi
 import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.RecyclerView
 import com.mkrlabs.common.core.base.data.model.response.LiveQuizResponseItem
-import com.mkrlabs.dashboard.R
-import com.mkrlabs.dashboard.data.model.response.LiveQuizItem
+import com.mkrlabs.common.core.base.utils.quizTimeFormat
 import com.mkrlabs.dashboard.databinding.LiveQuizItemBinding
 import com.mkrlabs.dashboard.utils.DateFormatter
 
@@ -33,6 +34,7 @@ class LiveQuizAdapter (
 
     override fun getItemCount(): Int = items.size
 
+    @RequiresApi(Build.VERSION_CODES.O)
     override fun onBindViewHolder(holder: LiveQuizListViewHolder, position: Int) {
         val item = items[position]
         holder.bind(item,holder.itemView.context)
@@ -61,16 +63,18 @@ class LiveQuizAdapter (
 
 
     class  LiveQuizListViewHolder(val  featureItemBinding : LiveQuizItemBinding) : RecyclerView.ViewHolder(featureItemBinding.root){
-        fun bind(item: LiveQuizResponseItem,context: Context){
+        @RequiresApi(Build.VERSION_CODES.O)
+        fun bind(item: LiveQuizResponseItem, context: Context){
             featureItemBinding.quizNameTitleTV.text = item.quiz_title
             featureItemBinding.noOfQuestions.text = "Questions ${item.no_of_question}"
-            featureItemBinding.quizTime.text = "Time : ${item.quiz_time } min"
+            featureItemBinding.quizTime.text = "Time : ${item.quiz_time.quizTimeFormat()} "
             featureItemBinding.headerSection.quizDate.text = "Date : ${item.exam_date }"
             featureItemBinding.headerSection.quizDay.text = DateFormatter.getDayNameFromDate(item.exam_date.toString())
 
-            if (DateFormatter.examDateAndTodaysDateIsSame(item.exam_date.toString())){
+            if (DateFormatter.examDateAndTodaysDateIsSame(item.exam_date?:"") && DateFormatter.isCurrentTimeAfterGivenTime(item.exam_time?:"")){
                 featureItemBinding.examDinBtn.isEnabled = true
-            } else if(DateFormatter.resultPublishedDateAndTodaysDateIsSame(item.result_published_date?:"")){
+            } else if(DateFormatter.resultPublishedDateAndTodaysDateIsSame(item.result_published_date?:"")
+                && DateFormatter.isCurrentTimeAfterGivenTime(item.result_published_time?:"")){
                 featureItemBinding.examDinBtn.isEnabled = false
                 featureItemBinding.quizBottomSection.folafolTv.isEnabled = true
                 featureItemBinding.quizBottomSection.medhaTalikaTv.isEnabled = true

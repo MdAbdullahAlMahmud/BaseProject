@@ -6,12 +6,17 @@ import com.mkrlabs.dashboard.data.model.request.QuizRequestItem
 import com.mkrlabs.dashboard.data.model.request.SubTopicRequest
 import com.mkrlabs.common.core.base.data.model.response.QuizResponseItem
 import com.mkrlabs.dashboard.data.model.request.PDFItemRequest
+import com.mkrlabs.dashboard.data.model.request.UserRequest
 import com.mkrlabs.dashboard.data.model.response.LeaderBoardItem
 import com.mkrlabs.dashboard.data.model.response.LiveDashboardItem
+import com.mkrlabs.dashboard.data.model.response.LiveQuizResultItem
+import com.mkrlabs.dashboard.data.model.response.NotificationItem
 import com.mkrlabs.dashboard.data.model.response.PDFItemResponse
 import com.mkrlabs.dashboard.data.model.response.SinglePdfCatItem
 import com.mkrlabs.dashboard.data.model.response.SubTopicItem
 import com.mkrlabs.dashboard.data.model.response.TopicItem
+import com.mkrlabs.dashboard.data.model.response.User
+import com.mkrlabs.dashboard.data.model.response.UserUpdateResponse
 import com.mkrlabs.dashboard.data.repository.AppRepository
 import com.mkrlabs.dashboard.data.services.TopicService
 import retrofit2.Response
@@ -71,5 +76,23 @@ class AppRepositoryImpl @Inject constructor(
     override suspend fun requestLeaderBoard(qz_id: String): Response<BaseResponse<List<LeaderBoardItem>>> {
         return topicService.requestLeaderBoardList(qz_id)
     }
+
+     override suspend fun requestUserResult(user_id : String, qz_id: String): Response<BaseResponse<LiveQuizResultItem>> {
+        return topicService.requestUserResult(user_id,qz_id)
+    }
+
+    override suspend fun requestUserInfo(user_id: String): Response<BaseResponse<User>> {
+        return  topicService.requestUserInfo(user_id)
+    }
+
+    override suspend fun requestUserUpdate(request: UserRequest): Response<BaseResponse<UserUpdateResponse>> {
+       return  topicService.updateUser(request.id.toString(),request.name.toString(),request.phone.toString() )
+    }
+
+    override suspend fun requestNotificationList(): Response<BaseResponse<List<NotificationItem>>> {
+        return  topicService.notificationList()
+    }
+
+
 
 }

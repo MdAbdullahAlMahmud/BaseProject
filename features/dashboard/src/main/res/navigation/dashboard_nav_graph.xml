@@ -31,6 +31,9 @@
         <action
             android:id="@+id/action_dashboardFragment_to_singlePdfListFragment"
             app:destination="@id/singlePdfListFragment" />
+        <action
+            android:id="@+id/action_dashboardFragment_to_notificationFragment"
+            app:destination="@id/notificationFragment" />
     </fragment>
     <fragment
         android:id="@+id/topicFragment"
@@ -105,6 +108,10 @@
         <action
             android:id="@+id/action_liveQuizContentFragment_to_leaderBoardFragment"
             app:destination="@id/leaderBoardFragment" />
+        <action
+            android:id="@+id/action_liveQuizContentFragment_to_liveResultFragment2"
+            app:destination="@id/liveResultFragment" />
+
     </fragment>
     <fragment
         android:id="@+id/singlePdfListFragment"
@@ -119,4 +126,14 @@
         android:id="@+id/leaderBoardFragment"
         android:name="com.mkrlabs.dashboard.ui.dashboard.live_exam.leaderboard.LeaderBoardFragment"
         android:label="LeaderBoardFragment" />
+    <fragment
+        android:id="@+id/liveResultFragment"
+        android:name="com.mkrlabs.dashboard.ui.dashboard.live_exam.live_exam_result.LiveResultFragment"
+        android:label="fragment_live_result"
+        tools:layout="@layout/fragment_live_result" />
+    <fragment
+        android:id="@+id/notificationFragment"
+        android:name="com.mkrlabs.dashboard.ui.dashboard.nav_drawer.notification.NotificationFragment"
+        android:label="fragment_notification"
+        tools:layout="@layout/fragment_notification" />
 </navigation>

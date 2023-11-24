@@ -2,6 +2,7 @@ package com.mkrlabs.dashboard
 
 import android.text.BoringLayout
 import com.mkrlabs.common.core.base.BaseViewModel
+import com.mkrlabs.common.core.base.data.model.response.LiveQuizResponseItem
 import com.mkrlabs.common.core.base.data.model.response.QuizResponseItem
 import com.mkrlabs.dashboard.data.model.FeatureItem
 import com.mkrlabs.dashboard.data.model.request.QuizRequestItem
@@ -23,5 +24,7 @@ class DashboardHomeViewModel @Inject constructor():  BaseViewModel(){
     var pdfId : String? = "0"
     var liveQuizDashboardItem : LiveDashboardItem ?= null
     var quizItem  : QuizResponseItem ? = null
+
+    var liveQuizInfo : LiveQuizResponseItem ?=null
 
 }

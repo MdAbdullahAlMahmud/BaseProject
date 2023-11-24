@@ -29,6 +29,17 @@
         android:background="@drawable/quiz_filter_button_background">
 
         <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/btnLive"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:background="@drawable/limit_left_corner_background"
+            android:gravity="center"
+            android:paddingHorizontal="@dimen/_6sdp"
+            android:paddingVertical="@dimen/_5sdp"
+            android:text="@string/upcoming"
+            style="@style/open_sans_semi_bold_14" />
+        <androidx.appcompat.widget.AppCompatTextView
             android:id="@+id/btnUpcoming"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
@@ -37,9 +48,8 @@
             android:gravity="center"
             android:paddingHorizontal="@dimen/_6sdp"
             android:paddingVertical="@dimen/_5sdp"
-            android:text="@string/upcoming"
+            android:text="আপকামিং"
             style="@style/open_sans_semi_bold_14" />
-
         <androidx.appcompat.widget.AppCompatTextView
             android:id="@+id/btnArchived"
             android:layout_width="0dp"

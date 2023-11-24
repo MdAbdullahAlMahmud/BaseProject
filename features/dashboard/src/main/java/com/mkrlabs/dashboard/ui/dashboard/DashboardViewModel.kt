@@ -9,8 +9,12 @@ import com.mkrlabs.common.core.base.utils.SingleLiveEvent
 import com.mkrlabs.dashboard.data.model.FeatureItem
 import com.mkrlabs.dashboard.data.model.enums.Features
 import com.mkrlabs.dashboard.data.model.enums.IndentityCode
+import com.mkrlabs.dashboard.data.model.request.UserRequest
 import com.mkrlabs.dashboard.data.model.response.LeaderBoardItem
 import com.mkrlabs.dashboard.data.model.response.LiveDashboardItem
+import com.mkrlabs.dashboard.data.model.response.NotificationItem
+import com.mkrlabs.dashboard.data.model.response.User
+import com.mkrlabs.dashboard.data.model.response.UserUpdateResponse
 import com.mkrlabs.dashboard.data.repository.AppRepository
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.launch
@@ -38,6 +42,19 @@ class  DashboardViewModel @Inject constructor(
 
     private val _liveQuizTopicList = MutableLiveData<SingleLiveEvent<List<LiveDashboardItem>>>()
     val liveQuizTopicList : LiveData<SingleLiveEvent<List<LiveDashboardItem>>> = _liveQuizTopicList
+
+    private val  _userInfo = MutableLiveData<SingleLiveEvent<User>>()
+    val userInfo : LiveData<SingleLiveEvent<User>> = _userInfo
+
+    private val  _userUpdate = MutableLiveData<SingleLiveEvent<UserUpdateResponse>>()
+    val userUpdate : LiveData<SingleLiveEvent<UserUpdateResponse>> = _userUpdate
+
+    private val  _notificationList = MutableLiveData<SingleLiveEvent<List<NotificationItem>>>()
+    val notificationList : LiveData<SingleLiveEvent<List<NotificationItem>>> = _notificationList
+
+
+
+
 
 
 
@@ -125,6 +142,41 @@ class  DashboardViewModel @Inject constructor(
             }
         }
     }
+
+    fun getUserInfo(userId : String){
+        viewModelScope.launch {
+            val  result = callService { appRepository.requestUserInfo(userId) }
+            result?.data?.let{
+                _userInfo.value = SingleLiveEvent(it)
+            }
+        }
+    }
+
+    fun requestForUserInfoUpdate(updateInfo : UserRequest){
+        viewModelScope.launch {
+            val  result = callService { appRepository.requestUserUpdate(updateInfo) }
+            result?.data?.let{
+                _userUpdate.value = SingleLiveEvent(it)
+            }
+        }
+    }
+
+
+    fun requestForNotificationList(){
+        viewModelScope.launch {
+            val  result = callService { appRepository.requestNotificationList() }
+            result?.data?.let{
+                _notificationList.value = SingleLiveEvent(it)
+            }
+        }
+    }
+
+
+
+
+
+
+
 
 
 

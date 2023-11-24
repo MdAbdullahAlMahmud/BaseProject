@@ -3,10 +3,8 @@ package com.mkrlabs.dashboard.ui.dashboard.live_exam.quiz_content
 import android.os.Bundle
 import android.util.Log
 import android.view.View
-import android.widget.ArrayAdapter
 import androidx.appcompat.widget.AppCompatTextView
 import androidx.core.content.ContextCompat
-import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
@@ -18,13 +16,16 @@ import com.mkrlabs.common.core.base.interfaces.CommunicatorImpl
 import com.mkrlabs.dashboard.DashboardActivity
 import com.mkrlabs.dashboard.DashboardHomeViewModel
 import com.mkrlabs.dashboard.data.model.request.QuizRequestItem
-import com.mkrlabs.dashboard.data.model.response.LiveQuizItem
 import com.mkrlabs.dashboard.databinding.FragmentLiveQuizContentBinding
 import com.mkrlabs.dashboard.ui.dashboard.live_exam.LiveQuizViewModel
 import com.mkrlabs.dashboard.ui.dashboard.live_exam.adapter.LiveQuizAdapter
 import com.mkrlabs.dashboard.utils.DateFormatter
 import com.mkrlabs.dashboard.utils.DateFormatter.examDateAndTodaysDateIsSame
 import dagger.hilt.android.AndroidEntryPoint
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.delay
+import kotlinx.coroutines.launch
 
 @AndroidEntryPoint
 class LiveQuizContentFragment : BaseFragment<LiveQuizViewModel, FragmentLiveQuizContentBinding>() {
@@ -56,24 +57,41 @@ class LiveQuizContentFragment : BaseFragment<LiveQuizViewModel, FragmentLiveQuiz
     }
 
     private fun setClickListener(){
+
+        mViewBinding.btnLive.setOnClickListener {
+            selectedButtonBackground(it)
+            resetToDefaultBackground(mViewBinding.btnArchived)
+            resetToDefaultBackground(mViewBinding.btnUpcoming)
+            liveQuiz()
+
+
+        }
         mViewBinding.btnUpcoming.setOnClickListener {
-            if(!isUpcoming) {
+            /*if(!isUpcoming) {
 
                 selectLimitTitleBackground(it)
                 resetLimitTitleBackground(mViewBinding.btnArchived)
                 isUpcoming=true
                 upcomingQuiz()
-            }
+            }*/
+            selectedButtonBackground(it)
+            resetToDefaultBackground(mViewBinding.btnLive)
+            resetToDefaultBackground(mViewBinding.btnArchived)
+            upcomingQuiz()
         }
 
         mViewBinding.btnArchived.setOnClickListener {
-            if(isUpcoming) {
+            /*if(isUpcoming) {
 
                 selectLimitTitleBackground(it)
-                resetLimitTitleBackground(mViewBinding.btnUpcoming)
+                resetToDefaultBackground(mViewBinding.btnUpcoming)
                 isUpcoming=false
                 archiveQuiz()
-            }
+            }*/
+            selectedButtonBackground(it)
+            resetToDefaultBackground(mViewBinding.btnLive)
+            resetToDefaultBackground(mViewBinding.btnUpcoming)
+            archiveQuiz()
         }
 
 
@@ -81,14 +99,35 @@ class LiveQuizContentFragment : BaseFragment<LiveQuizViewModel, FragmentLiveQuiz
 
     }
 
-    fun upcomingQuiz(){
-        var upcomingList = java.util.ArrayList<LiveQuizResponseItem>()
-        liveQuizResponseList.forEach {
-            if (DateFormatter.afterToday(it.exam_date?:"") || examDateAndTodaysDateIsSame(it.exam_date?:"")){
-                upcomingList.add(it)
+    fun liveQuiz(){
+        CoroutineScope(Dispatchers.Main).launch {
+            var liveList = java.util.ArrayList<LiveQuizResponseItem>()
+            mViewModel.showLoader()
+            delay(1000)
+            liveQuizResponseList.forEach {
+                if (examDateAndTodaysDateIsSame(it.exam_date?:"")){
+                    liveList.add(it)
+                }
             }
+            mViewModel.hideLoader()
+            liveListAdapter?.submitList(liveList)
         }
-        liveListAdapter?.submitList(upcomingList)
+
+    }
+    fun upcomingQuiz(){
+        CoroutineScope(Dispatchers.Main).launch {
+            var upcomingList = java.util.ArrayList<LiveQuizResponseItem>()
+            mViewModel.showLoader()
+            delay(1000)
+            liveQuizResponseList.forEach {
+                if (DateFormatter.afterToday(it.exam_date?:"")){
+                    upcomingList.add(it)
+                }
+            }
+            mViewModel.hideLoader()
+            liveListAdapter?.submitList(upcomingList)
+        }
+
 
     }
 
@@ -96,13 +135,20 @@ class LiveQuizContentFragment : BaseFragment<LiveQuizViewModel, FragmentLiveQuiz
 
 
     fun archiveQuiz(){
-        var archiveList = java.util.ArrayList<LiveQuizResponseItem>()
-        liveQuizResponseList.forEach {
-            if (DateFormatter.beforeToday(it.exam_date?:"")){
-                archiveList.add(it)
+        CoroutineScope(Dispatchers.Main).launch {
+            var archiveList = java.util.ArrayList<LiveQuizResponseItem>()
+            mViewModel.showLoader()
+            delay(1000)
+            liveQuizResponseList.forEach {
+                if (DateFormatter.beforeToday(it.exam_date?:"")){
+                    archiveList.add(it)
+                }
             }
+            mViewModel.hideLoader()
+
+            liveListAdapter?.submitList(archiveList)
         }
-        liveListAdapter?.submitList(archiveList)
+
 
     }
 
@@ -131,6 +177,8 @@ class LiveQuizContentFragment : BaseFragment<LiveQuizViewModel, FragmentLiveQuiz
         }else{
 
         }
+        sharedViewModel.liveQuizInfo = item
+        findNavController().navigate(com.mkrlabs.dashboard.R.id.action_liveQuizContentFragment_to_liveResultFragment2)
 
     }
 
@@ -138,7 +186,7 @@ class LiveQuizContentFragment : BaseFragment<LiveQuizViewModel, FragmentLiveQuiz
 
 
 
-    private fun resetLimitTitleBackground(view: View) {
+    private fun resetToDefaultBackground(view: View) {
         val background = view as AppCompatTextView
 
         background.setBackgroundResource(
@@ -151,7 +199,7 @@ class LiveQuizContentFragment : BaseFragment<LiveQuizViewModel, FragmentLiveQuiz
             )
         )
     }
-    private fun selectLimitTitleBackground(view: View) {
+    private fun selectedButtonBackground(view: View) {
         val background = view as AppCompatTextView
 
         background.setBackgroundResource(
@@ -173,16 +221,15 @@ class LiveQuizContentFragment : BaseFragment<LiveQuizViewModel, FragmentLiveQuiz
     private fun setObserver(){
         mViewModel.liveQuizList.observe(viewLifecycleOwner, Observer {
             it?.getContentIfNotHandled()?.let {
+                liveQuizResponseList.clear()
                 liveQuizResponseList.addAll(it)
                 upcomingQuiz()
-
                 //liveListAdapter.submitList(it)
             }
         })
     }
 
     private fun getInitialData(){
-        //mViewModel.requestLiveQuizList()
 
 
         val quizRequestItem = QuizRequestItem(sharedViewModel.liveQuizDashboardItem?.cid.toString(), sub_cat_id = "0")

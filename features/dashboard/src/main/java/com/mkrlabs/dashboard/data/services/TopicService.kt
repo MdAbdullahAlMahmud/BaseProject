@@ -5,10 +5,14 @@ import com.mkrlabs.common.core.base.data.model.response.LiveQuizResponseItem
 import com.mkrlabs.common.core.base.data.model.response.QuizResponseItem
 import com.mkrlabs.dashboard.data.model.response.LeaderBoardItem
 import com.mkrlabs.dashboard.data.model.response.LiveDashboardItem
+import com.mkrlabs.dashboard.data.model.response.LiveQuizResultItem
+import com.mkrlabs.dashboard.data.model.response.NotificationItem
 import com.mkrlabs.dashboard.data.model.response.PDFItemResponse
 import com.mkrlabs.dashboard.data.model.response.SinglePdfCatItem
 import com.mkrlabs.dashboard.data.model.response.SubTopicItem
 import com.mkrlabs.dashboard.data.model.response.TopicItem
+import com.mkrlabs.dashboard.data.model.response.User
+import com.mkrlabs.dashboard.data.model.response.UserUpdateResponse
 import retrofit2.Response
 import retrofit2.http.Field
 import retrofit2.http.FormUrlEncoded
@@ -97,6 +101,41 @@ interface TopicService {
     suspend fun requestLeaderBoardList(
         @Field("qz_id") qid : String
     ) : Response<BaseResponse<List<LeaderBoardItem>>>
+
+    @FormUrlEncoded
+    @POST("api.php?get_score_detail")
+    suspend fun requestUserResult(
+        @Field("user_id") user_id : String,
+        @Field("qz_id") qid : String
+    ) : Response<BaseResponse<LiveQuizResultItem>>
+
+    @FormUrlEncoded
+    @POST("api.php?profile")
+    suspend fun requestUserInfo(
+        @Field("id") user_id : String,
+    ) : Response<BaseResponse<User>>
+
+    @FormUrlEncoded
+    @POST("api.php?update_profile")
+    suspend fun updateUser(
+        @Field("user_id") user_id : String,
+        @Field("name") name : String,
+        @Field("phone") phone : String,
+    ) : Response<BaseResponse<UserUpdateResponse>>
+
+
+    @GET("api.php?notification_list")
+    suspend fun notificationList() : Response<BaseResponse<List<NotificationItem>>>
+
+
+
+
+
+
+
+
+
+
 
 
 

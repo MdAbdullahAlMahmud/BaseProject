@@ -27,7 +27,11 @@ class QuizRepositoryImpl @Inject constructor(
             insertRequest.score.toString(),
             insertRequest.total_score.toString(),
             insertRequest.total_time.toString(),
-            insertRequest.quiz_time.toString()
+            insertRequest.quiz_time.toString(),
+            insertRequest.total_quiz_qs.toString(),
+            insertRequest.wrong_ans.toString(),
+            insertRequest.un_answered.toString(),
+            insertRequest.right_answered.toString(),
 
         )
     }

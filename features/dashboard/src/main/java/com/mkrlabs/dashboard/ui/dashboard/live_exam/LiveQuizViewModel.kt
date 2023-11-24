@@ -12,6 +12,7 @@ import com.mkrlabs.dashboard.data.model.FeatureItem
 import com.mkrlabs.dashboard.data.model.request.QuizRequestItem
 import com.mkrlabs.dashboard.data.model.response.LeaderBoardItem
 import com.mkrlabs.dashboard.data.model.response.LiveQuizItem
+import com.mkrlabs.dashboard.data.model.response.LiveQuizResultItem
 import com.mkrlabs.dashboard.data.repository.AppRepository
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.launch
@@ -32,6 +33,11 @@ class LiveQuizViewModel @Inject constructor(
 
     private val _leaderBoard = MutableLiveData<SingleLiveEvent<List<LeaderBoardItem>>>()
     val leaderBoard: LiveData<SingleLiveEvent<List<LeaderBoardItem>>> = _leaderBoard
+
+    private val _userResult = MutableLiveData<SingleLiveEvent<LiveQuizResultItem>>()
+    val userResult: LiveData<SingleLiveEvent<LiveQuizResultItem>> = _userResult
+
+
 
     fun  requestLiveQuizList(){
 
@@ -84,5 +90,16 @@ class LiveQuizViewModel @Inject constructor(
                 _leaderBoard.value = SingleLiveEvent(it)
             }
         }
+    }
+
+    fun requestUserLiveQuizResult(user_id : String , qz_id : String){
+
+        viewModelScope.launch {
+            val  result = callService { appRepository.requestUserResult(user_id,qz_id) }
+            result?.data?.let {
+                _userResult.value = SingleLiveEvent(it)
+            }
+        }
+
     }
 }

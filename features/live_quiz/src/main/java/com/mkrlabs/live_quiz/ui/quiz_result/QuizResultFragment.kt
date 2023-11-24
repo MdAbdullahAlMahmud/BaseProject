@@ -67,6 +67,7 @@ class QuizResultFragment : BaseFragment<QuizViewModel, FragmentQuizResultBinding
                 mViewBinding.totalWrongAnsDataTv.text = it.wrongAns
                 mViewBinding.totalUnAnsDataTv.text = it.unAns
 
+
             }
         })
 

@@ -72,6 +72,11 @@ class QuizViewModel @Inject constructor(
                 total_score = metaData.correctAns,
                 total_time = metaData.timeTaken,
                 quiz_time = quizTime,
+                total_quiz_qs =questionList.size.toString(),
+                un_answered =metaData.unAns,
+                right_answered =metaData.correctAns,
+                wrong_ans =metaData.wrongAns,
+
             )
             pushQuizResult(score)
 

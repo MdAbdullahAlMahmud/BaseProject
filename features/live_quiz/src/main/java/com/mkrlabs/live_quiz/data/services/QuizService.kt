@@ -25,8 +25,14 @@ interface QuizService {
         @Field("score") score : String,
         @Field("total_score") total_score : String,
         @Field("total_time") total_time : String,
-        @Field("quiz_time") quiz_time : String
+        @Field("quiz_time") quiz_time : String,
+        @Field("total_quiz_qs") total_quiz_qs : String,
+        @Field("wrong_ans") wrong_ans : String,
+        @Field("un_answered") un_answered : String,
+        @Field("right_answered") right_answered : String,
     ) : Response<BaseResponse<ScoreInsertResponse>>
+
+
 
 
 

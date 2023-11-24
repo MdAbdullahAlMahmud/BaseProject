@@ -1,6 +1,11 @@
 package com.mkrlabs.dashboard
 
+import android.content.ActivityNotFoundException
+import android.content.Intent
+import android.content.pm.PackageManager
+import android.net.Uri
 import android.os.Bundle
+import android.provider.ContactsContract.Profile
 import android.view.View
 import androidx.activity.viewModels
 import androidx.drawerlayout.widget.DrawerLayout
@@ -14,6 +19,7 @@ import com.mkrlabs.common.core.base.utils.AppConstant
 import com.mkrlabs.dashboard.databinding.ActivityDashboardBinding
 import com.mkrlabs.dashboard.ui.dashboard.DashboardViewModel
 import dagger.hilt.android.AndroidEntryPoint
+
 
 @AndroidEntryPoint
 class DashboardActivity : BaseActivity<DashboardViewModel, ActivityDashboardBinding>() {
@@ -76,42 +82,46 @@ class DashboardActivity : BaseActivity<DashboardViewModel, ActivityDashboardBind
     private fun setBottomNavSelectListener(){
         bottomNav.setOnItemSelectedListener {
 
-            if (currentRoute != it.itemId) {
+            //if (currentRoute != it.itemId) {
                 currentRoute = it.itemId
                 when (it.itemId) {
 
                     R.id.navLiveExam -> {
-                        unLockDrawerLayout()
+                        //unLockDrawerLayout()
 
                         val navOption = NavOptions.Builder().setLaunchSingleTop(true).build()
                         navController.navigate(resId = R.id.liveQuizDashboardFragment , args = null, navOptions = navOption)
                         true
                     }
 
-                    R.id.navSubscription -> {
-                        lockDrawerLayout()
+                   /* R.id.navSubscription -> {
+                        ///lockDrawerLayout()
                        // navController.navigate(R.id.myPocketFragment)
                         true
-                    }
+                    }*/
 
                     else -> {
                         true
                     }
                 }
 
-            } else {
-                false
-            }
+
         }
     }
     private fun navigationDrawerListeners(){
         mViewBinding.containerMenu.containerProfile.root.setOnClickListener {
+
             manageSideBar()
-            navController.navigate(R.id.action_dashboardFragment_to_profileFragment)
+            if (navController.currentDestination?.id != R.id.profileFragment){
+                navController.navigate(R.id.profileFragment)
+            }
         }
 
          mViewBinding.containerMenu.containerNotification.root.setOnClickListener {
-             comingSoonDialog()
+             manageSideBar()
+             if (navController.currentDestination?.id != R.id.notificationFragment){
+                 navController.navigate(R.id.notificationFragment)
+             }
         }
 
          mViewBinding.containerMenu.containerSubscription.root.setOnClickListener {
@@ -123,14 +133,34 @@ class DashboardActivity : BaseActivity<DashboardViewModel, ActivityDashboardBind
         }
 
          mViewBinding.containerMenu.containerReviewUs.root.setOnClickListener {
-             comingSoonDialog()
+             val appPackageName =
+                 packageName // getPackageName() from Context or Activity object
+
+             try {
+                 startActivity(
+                     Intent(
+                         Intent.ACTION_VIEW,
+                         Uri.parse("market://details?id=$appPackageName")
+                     )
+                 )
+             } catch (anfe: ActivityNotFoundException) {
+                 startActivity(
+                     Intent(
+                         Intent.ACTION_VIEW,
+                         Uri.parse("https://play.google.com/store/apps/details?id=$appPackageName")
+                     )
+                 )
+             }
         }
 
          mViewBinding.containerMenu.containerFacebookPage.root.setOnClickListener {
-             comingSoonDialog()
+            val faceBookPageLink = "https://www.facebook.com/edubee.bcs/"
+             newFacebookIntent(faceBookPageLink)
+
         }
         mViewBinding.containerMenu.containerFacebookGroup.root.setOnClickListener {
-            comingSoonDialog()
+            val faceBookGroup = "https://www.facebook.com/groups/717969136483967/"
+            newFacebookIntent(faceBookGroup)
         }
 
          mViewBinding.containerMenu.containerShareApp.root.setOnClickListener {
@@ -165,6 +195,25 @@ class DashboardActivity : BaseActivity<DashboardViewModel, ActivityDashboardBind
 
 
     }
+    fun newFacebookIntent( url: String) {
+        var uri = Uri.parse(url)
+        try {
+            val applicationInfo = packageManager.getApplicationInfo("com.facebook.katana", 0)
+            if (applicationInfo.enabled) {
+                // http://stackoverflow.com/a/24547437/1048340
+                uri = Uri.parse("fb://facewebmodal/f?href=$url")
+            }
+
+            val intent = Intent(Intent.ACTION_VIEW, uri)
+            startActivity(intent)
+        } catch (ignored: PackageManager.NameNotFoundException) {
+            val intent = Intent(Intent.ACTION_VIEW, uri)
+            startActivity(intent)
+        }
+
+
+    }
+
 
     private fun  logOut(){
         showCustomDialog(

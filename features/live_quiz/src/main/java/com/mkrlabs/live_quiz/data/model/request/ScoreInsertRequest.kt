@@ -7,4 +7,9 @@ data class ScoreInsertRequest (
     val total_score : String ? = null,
     val total_time : String ? = null,
     val quiz_time : String ? = null,
+    val total_quiz_qs :String ? = null,
+    val wrong_ans : String ? = null,
+    val un_answered : String ? = null,
+    val right_answered : String ? = null,
+
 )
