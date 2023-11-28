@@ -10,5 +10,6 @@ object KeyConstant {
     const val BANGLADESH_PROTIDIN_WEBSITE_LINK ="https://www.bd-pratidin.com/"
     const val NOYA_DIGINTO_WEBSITE_LINK ="https://www.dailynayadiganta.com/"
     const val BONIK_BATRA_WEBSITE_LINK ="https://bonikbarta.net/"
+    const val DAILY_NEWS_WEBSITE_LINK ="https://www.thedailystar.net/"
 
 }

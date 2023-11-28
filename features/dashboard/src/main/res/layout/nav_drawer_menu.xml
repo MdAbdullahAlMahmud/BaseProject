@@ -72,6 +72,7 @@
                 android:id="@+id/containerResults"
                 layout="@layout/nav_drawer_menu_item"
                 android:layout_width="match_parent"
+                android:visibility="gone"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/_8sdp" />
 

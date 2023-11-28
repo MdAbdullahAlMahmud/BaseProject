@@ -58,6 +58,14 @@ class SombadpotroFragment : BaseFragment<SombadpotroViewModel, FragmentSombadpot
              findNavController().navigate(R.id.action_sombadpotroFragment_to_webViewFragment,bundle)
         }
 
+         mViewBinding.newsHolder.theDailyStarIv.setOnClickListener{
+             var bundle = Bundle()
+             bundle.putString("URL", KeyConstant.DAILY_NEWS_WEBSITE_LINK)
+             findNavController().navigate(R.id.action_sombadpotroFragment_to_webViewFragment,bundle)
+        }
+
+
+
     }
     override fun setDefaultProperties() {
         val  activity = requireActivity()

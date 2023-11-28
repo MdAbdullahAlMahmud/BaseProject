@@ -67,6 +67,20 @@
             android:src="@drawable/bonik_barta"/>
     </LinearLayout>
 
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:weightSum="2"
+        android:orientation="horizontal"
+        >
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/theDailyStarIv"
+            android:layout_width="0dp"
+            android:layout_height="@dimen/_100sdp"
+            android:layout_weight="1"
+            android:src="@drawable/daily_star_news"/>
+    </LinearLayout>
+
 
 
 </LinearLayout>

@@ -37,6 +37,7 @@ class WebViewFragment : BaseFragment<WebViewViewModel,FragmentWebViewBinding>() 
     }
     fun initView(){
         mViewBinding.miscWebView.getSettings().setJavaScriptEnabled(true)
+        mViewBinding.miscWebView.settings.useWideViewPort = true
         mViewBinding.miscWebView.getSettings().setUserAgentString("Mozilla/5.0 (iPhone; U; CPU like Mac OS X; en) AppleWebKit/420+ (KHTML, like Gecko) Version/3.0 Mobile/1A543a Safari/419.3");
         mViewBinding.miscWebView.webViewClient = object : WebViewClient() {
             override fun shouldOverrideUrlLoading(view: WebView?, url: String?): Boolean {
