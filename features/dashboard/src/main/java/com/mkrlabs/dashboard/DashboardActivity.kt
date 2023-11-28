@@ -15,6 +15,7 @@ import androidx.navigation.NavOptions
 import androidx.navigation.fragment.NavHostFragment
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.google.gson.GsonBuilder
+import com.mkrlabs.common.BuildConfig
 import com.mkrlabs.common.core.base.BaseActivity
 import com.mkrlabs.common.core.base.data.model.response.CorePackageResponse
 import com.mkrlabs.common.core.base.interfaces.CommunicatorImpl
@@ -44,6 +45,7 @@ class DashboardActivity : BaseActivity<DashboardViewModel, ActivityDashboardBind
     private lateinit var bottomNav: BottomNavigationView
     private var currentRoute: Int = -99
 
+    private var baseUrl = BuildConfig.BASE_URL
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(mViewBinding.root)
@@ -178,7 +180,7 @@ class DashboardActivity : BaseActivity<DashboardViewModel, ActivityDashboardBind
 
          mViewBinding.containerMenu.containerCoontactUs.root.setOnClickListener {
              manageSideBar()
-             val contactUs = "https://edubee.supabex.com/contact_us.php"
+             val contactUs = baseUrl+"/contact_us.html"
              openUrlToWebView(contactUs)
         }
         mViewBinding.containerMenu.containerPaymentHistory.root.setOnClickListener {
@@ -190,15 +192,19 @@ class DashboardActivity : BaseActivity<DashboardViewModel, ActivityDashboardBind
         }
 
          mViewBinding.containerMenu.containerTermsAndCondition.root.setOnClickListener {
-             val url = "https://edubee.supabex.com/terms_and_condition.php"
+             manageSideBar()
+             val url =  baseUrl+"/terms-and-conditions-for-edubee.html"
              openUrlToWebView(url)        }
         mViewBinding.containerMenu.containerAboutUs.root.setOnClickListener {
-            val aboutus = "https://edubee.supabex.com/about_us.php"
+            manageSideBar()
+            val aboutus =  baseUrl+"/about_us.html"
             openUrlToWebView(aboutus)        }
 
          mViewBinding.containerMenu.containerPrivacyPolicy.root.setOnClickListener {
-             val contactUs = "https://edubee.supabex.com/privacy_policy.php"
-             openUrlToWebView(contactUs)        }
+             manageSideBar()
+             val contactUs =  baseUrl+"/privacy_policy.html"
+             openUrlToWebView(contactUs)
+         }
 
          mViewBinding.containerMenu.containerLogout.root.setOnClickListener {
            logOut()

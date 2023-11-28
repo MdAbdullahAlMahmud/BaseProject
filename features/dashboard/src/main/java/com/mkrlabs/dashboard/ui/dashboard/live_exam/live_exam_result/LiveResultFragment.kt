@@ -74,14 +74,15 @@ class LiveResultFragment : BaseFragment<LiveQuizViewModel, FragmentLiveResultBin
             mViewBinding.examGridStatistic.yourScoreDataTV.text = (result.right_answered?.toDouble()
                 ?.minus(cutMark.toDouble())).toString()
 
+
         }catch (e : Exception){
             e.printStackTrace()
         }
 
         mViewBinding.apply {
             resultTotalStudentTv.text = totalStudent.toString() +"জন"
-            resultTotalPassTv.text = "0" +"জন"
-            resultTotalFailsTv.text = "0" +"জন"
+            resultTotalPassTv.text = result.total_pass_users +" জন"
+            resultTotalFailsTv.text = result.total_fail_users +" জন"
             resultHighestMarksTv.text = "${result.total_quiz_qs}"
             examGridStatistic.timeTakenDataTV.text = timeTaken
             examGridStatistic.yourPositionTv.text = yourRank

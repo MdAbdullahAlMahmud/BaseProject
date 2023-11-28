@@ -12,5 +12,7 @@ data class LiveQuizResultItem(
     val total_time: String? =null,
     val un_answered: String? =null,
     val user_id: String? =null,
-    val wrong_ans: String? =null
+    val wrong_ans: String? =null,
+    val total_pass_users: String? =null,
+    val total_fail_users: String? =null
 )

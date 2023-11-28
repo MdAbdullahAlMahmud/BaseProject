@@ -64,7 +64,7 @@ class WebViewFragment : BaseFragment<WebViewViewModel,FragmentWebViewBinding>() 
        val activity = requireActivity()
 
         if (activity is DashboardActivity){
-            activity.setActionBarTitle("Miscellaneous")
+            activity.setActionBarTitle(getString(com.mkrlabs.common.R.string.app_name))
             activity.hideBottomNavBar()
             activity.showBackButton()
         }
